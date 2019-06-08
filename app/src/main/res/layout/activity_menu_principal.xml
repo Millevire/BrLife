@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuPrincipalActivity"
+    android:orientation="vertical"
+    android:background="@drawable/contrastecolores">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bevan"
+            android:text="BrLife"
+            android:textAlignment="center"
+            android:textColor="@color/blanco"
+            android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher_icono" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/buttonbackground">
+
+            <Button
+                android:id="@+id/btnProbarAplicacion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:fontFamily="@font/bevan"
+                android:text="probar  aplicacion"
+                android:textColor="@color/blanco" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/buttonbackground">
+
+            <Button
+                android:id="@+id/btnIniciarSession"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:fontFamily="@font/bevan"
+                android:text="iniciar  session"
+                android:textColor="@color/blanco" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/buttonbackground">
+
+            <Button
+                android:id="@+id/btnRegistrarsePre"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:fontFamily="@font/bevan"
+                android:text="registrarse"
+                android:textColor="@color/blanco" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

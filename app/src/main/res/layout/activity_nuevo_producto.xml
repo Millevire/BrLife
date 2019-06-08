@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NuevoProductoActivity" android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/doscolores"
+        android:elevation="3dp"
+        android:orientation="horizontal">
+
+        <Button
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:drawableLeft="@drawable/ic_action_back" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/bevan"
+            android:text="BrLife"
+
+            android:textAlignment="center"
+            android:textColor="@color/blanco" />
+    </LinearLayout>
+ <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:orientation="vertical">
+
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:text="Registo de nuevo alimento"
+             android:textAlignment="center"
+             android:textColor="@color/colorPrimaryDark" />
+         <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="20dp"
+             android:layout_marginRight="20dp"
+             android:layout_marginLeft="20dp"
+             android:background="@drawable/formatotablanutricional"
+             android:orientation="vertical">
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="10dp"
+                 android:orientation="horizontal">
+                 <Button
+                     android:layout_width="55dp"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="10dp"
+                     android:textColor="@color/blanco"
+                     android:backgroundTint="@color/colorPrimaryDark"
+                     android:drawableStart="@drawable/ic_action_mainicon"/>
+
+                 <TextView
+                     android:layout_width="268dp"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="10dp"
+                     android:text="Codigo producto"
+                     android:textAlignment="textStart"
+                     android:textSize="18sp" />
+
+
+
+             </LinearLayout>
+             <EditText
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginRight="10dp"
+                 android:hint="Nombre y marca de alimento"
+                 android:textColor="@color/colorPrimaryDark"
+                 android:textSize="24sp" />
+
+             <EditText
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginLeft="10dp"
+                 android:layout_marginRight="10dp"
+                 android:hint="Detalles" />
+             <View android:layout_width="wrap_content"
+                 android:layout_height="0.1dp"
+                 android:background="#000000"
+                 android:layout_marginTop="10dp"/>
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+
+                 android:layout_marginTop="10dp"
+                 android:orientation="vertical"
+                 >
+
+                 <View android:layout_width="wrap_content"
+                     android:layout_height="0.1dp"
+                     android:background="#000000"
+                     />
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="10dp"
+                     android:text="Información nutricional de 1 porción"
+                     android:textAlignment="center"
+                     android:textColor="@color/colorPrimaryDark"
+                     android:textSize="18sp" />
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal">
+
+                     <TextView
+                         android:layout_width="200dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:text="Energía (Kcal):"
+                         android:textSize="18sp" />
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginRight="10dp"/>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal">
+
+                     <TextView
+                         android:layout_width="200dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:text="Proteínas (g):"
+                         android:textSize="18sp" />
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginRight="10dp"/>
+                 </LinearLayout>
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal">
+
+                     <TextView
+                         android:layout_width="200dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:text="Colesterol  (mg):"
+                         android:textSize="18sp" />
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginRight="10dp"/>
+                 </LinearLayout>
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:orientation="horizontal">
+
+                     <TextView
+                         android:layout_width="200dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:text="Carbohidratos (gl):"
+                         android:textSize="18sp" />
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginRight="10dp"/>
+                 </LinearLayout>
+                 <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+
+                     <TextView
+                         android:layout_width="200dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:text="Azúcares totales (g):"
+                         android:textSize="18sp" />
+                 <EditText
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginRight="10dp"/>
+             </LinearLayout>
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginBottom="10dp"
+                     android:orientation="horizontal">
+
+                     <TextView
+                         android:layout_width="200dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginLeft="10dp"
+                         android:text="Sodio (mg):"
+                         android:textSize="18sp" />
+                     <EditText
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginRight="10dp"/>
+                 </LinearLayout>
+             </LinearLayout>
+
+
+         </LinearLayout>
+         <Button
+             android:id="@+id/btnAgregarComida"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="20dp"
+             android:layout_marginRight="20dp"
+             android:backgroundTint="@color/colorPrimaryDark"
+             android:drawableRight="@drawable/ic_action_add"
+             android:text="agregar"
+             android:textColor="@color/blanco" />
+     </LinearLayout>
+ </ScrollView>
+</LinearLayout>

@@ -1,0 +1,44 @@
+{
+  "project_info": {
+    "project_number": "1064222881920",
+    "firebase_url": "https://brlife-bbd12.firebaseio.com",
+    "project_id": "brlife-bbd12",
+    "storage_bucket": "brlife-bbd12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1064222881920:android:4aef20d9240f0af3",
+        "android_client_info": {
+          "package_name": "com.example.esteban.brlife"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1064222881920-vvuglkqf22c91tdoj5bm4n1c38uudod0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.esteban.brlife",
+            "certificate_hash": "4ad260659cb7838aa0bd783d7d624fa85677e5b3"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8AnQdWpoXDVtKKR89iV53fkwmY-CYY-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1064222881920-nojn6gv16j3nggtvk2rmd0et2m2rbcu2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
