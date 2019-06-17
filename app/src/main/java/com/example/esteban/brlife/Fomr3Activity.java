@@ -7,14 +7,21 @@ import android.view.View;
 import android.widget.Button;
 
 public class Fomr3Activity extends AppCompatActivity {
- private Button btnFinalizarRegistro;
+ private Button btnFinalizarRegistroForm3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fomr3);
-        btnFinalizarRegistro=(Button)findViewById(R.id.btnFinalizarRegistro);
+        btnFinalizarRegistroForm3=(Button)findViewById(R.id.btnFinalizarRegistroForm3);
+
+
+
         final Intent intent =new Intent(this,MenuLateralActivity.class);
-        btnFinalizarRegistro.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        btnFinalizarRegistroForm3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(intent);

@@ -7,16 +7,16 @@ import android.view.View;
 import android.widget.Button;
 
 public class Form2Activity extends AppCompatActivity {
-  private Button btnSiguenteForm3;
+  private Button btnSiguenteForm2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form2);
 
-        btnSiguenteForm3=(Button)findViewById(R.id.btnSiguenteForm3);
+        btnSiguenteForm2=(Button)findViewById(R.id.btnSiguenteForm2);
         final Intent intent =new Intent(this,Fomr3Activity.class);
 
-        btnSiguenteForm3.setOnClickListener(new View.OnClickListener() {
+        btnSiguenteForm2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(intent);

@@ -1,4 +1,4 @@
-package com.example.esteban.brlife;
+package com.example.esteban.brlife.Adaptadores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.esteban.brlife.Clases.Producto;
+import com.example.esteban.brlife.R;
 
 import java.util.ArrayList;
 

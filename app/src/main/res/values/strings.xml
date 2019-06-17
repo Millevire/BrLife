@@ -7,4 +7,13 @@
     <string name="nav_header_subtitle">Correo electronico</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings"></string>
+    <string name="escanearCodigoBarra">ESCANEAR CODIGO BARRA</string>
+    <string name="mensajeCancelasteEscaneoCodigoBarra">Cancelaste escaneo</string>
+    <string name="mensajeBarraProgresoCargando">Cargando...</string>
+    <string name="URLwebServicePart1">http://www.brotherwareoficial.com/WebServices/Mantenedor</string>
+    <string name="URLwebServicePart2">.php?tipoconsulta=s</string>
+    <string name="ERROR">ERROR</string>
+    <string name="nueva_provincia">Nueva Provincia</string>
+    <string name="cancelar">CANCELAR</string>
+
 </resources>

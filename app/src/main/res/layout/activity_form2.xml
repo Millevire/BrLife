@@ -29,11 +29,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/bevan"
                 android:text="BrLife"
-
-                android:textAlignment="center"
                 android:textColor="@color/blanco" />
         </LinearLayout>
 
@@ -64,7 +63,35 @@
                     android:background="@drawable/input">
 
                     <EditText
-                        android:layout_width="199dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@null"
+                        android:hint="Objetivo"
+                        android:textAlignment="textEnd" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+                        <Spinner
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"></Spinner>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/input">
+
+                    <EditText
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -72,10 +99,14 @@
                         android:background="@null"
                         android:hint="Intereses"
                         android:textAlignment="textEnd" />
-
-                    <Spinner
-                        android:layout_width="111dp"
-                        android:layout_height="40dp"></Spinner>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+                        <Spinner
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"></Spinner>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -84,17 +115,53 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
                     android:background="@drawable/input">
 
                     <EditText
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
+                        android:background="@null"
+                        android:hint="Tipo de Persona"
+                        android:textAlignment="textEnd" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+                        <Spinner
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"></Spinner>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/input">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@null"
                         android:hint="Rol"
-                        android:textAlignment="center"
-                        android:background="@null"/>
+                        android:textAlignment="textEnd" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+                        <Spinner
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"></Spinner>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -111,9 +178,9 @@
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
+                        android:background="@null"
                         android:hint="Peso"
-                        android:textAlignment="center"
-                        android:background="@null"/>
+                        android:inputType="number" />
                 </LinearLayout>
 
 
@@ -132,7 +199,7 @@
                     android:background="@drawable/buttonbackground">
 
                     <Button
-                        android:id="@+id/btnSiguenteForm3"
+                        android:id="@+id/btnSiguenteForm2"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="3dp"

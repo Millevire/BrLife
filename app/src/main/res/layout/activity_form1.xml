@@ -21,7 +21,9 @@
             android:layout_height="60dp"
             android:background="@drawable/doscolores"
             android:elevation="3dp">
+
             <Button
+                android:id="@+id/btnBackForm1"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
@@ -30,11 +32,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/bevan"
                 android:text="BrLife"
-
-                android:textAlignment="center"
                 android:textColor="@color/blanco" />
         </LinearLayout>
 
@@ -65,14 +66,15 @@
                     android:background="@drawable/input">
 
                     <EditText
+                        android:id="@+id/etNombresForm1"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
+                        android:background="@null"
                         android:hint="Nombres"
-                        android:textAlignment="center"
-                        android:background="@null"/>
+                        android:inputType="text" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -84,14 +86,15 @@
                     android:background="@drawable/input">
 
                     <EditText
+                        android:id="@+id/etApellidoPaternoForm1"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
+                        android:background="@null"
                         android:hint="Apellido Paterno"
-                        android:textAlignment="center"
-                        android:background="@null"/>
+                        android:inputType="text" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -103,15 +106,18 @@
                     android:background="@drawable/input">
 
                     <EditText
+                        android:id="@+id/etApelidoMaternoForm1"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
+                        android:background="@null"
                         android:hint="Apellido Materno"
-                        android:textAlignment="center"
-                        android:background="@null"/>
+                        android:inputType="text" />
                 </LinearLayout>
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -122,6 +128,7 @@
                     android:background="@drawable/input">
 
                     <EditText
+                        android:id="@+id/etEdadForm1"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
@@ -129,8 +136,7 @@
                         android:layout_marginTop="5dp"
                         android:background="@null"
                         android:hint="Edad"
-                        android:inputType="number"
-                        android:textAlignment="center" />
+                        android:inputType="number" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -142,19 +148,25 @@
                     android:background="@drawable/input" android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="183dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="8dp"
                         android:background="@null"
-                        android:hint="Sexo"
+                        android:hint="Sexo: "
                         android:textAlignment="textEnd"
                         android:textSize="18sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
 
-                    <Spinner
-                        android:layout_width="134dp"
-                        android:layout_height="40dp"></Spinner>
+                        <Spinner
+                            android:id="@+id/spSexoFomr1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"></Spinner>
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -166,6 +178,7 @@
                     android:background="@drawable/input">
 
                     <EditText
+                        android:id="@+id/etCorreoElectronicoForm1"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
@@ -173,8 +186,151 @@
                         android:layout_marginTop="5dp"
                         android:background="@null"
                         android:hint="Correo Electronico"
-                        android:inputType="textEmailAddress"
-                        android:textAlignment="center" />
+                        android:inputType="textEmailAddress" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#000000" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:text="Fecha de Nacimiento:"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/input">
+
+                        <EditText
+                            android:id="@+id/etDiaForm1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Dia"
+                            android:inputType="date" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/input">
+
+                        <EditText
+                            android:id="@+id/etMesForm1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Mes"
+                            android:inputType="datetime" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/input">
+
+                        <EditText
+                            android:id="@+id/etAnoForm1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:hint="Año"
+                            android:inputType="datetime" />
+                    </LinearLayout>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="0.1dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#000000" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:text="Ubicacion:"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/input"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="Region"
+                        android:textAlignment="textEnd"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <Spinner
+                            android:id="@+id/spRegionForm1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"></Spinner>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/input" android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@null"
+                        android:hint="Provincia"
+                        android:textAlignment="textEnd"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <Spinner
+                            android:id="@+id/spProvinciaForm1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"></Spinner>
+                    </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -185,22 +341,27 @@
                     android:background="@drawable/input" android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="197dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="8dp"
                         android:background="@null"
-                        android:hint="Ciudad"
+                        android:hint="Comuna"
                         android:textAlignment="textEnd"
                         android:textSize="18sp" />
 
-                    <Spinner
-                        android:layout_width="117dp"
-                        android:layout_height="40dp"></Spinner>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <Spinner
+                            android:id="@+id/spComunaForm1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"></Spinner>
+                    </LinearLayout>
                 </LinearLayout>
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -210,7 +371,7 @@
                     android:background="@drawable/buttonbackground">
 
                     <Button
-                        android:id="@+id/btnSiguenteForm2"
+                        android:id="@+id/btnSiguenteForm1"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="3dp"

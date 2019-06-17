@@ -7,6 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
+import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
+import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
+import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -44,6 +48,14 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 startActivity(in1);
             }
         });
+
+
+        //Cargar listas de region,provincia y comuna
+        new CargarBaseDeDatosComuna(this, SelccionMantenedor.Comuna.getSeleccion());
+        //Para Cargar la provincia
+        new CargarBaseDeDatosMantenedorTresAtributos(this,SelccionMantenedor.Provincia.getSeleccion());
+        //Cargar base de datos para Spinner de AlertNuevoMantenedorTresAtributos con Region
+        new CargarBaseDeDatosDosAtributos(this,SelccionMantenedor.Region.getSeleccion());
     }
 
     public void scanner(){

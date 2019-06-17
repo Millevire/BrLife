@@ -1,4 +1,4 @@
-package com.example.esteban.brlife;
+package com.example.esteban.brlife.CuadroDialogo;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+
+import com.example.esteban.brlife.R;
 
 public class CuadroDialogoAgregarProducto {
 
