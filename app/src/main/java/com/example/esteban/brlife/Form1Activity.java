@@ -16,6 +16,7 @@ import com.example.esteban.brlife.Adaptadores.SpinAdapterTresAtributos;
 import com.example.esteban.brlife.Clases.Comuna;
 import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
 import com.example.esteban.brlife.Clases.MantenedorTresAtributos;
+import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
 import com.example.esteban.brlife.Enum.SeleccionSexo;
@@ -33,9 +34,12 @@ public class Form1Activity extends AppCompatActivity {
   private SpinAdapterTresAtributos adapterProvincia;
   private SpinAdapterComuna adapterComuna;
 
-    private ArrayList<MantenedorDosAtributos> listaFiltroRegion = new ArrayList<>();
+    private ArrayList<Comuna> listaFiltroComuna = new ArrayList<>();
     private ArrayList<MantenedorTresAtributos> listaFiltroProvincia = new ArrayList<>();
+
     private ArrayList<Comuna> listaComuna = new ArrayList<>();
+
+    public int idregion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +51,8 @@ public class Form1Activity extends AppCompatActivity {
         spRegionForm1=(Spinner)findViewById(R.id.spRegionForm1);
         spProvinciaForm1=(Spinner)findViewById(R.id.spProvinciaForm1);
         spComunaForm1=(Spinner)findViewById(R.id.spComunaForm1);
+
+
 
 
 
@@ -73,9 +79,11 @@ public class Form1Activity extends AppCompatActivity {
         spRegionForm1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                int idregion = CargarBaseDeDatosDosAtributos.getListaMantenedorDosAtributos().get(position).getIdMantenedorDosAtributos();
+               idregion = CargarBaseDeDatosDosAtributos.getListaMantenedorDosAtributos().get(position).getIdMantenedorDosAtributos();
                 listaFiltroProvincia = CargarBaseDeDatosMantenedorTresAtributos.filtro(idregion);
 
+                adapterProvincia=new SpinAdapterTresAtributos(Form1Activity.this,android.R.layout.simple_list_item_1,listaFiltroProvincia);
+                spProvinciaForm1.setAdapter(adapterProvincia);
 
 
             }
@@ -85,10 +93,25 @@ public class Form1Activity extends AppCompatActivity {
 
             }
         });
+
+       // spRegionForm1.seton
 
         spProvinciaForm1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            int idProvincia=CargarBaseDeDatosMantenedorTresAtributos.getListaMantenedorTresAtributos().get(position).getIdMantenedorTresAtributos();
+
+            if (listaFiltroProvincia != null){
+
+                for (MantenedorTresAtributos m: listaFiltroProvincia){
+
+                }
+            }
+
+            listaFiltroComuna= CargarBaseDeDatosComuna.filtro(idProvincia,idregion);
+
+            adapterComuna=new SpinAdapterComuna(Form1Activity.this,android.R.layout.simple_list_item_1,listaFiltroComuna);
+            spComunaForm1.setAdapter(adapterComuna);
 
             }
 
@@ -97,12 +120,21 @@ public class Form1Activity extends AppCompatActivity {
 
             }
         });
+
+
     }
+
+
 
     public void llenarSpinner(){
         new SeleccionSexo();
         adapterSexo=new SpinAdapter(this,android.R.layout.simple_list_item_1,SeleccionSexo.getListaSexo());
         spSexoFomr1.setAdapter(adapterSexo);
+
+        adapterRegion=new SpinAdapter(this,android.R.layout.simple_list_item_1,CargarBaseDeDatosDosAtributos.getListaMantenedorDosAtributos());
+        spRegionForm1.setAdapter(adapterRegion);
+
+
     }
 
 

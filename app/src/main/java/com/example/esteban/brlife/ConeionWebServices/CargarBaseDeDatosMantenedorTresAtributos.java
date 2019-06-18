@@ -31,6 +31,7 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
     //lista especifica de Marca para usos como llenar mas de un spinner en una actividad. la lista sigue siendo de tres atributos
     public static ArrayList<MantenedorTresAtributos> listaMarca =new ArrayList<>();
 
+    //lista especfica
 
     //listas filtro
 
@@ -136,11 +137,11 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
 
     }
 
-    public static ArrayList<MantenedorTresAtributos>filtro(int idTipoProducto){
+    public static ArrayList<MantenedorTresAtributos>filtro(int fkMantenedor){
         listaFiltrSabor.clear();
         for (MantenedorTresAtributos mantenedorTresAtributos: listaMantenedorTresAtributos){
 
-            if(mantenedorTresAtributos.getFkMantenedorTresAtributos()==idTipoProducto){
+            if(mantenedorTresAtributos.getFkMantenedorTresAtributos()==fkMantenedor){
                 listaFiltrSabor.add(mantenedorTresAtributos);
             }
         }

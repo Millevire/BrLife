@@ -296,7 +296,7 @@
 
                         <Spinner
                             android:id="@+id/spRegionForm1"
-                            android:layout_width="40dp"
+                            android:layout_width="match_parent"
                             android:layout_height="40dp"></Spinner>
                     </LinearLayout>
 
@@ -328,7 +328,7 @@
 
                         <Spinner
                             android:id="@+id/spProvinciaForm1"
-                            android:layout_width="40dp"
+                            android:layout_width="match_parent"
                             android:layout_height="40dp"></Spinner>
                     </LinearLayout>
                 </LinearLayout>
@@ -358,7 +358,7 @@
 
                         <Spinner
                             android:id="@+id/spComunaForm1"
-                            android:layout_width="40dp"
+                            android:layout_width="match_parent"
                             android:layout_height="40dp"></Spinner>
                     </LinearLayout>
                 </LinearLayout>

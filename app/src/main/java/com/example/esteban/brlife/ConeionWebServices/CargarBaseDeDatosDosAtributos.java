@@ -26,46 +26,17 @@ import java.util.ArrayList;
  *
  */
 public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObject>,Response.ErrorListener{
-    public static ArrayList<MantenedorDosAtributos> listaMantenedors =new ArrayList<>();
-    public static ArrayList<MantenedorDosAtributos> listaTipoMedicion =new ArrayList<>();
+    public static ArrayList<MantenedorDosAtributos> listaMantenedorDosAtributos =new ArrayList<>();
 
+    //Listas dedicadas a mantenedores
+    public static ArrayList<MantenedorDosAtributos> listaObjetivo =new ArrayList<>();
+
+    public static ArrayList<MantenedorDosAtributos> listaInteres =new ArrayList<>();
     static RequestQueue request;
     static JsonObjectRequest jsonObjectRequest;
     static ProgressDialog progreso;
     public Context contexto;
     public String mantenedor;
-
-
-
-
-
-
-
-//    public static void ordenar(){
-//
-//
-//Collections.sort(listaMantenedors, new Comparator<Mantenedor>() {
-//
-//            @Override
-//            public int compare(Mantenedor m1, Mantenedor m2) {
-//                return new Integer(m1.getIdTipoProducto()).compareTo(m2.getIdTipoProducto());
-//            }
-//
-//        });
-//
-//
-//        Collections.sort(listaMantenedors,Collections.sort(listaMantenedors, new Comparator<Mantenedor>() {
-//            @Override
-//            public int compare(Mantenedor o1, Mantenedor o2) {
-//                return 0;
-//            }
-//        }); );
-//
-//    }
-
-
-
-
 
 
     /**
@@ -87,9 +58,9 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
 
 
     public static void eliminar(int id){
-        for(int x = 0; x< listaMantenedors.size(); ++x){
-            if (listaMantenedors.get(x).getIdMantenedorDosAtributos()==id){
-                listaMantenedors.remove(x);
+        for(int x = 0; x< listaMantenedorDosAtributos.size(); ++x){
+            if (listaMantenedorDosAtributos.get(x).getIdMantenedorDosAtributos()==id){
+                listaMantenedorDosAtributos.remove(x);
 
             }
 
@@ -97,8 +68,11 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
         }
     }
 
+
+
+
     public static MantenedorDosAtributos buscar(int idMantenedor, Context context, String mantenedo){
-        for(MantenedorDosAtributos mantenedor: listaMantenedors){
+        for(MantenedorDosAtributos mantenedor: listaMantenedorDosAtributos){
             if (mantenedor.getIdMantenedorDosAtributos()==idMantenedor){
                 return mantenedor;
             }
@@ -107,7 +81,7 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
     }
 
     public static MantenedorDosAtributos buscar(int idMantenedor){
-        for(MantenedorDosAtributos mantenedor: listaMantenedors){
+        for(MantenedorDosAtributos mantenedor: listaMantenedorDosAtributos){
             if (mantenedor.getIdMantenedorDosAtributos()==idMantenedor){
                 return mantenedor;
             }
@@ -118,14 +92,14 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
 
     public static int buscarIndice(MantenedorDosAtributos mantenedorTresAtributos){
         int position;
-        position = listaMantenedors.indexOf(mantenedorTresAtributos);
+        position = listaMantenedorDosAtributos.indexOf(mantenedorTresAtributos);
         return position;
     }
 
     public static void editar(int id,String nombre){
-        for(int x = 0; x< listaMantenedors.size(); ++x){
-            if (listaMantenedors.get(x).getIdMantenedorDosAtributos()==id){
-                listaMantenedors.get(x).setNombreMantenedorDosAtributos(nombre);
+        for(int x = 0; x< listaMantenedorDosAtributos.size(); ++x){
+            if (listaMantenedorDosAtributos.get(x).getIdMantenedorDosAtributos()==id){
+                listaMantenedorDosAtributos.get(x).setNombreMantenedorDosAtributos(nombre);
 
             }
 
@@ -135,12 +109,12 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
     }
     public static void agregar(MantenedorDosAtributos mantenedor){
        // ordenar();
-        listaMantenedors.add(mantenedor);
+        listaMantenedorDosAtributos.add(mantenedor);
     }
 
     public static ArrayList<MantenedorDosAtributos> getListaMantenedorDosAtributos() {
 
-        return getListaMantenedorDosAtributos();
+        return listaMantenedorDosAtributos;
     }
 
 
@@ -172,7 +146,7 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
         MantenedorDosAtributos mantenedorDosAtributos =null;
 
         progreso.hide();
-        listaMantenedors.clear();
+        listaMantenedorDosAtributos.clear();
 
         JSONArray json=response.optJSONArray(this.mantenedor);
         try {
@@ -186,7 +160,7 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
                     mantenedorDosAtributos.setIdMantenedorDosAtributos(jsonObject.getInt("Id_"+ this.mantenedor));
                     // mantenedor.setIdTipoProducto(Integer.parseInt(jsonObject.toString()));
                     mantenedorDosAtributos.setNombreMantenedorDosAtributos(jsonObject.getString("Nombre_"+ this.mantenedor));
-                    listaMantenedors.add(mantenedorDosAtributos);
+                    listaMantenedorDosAtributos.add(mantenedorDosAtributos);
 
             }
 

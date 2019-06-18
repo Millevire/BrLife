@@ -22,7 +22,10 @@ import java.util.ArrayList;
 
 public class CargarBaseDeDatosComuna implements Response.Listener<JSONObject>,Response.ErrorListener{
     public static ArrayList<Comuna> listaComuna =new ArrayList<>();
-    public static  DefaultRetryPolicy defaultRetryPolicy;
+
+    public static ArrayList<Comuna> listaAuxComuna =new ArrayList<>();
+    public static ArrayList<Comuna> listaFiltroComuna =new ArrayList<>();
+
 
     static RequestQueue request;
     static JsonObjectRequest jsonObjectRequest;
@@ -75,6 +78,26 @@ public class CargarBaseDeDatosComuna implements Response.Listener<JSONObject>,Re
     public static void agregar(Comuna Comuna){
 
         listaComuna.add(Comuna);
+    }
+
+    public static ArrayList<Comuna>filtro(int fkProvincia,int fkRegion){
+     listaFiltroComuna.clear();
+
+     for (Comuna c: listaComuna){
+         if (c.getIdRegion()==fkRegion ){
+             listaAuxComuna.add(c);
+
+         }
+
+     }
+
+     for (Comuna comuna : listaAuxComuna){
+         if (comuna.getIdProvincia()==fkProvincia){
+             listaFiltroComuna.add(comuna);
+         }
+
+     }
+    return listaFiltroComuna;
     }
 
 
