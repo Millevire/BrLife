@@ -23,6 +23,7 @@
             android:elevation="3dp">
 
             <Button
+                android:id="@+id/btnBackForm2"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
@@ -222,13 +223,14 @@
                     android:background="@drawable/input">
 
                     <EditText
+                        android:id="@+id/etPesoForm2"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
                         android:background="@null"
-                        android:hint="Peso"
+                        android:hint="Peso (Kg)"
                         android:inputType="number" />
                 </LinearLayout>
 

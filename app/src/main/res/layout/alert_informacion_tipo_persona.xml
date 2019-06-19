@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/input">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="¿Qué es el somatotipo?"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text=" Pra realizar un calculo mas preciso de calorias para ti, necesitamos saber tu somatotipo.
+El somatotipo es un sistema diseñado para poder clasificar el tipo corporal y es utilizado para poder hacer una estimación sobre la forma del cuerpo y su composición.
+Se clasifica en tres tipos:"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="ECTOMORFO:"
+            android:textColor="@color/colorPrimaryDark" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="El ectomorfo es delgado, tiene el metabolismo rápido y suele ser estrecho de cintura. Este tipo de personas no tiene problemas para mantenerse definido, sin embargo, les cuesta más ganar masa muscular y es fácil perder volumen descuidando los hábitos alimenticios."/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="ENDOMORFO:"
+            android:textColor="@color/colorPrimaryDark" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text=" El endomorfo suele ser grande, normalmente con kilos de más, cintura ancha y con metabolismo lento. Es justo lo contrario que el ectomorfo, pues aunque logre ganar masa muscular con facilidad y de forma duradera, le cuesta horrores más perder grasa y definirse."/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="MESOMORFO:"
+            android:textColor="@color/colorPrimaryDark" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text=" El somatotipo mesomorfo tiene la genética ideal para el entrenamiento en el gimnasio. Tiene el equilibrio perfecto entre ganancia de grasa y músculo, pudiendo crecer muscularmente y a su vez, mantenerse definido."/>
+
+        <Button
+            android:id="@+id/btnAceptarAlertInformacionTipoPersona"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:text="ACEPTAR"
+            android:textColor="@color/blanco" />
+
+    </LinearLayout>
+
+
+
+</ScrollView>
+
+
+</LinearLayout>

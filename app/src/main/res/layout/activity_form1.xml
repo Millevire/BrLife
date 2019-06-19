@@ -189,79 +189,21 @@
                         android:inputType="textEmailAddress" />
                 </LinearLayout>
 
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="0.1dp"
-                    android:layout_marginTop="20dp"
-                    android:background="#000000" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:text="Fecha de Nacimiento:"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorPrimaryDark" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-
+                    android:layout_marginTop="20dp"
                     android:gravity="center">
 
-                    <LinearLayout
-                        android:layout_width="60dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/input">
 
-                        <EditText
-                            android:id="@+id/etDiaForm1"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="5dp"
-                            android:hint="Dia"
-                            android:inputType="date" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="70dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:background="@drawable/input">
-
-                        <EditText
-                            android:id="@+id/etMesForm1"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="5dp"
-                            android:hint="Mes"
-                            android:inputType="datetime" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/input">
-
-                        <EditText
-                            android:id="@+id/etAnoForm1"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginTop="5dp"
-                            android:hint="Año"
-                            android:inputType="datetime" />
-                    </LinearLayout>
 
                 </LinearLayout>
-                <View
-                    android:layout_width="wrap_content"
-                    android:layout_height="0.1dp"
-                    android:layout_marginTop="20dp"
-                    android:background="#000000" />
+                <View android:layout_width="wrap_content"
+                    android:layout_height="0.05dp"
+                    android:background="#000000"
+                    android:layout_marginTop="20dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -368,6 +310,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="50dp"
+                    android:layout_marginBottom="20dp"
                     android:background="@drawable/buttonbackground">
 
                     <Button

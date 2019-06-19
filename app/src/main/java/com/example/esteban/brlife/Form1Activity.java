@@ -27,31 +27,45 @@ import java.util.ArrayList;
 public class Form1Activity extends AppCompatActivity {
   private Button btnSifuenteForm1,btnBackForm1;
   private Spinner spSexoFomr1,spRegionForm1,spProvinciaForm1,spComunaForm1;
-  private EditText etNombresForm1,etApellidoPaternoForm1,etApelidoMaternoForm1,etEdadForm1,etCorreoElectronicoForm1,etDiaForm1,etMesForm1,etAnoForm1;
+  private EditText etNombresForm1,etApellidoPaternoForm1,etApelidoMaternoForm1,etEdadForm1,etCorreoElectronicoForm1;
   private SpinAdapter adapterSexo;
 
 
+  //Sdapter
   private SpinAdapter adapterRegion;
   private SpinAdapterTresAtributos adapterProvincia;
   private SpinAdapterComuna adapterComuna;
 
+
+//Listas
     private ArrayList<Comuna> listaFiltroComuna = new ArrayList<>();
     private ArrayList<MantenedorTresAtributos> listaFiltroProvincia = new ArrayList<>();
-
     private ArrayList<Comuna> listaComuna = new ArrayList<>();
 
+    //Variable global de idRegion
     public int idregion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form1);
+
+
+        //Referencia de widget
+
         btnSifuenteForm1=(Button)findViewById(R.id.btnSiguenteForm1);
         btnBackForm1=(Button)findViewById(R.id.btnBackForm1);
+
         spSexoFomr1=(Spinner)findViewById(R.id.spSexoFomr1);
         spRegionForm1=(Spinner)findViewById(R.id.spRegionForm1);
         spProvinciaForm1=(Spinner)findViewById(R.id.spProvinciaForm1);
         spComunaForm1=(Spinner)findViewById(R.id.spComunaForm1);
+
+        etNombresForm1=(EditText)findViewById(R.id.etNombresForm1);
+        etApellidoPaternoForm1=(EditText)findViewById(R.id.etApellidoPaternoForm1);
+        etApelidoMaternoForm1=(EditText)findViewById(R.id.etApelidoMaternoForm1);
+        etEdadForm1=(EditText)findViewById(R.id.etEdadForm1);
+        etCorreoElectronicoForm1=(EditText)findViewById(R.id.etCorreoElectronicoForm1);
 
 
         //Cargar arraylist para Spinner de siguente actividad form2
@@ -83,7 +97,9 @@ public class Form1Activity extends AppCompatActivity {
         spRegionForm1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               idregion = CargarBaseDeDatosDosAtributos.getListaMantenedorDosAtributos().get(position).getIdMantenedorDosAtributos();
+               idregion = CargarBaseDeDatosDosAtributos.getListaRegion().get(position).getIdMantenedorDosAtributos();
+
+
                 listaFiltroProvincia = CargarBaseDeDatosMantenedorTresAtributos.filtro(idregion);
 
                 adapterProvincia=new SpinAdapterTresAtributos(Form1Activity.this,android.R.layout.simple_list_item_1,listaFiltroProvincia);
@@ -105,12 +121,7 @@ public class Form1Activity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             int idProvincia=CargarBaseDeDatosMantenedorTresAtributos.getListaMantenedorTresAtributos().get(position).getIdMantenedorTresAtributos();
 
-            if (listaFiltroProvincia != null){
 
-                for (MantenedorTresAtributos m: listaFiltroProvincia){
-
-                }
-            }
 
             listaFiltroComuna= CargarBaseDeDatosComuna.filtro(idProvincia,idregion);
 

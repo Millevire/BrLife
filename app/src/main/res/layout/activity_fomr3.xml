@@ -20,7 +20,9 @@
             android:layout_height="60dp"
             android:background="@drawable/doscolores"
             android:elevation="3dp">
+
             <Button
+                android:id="@+id/btnBackForm3"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
@@ -40,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Contraseña de acceso"
+            android:text="Usuario"
             android:textAlignment="center"
             android:textColor="@color/colorPrimaryDark" />
 
@@ -63,6 +65,28 @@
                     android:background="@drawable/input">
 
                     <EditText
+                        android:id="@+id/etNombreUsuarioForm3"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@null"
+                        android:hint="Nombre de Usuario"
+                        android:inputType="text"
+                        android:textAlignment="center" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/input">
+
+                    <EditText
+                        android:id="@+id/etContrasenaForm3"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
@@ -83,6 +107,7 @@
                     android:background="@drawable/input">
 
                     <EditText
+                        android:id="@+id/etRepitaContrasenaForm3"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
