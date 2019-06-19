@@ -19,6 +19,7 @@ import com.example.esteban.brlife.Clases.MantenedorTresAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
+import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.Enum.SeleccionSexo;
 
 import java.util.ArrayList;
@@ -51,6 +52,9 @@ public class Form1Activity extends AppCompatActivity {
         spRegionForm1=(Spinner)findViewById(R.id.spRegionForm1);
         spProvinciaForm1=(Spinner)findViewById(R.id.spProvinciaForm1);
         spComunaForm1=(Spinner)findViewById(R.id.spComunaForm1);
+
+
+        //Cargar arraylist para Spinner de siguente actividad form2
 
 
 
@@ -131,7 +135,7 @@ public class Form1Activity extends AppCompatActivity {
         adapterSexo=new SpinAdapter(this,android.R.layout.simple_list_item_1,SeleccionSexo.getListaSexo());
         spSexoFomr1.setAdapter(adapterSexo);
 
-        adapterRegion=new SpinAdapter(this,android.R.layout.simple_list_item_1,CargarBaseDeDatosDosAtributos.getListaMantenedorDosAtributos());
+        adapterRegion=new SpinAdapter(this,android.R.layout.simple_list_item_1,CargarBaseDeDatosDosAtributos.getListaRegion());
         spRegionForm1.setAdapter(adapterRegion);
 
 

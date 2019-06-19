@@ -12,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
+import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.R;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,8 +31,13 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
 
     //Listas dedicadas a mantenedores
     public static ArrayList<MantenedorDosAtributos> listaObjetivo =new ArrayList<>();
-
     public static ArrayList<MantenedorDosAtributos> listaInteres =new ArrayList<>();
+    public static ArrayList<MantenedorDosAtributos> listaTipoPersona =new ArrayList<>();
+    public static ArrayList<MantenedorDosAtributos> listaRol =new ArrayList<>();
+    public static ArrayList<MantenedorDosAtributos> listaRegion =new ArrayList<>();
+
+
+
     static RequestQueue request;
     static JsonObjectRequest jsonObjectRequest;
     static ProgressDialog progreso;
@@ -117,12 +123,37 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
         return listaMantenedorDosAtributos;
     }
 
+    public static ArrayList<MantenedorDosAtributos> getListaInteres() {
+        return listaInteres;
+    }
 
+    public static ArrayList<MantenedorDosAtributos> getListaObjetivo() {
+        return listaObjetivo;
+    }
+
+    public static ArrayList<MantenedorDosAtributos> getListaRol() {
+        return listaRol;
+    }
+
+    public static ArrayList<MantenedorDosAtributos> getListaTipoPersona() {
+        return listaTipoPersona;
+    }
+
+    public static ArrayList<MantenedorDosAtributos> getListaRegion() {
+        return listaRegion;
+    }
+
+    public static void limpiarListas(){
+        listaInteres.clear();
+        listaTipoPersona.clear();
+        listaRol.clear();
+        listaObjetivo.clear();
+    }
 
     private void llenarBaseDeDatosDosAtributos(Context context, String mantenedor) {
-        progreso=new ProgressDialog(context);
-        progreso.setMessage(context.getString(R.string.mensajeBarraProgresoCargando));
-        progreso.show();
+       // progreso=new ProgressDialog(context);
+        //progreso.setMessage(context.getString(R.string.mensajeBarraProgresoCargando));
+        //progreso.show();
 
         String url=context.getString(R.string.URLwebServicePart1)+mantenedor+context.getString(R.string.URLwebServicePart2);
 
@@ -138,14 +169,14 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
     @Override
     public void onErrorResponse(VolleyError error) {
         Log.d(contexto.getString(R.string.ERROR),error.toString());
-        progreso.hide();
+        //progreso.hide();
     }
 
     @Override
     public void onResponse(JSONObject response) {
         MantenedorDosAtributos mantenedorDosAtributos =null;
 
-        progreso.hide();
+        //progreso.hide();
         listaMantenedorDosAtributos.clear();
 
         JSONArray json=response.optJSONArray(this.mantenedor);
@@ -162,6 +193,11 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
                     mantenedorDosAtributos.setNombreMantenedorDosAtributos(jsonObject.getString("Nombre_"+ this.mantenedor));
                     listaMantenedorDosAtributos.add(mantenedorDosAtributos);
 
+                if (mantenedor.equals(SelccionMantenedor.Objetivo.getSeleccion()))listaObjetivo.add(mantenedorDosAtributos);
+                if (mantenedor.equals(SelccionMantenedor.Interes.getSeleccion()))listaInteres.add(mantenedorDosAtributos);
+                if (mantenedor.equals(SelccionMantenedor.TipoPersona.getSeleccion()))listaTipoPersona.add(mantenedorDosAtributos);
+                if (mantenedor.equals(SelccionMantenedor.Rol.getSeleccion()))listaRol.add(mantenedorDosAtributos);
+                if (mantenedor.equals(SelccionMantenedor.Region.getSeleccion()))listaRegion.add(mantenedorDosAtributos);
             }
 
         }catch (JSONException e) {

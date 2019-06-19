@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Form2Activity"
     android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -20,17 +21,19 @@
             android:layout_height="60dp"
             android:background="@drawable/doscolores"
             android:elevation="3dp">
+
             <Button
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
                 android:backgroundTint="@color/colorPrimaryDark"
                 android:drawableLeft="@drawable/ic_action_back" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
                 android:fontFamily="@font/bevan"
                 android:text="BrLife"
                 android:textColor="@color/blanco" />
@@ -59,8 +62,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/input">
+                    android:background="@drawable/input"
+                    android:orientation="horizontal">
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -71,12 +74,16 @@
                         android:background="@null"
                         android:hint="Objetivo"
                         android:textAlignment="textEnd" />
+
                     <LinearLayout
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right">
+
                         <Spinner
-                            android:layout_width="40dp"
+                            android:id="@+id/spObjetivoForm2"
+                            android:layout_width="match_parent"
                             android:layout_height="40dp"></Spinner>
                     </LinearLayout>
                 </LinearLayout>
@@ -87,8 +94,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/input">
+                    android:background="@drawable/input"
+                    android:orientation="horizontal">
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -99,15 +106,80 @@
                         android:background="@null"
                         android:hint="Intereses"
                         android:textAlignment="textEnd" />
+
                     <LinearLayout
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right">
+
                         <Spinner
-                            android:layout_width="40dp"
+                            android:id="@+id/spInteresForm2"
+                            android:layout_width="match_parent"
                             android:layout_height="40dp"></Spinner>
                     </LinearLayout>
                 </LinearLayout>
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/input"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@null"
+                            android:hint="Somatipo"
+                            android:textAlignment="textEnd" />
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <Spinner
+                                android:id="@+id/spTipoPersonaForm2"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"></Spinner>
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <Button
+                            android:id="@+id/btnSomatipoForm2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_action_questions" />
+                    </LinearLayout>
+                </android.support.constraint.ConstraintLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -115,35 +187,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/input">
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@null"
-                        android:hint="Tipo de Persona"
-                        android:textAlignment="textEnd" />
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="right">
-                        <Spinner
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"></Spinner>
-                    </LinearLayout>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal"
-                    android:background="@drawable/input">
+                    android:background="@drawable/input"
+                    android:orientation="horizontal">
 
                     <EditText
                         android:layout_width="wrap_content"
@@ -154,12 +199,16 @@
                         android:background="@null"
                         android:hint="Rol"
                         android:textAlignment="textEnd" />
+
                     <LinearLayout
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right">
+
                         <Spinner
-                            android:layout_width="40dp"
+                            android:id="@+id/spRolForm2"
+                            android:layout_width="match_parent"
                             android:layout_height="40dp"></Spinner>
                     </LinearLayout>
                 </LinearLayout>
@@ -184,12 +233,6 @@
                 </LinearLayout>
 
 
-
-
-
-
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -208,7 +251,6 @@
                         android:text="siguente"
                         android:textColor="@color/blanco" />
                 </LinearLayout>
-
 
 
             </LinearLayout>
