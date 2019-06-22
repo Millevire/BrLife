@@ -64,14 +64,14 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/input"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-                    <EditText
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
                         android:background="@null"
                         android:hint="Objetivo"
                         android:textAlignment="textEnd" />
@@ -90,35 +90,49 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/LinealLOinteresesForm2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/input"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@null"
-                        android:hint="Intereses"
-                        android:textAlignment="textEnd" />
+                    android:orientation="vertical">
 
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@null"
+                            android:hint="Intereses"
+                            android:textAlignment="textEnd" />
+
+                        <LinearLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="right">
+
+                            <Spinner
+                                android:id="@+id/spInteresForm2"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"></Spinner>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ListView
+                        android:id="@+id/lvInteresesForm2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="right">
-
-                        <Spinner
-                            android:id="@+id/spInteresForm2"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"></Spinner>
-                    </LinearLayout>
+                        android:divider="@null"></ListView>
                 </LinearLayout>
 
 
@@ -138,14 +152,14 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:gravity="center">
 
-                        <EditText
+                        <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:layout_marginTop="5dp"
                             android:background="@null"
                             android:hint="Somatipo"
                             android:textAlignment="textEnd" />
@@ -189,14 +203,14 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/input"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-                    <EditText
+                    <TextView
                         android:layout_width="wrap_content"
-                        android:layout_height="40dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
                         android:background="@null"
                         android:hint="Rol"
                         android:textAlignment="textEnd" />
@@ -216,25 +230,48 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/input">
+                    android:background="@drawable/input"
+                    android:gravity="center">
 
                     <EditText
                         android:id="@+id/etPesoForm2"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginTop="5dp"
                         android:background="@null"
                         android:hint="Peso (Kg)"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:textSize="14sp" />
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/input"
+                    android:gravity="center">
+
+                    <EditText
+                        android:id="@+id/etEstaturaForm2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@null"
+                        android:hint="Estatura (cm)"
+                        android:inputType="number"
+                        android:textSize="14sp" />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"

@@ -1,6 +1,8 @@
 package com.example.esteban.brlife;
 
 import android.content.Intent;
+import android.os.Parcelable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,12 +18,15 @@ import com.example.esteban.brlife.Adaptadores.SpinAdapterTresAtributos;
 import com.example.esteban.brlife.Clases.Comuna;
 import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
 import com.example.esteban.brlife.Clases.MantenedorTresAtributos;
+import com.example.esteban.brlife.Clases.Usuario;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.Enum.SeleccionSexo;
+import com.example.esteban.brlife.Enum.SeleccionValorRol;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Form1Activity extends AppCompatActivity {
@@ -67,8 +72,8 @@ public class Form1Activity extends AppCompatActivity {
         etEdadForm1=(EditText)findViewById(R.id.etEdadForm1);
         etCorreoElectronicoForm1=(EditText)findViewById(R.id.etCorreoElectronicoForm1);
 
-
-        //Cargar arraylist para Spinner de siguente actividad form2
+     //Objeto Usuario
+        final Usuario usuario=new Usuario();
 
 
 
@@ -83,6 +88,31 @@ public class Form1Activity extends AppCompatActivity {
         btnSifuenteForm1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                usuario.setNombreUsuario(etNombresForm1.getText().toString());
+                usuario.setApellidoPaterno(etApellidoPaternoForm1.getText().toString());
+                usuario.setApellidoMaterno(etApelidoMaternoForm1.getText().toString());
+                usuario.setEdad(Integer.parseInt(etEdadForm1.getText().toString()));
+
+                //obtener id de sexo
+                MantenedorDosAtributos sexo = (MantenedorDosAtributos) spSexoFomr1.getSelectedItem();
+                usuario.setSexo(sexo.getIdMantenedorDosAtributos());
+
+                usuario.setCorreoElectronico(etCorreoElectronicoForm1.getText().toString());
+
+                //ontener id region
+                MantenedorDosAtributos region=(MantenedorDosAtributos) spRegionForm1.getSelectedItem();
+                usuario.setFkRegion(region.getIdMantenedorDosAtributos());
+
+                //obtener provincia
+                MantenedorTresAtributos provincia=(MantenedorTresAtributos)spProvinciaForm1.getSelectedItem();
+                usuario.setFkProvincia(provincia.getIdMantenedorTresAtributos());
+
+                //obtener comuna
+                Comuna comuna=(Comuna)spComunaForm1.getSelectedItem();
+                usuario.setFkComuna(comuna.getIdComuna());
+
+                //Enviamos objeto a siguente actividad
+                intent.putExtra("usuario",  usuario);
                 startActivity(intent);
             }
         });
