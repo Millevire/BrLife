@@ -25,7 +25,7 @@ public class Fomr3Activity extends AppCompatActivity {
 
 
        //Envio a siguente actividad
-        final Intent intent =new Intent(this,MenuLateralActivity.class);
+        final Intent intent =new Intent(this, SessionUserActivity.class);
 
 
         //Validacion de campo vacio o espacios

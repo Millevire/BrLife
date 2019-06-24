@@ -1,3 +1,5 @@
+package com.example.esteban.brlife.Clases;
+
 import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
 import com.example.esteban.brlife.Clases.ValorRol;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
@@ -8,13 +10,13 @@ import com.example.esteban.brlife.Enum.SeleccionValorRol;
  * Ecuaciones de Mifflin-St Jeor
  */
 public class CalculoCalorias {
-
+    public static int CaloriasMaximasDiarias;
 
     public static int calcularCalorias(int peso, int altura, int edad, int rol, int sexo){
 
     //Variable globales
     int TMB=0;
-    int CaloriasMaximasDiarias;
+
 
     //buscar objeto con idRol
         MantenedorDosAtributos mantenedorDosAtributos=CargarBaseDeDatosDosAtributos.buscar(rol);

@@ -17,7 +17,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         final Intent in1=new Intent(this,Form1Activity.class);
-        final Intent in2=new Intent(this,MenuLateralActivity.class);
+        final Intent in2=new Intent(this, SessionUserActivity.class);
         btnRegistar=(Button)findViewById(R.id.btnRegistrar);
         btnIngresar=(Button)findViewById(R.id.btnIngresar);
 

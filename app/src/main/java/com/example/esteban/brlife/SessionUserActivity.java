@@ -21,15 +21,16 @@ import com.google.zxing.integration.android.IntentResult;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
-public class MenuLateralActivity extends AppCompatActivity
+public class SessionUserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  {
       private Button btnScannBar1,btnAgregarComidaManual;
       private ZXingScannerView scanner;
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_lateral);
+        setContentView(R.layout.activity_session_user);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         btnScannBar1=(Button)findViewById(R.id.btnScannBar1);

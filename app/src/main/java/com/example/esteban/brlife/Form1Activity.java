@@ -39,12 +39,10 @@ public class Form1Activity extends AppCompatActivity {
   private EditText etNombresForm1,etApellidoPaternoForm1,etApelidoMaternoForm1,etEdadForm1,etCorreoElectronicoForm1;
   private SpinAdapter adapterSexo;
 
-
   //Sdapter
   private SpinAdapter adapterRegion;
   private SpinAdapterTresAtributos adapterProvincia;
   private SpinAdapterComuna adapterComuna;
-
 
 //Listas
     private ArrayList<Comuna> listaFiltroComuna = new ArrayList<>();
@@ -60,7 +58,7 @@ public class Form1Activity extends AppCompatActivity {
         setContentView(R.layout.activity_form1);
 
 
-        //Referencia de widget
+        //#region Referencia de widget
 
         btnSifuenteForm1=(Button)findViewById(R.id.btnSiguenteForm1);
         btnBackForm1=(Button)findViewById(R.id.btnBackForm1);
@@ -75,12 +73,13 @@ public class Form1Activity extends AppCompatActivity {
         etApelidoMaternoForm1=(EditText)findViewById(R.id.etApelidoMaternoForm1);
         etEdadForm1=(EditText)findViewById(R.id.etEdadForm1);
         etCorreoElectronicoForm1=(EditText)findViewById(R.id.etCorreoElectronicoForm1);
+        //#endregion
 
      //Objeto Usuario
         final Usuario usuario=new Usuario();
 
 
-        //Validaciones de Edit text
+        //#region Validacion
         etNombresForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -160,6 +159,7 @@ public class Form1Activity extends AppCompatActivity {
                 }
             }
         });
+        //#endregion
 
 
 
@@ -169,39 +169,54 @@ public class Form1Activity extends AppCompatActivity {
         llenarSpinner();
 
 
+        //#region Boton siguente. Se encarga de llenar parte de objeto usuario y enviarlo a siguente actividad para continuear llenado.
         btnSifuenteForm1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usuario.setNombreUsuario(etNombresForm1.getText().toString());
-                usuario.setApellidoPaterno(etApellidoPaternoForm1.getText().toString());
-                usuario.setApellidoMaterno(etApelidoMaternoForm1.getText().toString());
 
-                usuario.setEdad(Integer.parseInt(etEdadForm1.getText().toString()));
+                if (etNombresForm1.getText().toString().equals("") || etApellidoPaternoForm1.getText().toString().equals("")
+                    || etApelidoMaternoForm1.getText().toString().equals("") || etEdadForm1.getText().toString().equals("") ||
+                        etCorreoElectronicoForm1.getText().toString().equals("") ){
+                    Toast.makeText(Form1Activity.this, "¡Todos los campos son requeridos!", Toast.LENGTH_SHORT).show();
+                }else{
+                    usuario.setNombreUsuario(etNombresForm1.getText().toString());
+                    usuario.setApellidoPaterno(etApellidoPaternoForm1.getText().toString());
+                    usuario.setApellidoMaterno(etApelidoMaternoForm1.getText().toString());
 
-                //obtener id de sexo
-                MantenedorDosAtributos sexo = (MantenedorDosAtributos) spSexoFomr1.getSelectedItem();
-                usuario.setSexo(sexo.getIdMantenedorDosAtributos());
+                    //Parsear edad para ingresar a onjeto
+                    usuario.setEdad(Integer.parseInt(etEdadForm1.getText().toString()));
 
-                usuario.setCorreoElectronico(etCorreoElectronicoForm1.getText().toString());
+                    //obtener id de sexo
+                    MantenedorDosAtributos sexo = (MantenedorDosAtributos) spSexoFomr1.getSelectedItem();
+                    usuario.setSexo(sexo.getIdMantenedorDosAtributos());
 
-                //ontener id region
-                MantenedorDosAtributos region=(MantenedorDosAtributos) spRegionForm1.getSelectedItem();
-                usuario.setFkRegion(region.getIdMantenedorDosAtributos());
+                    //Obtener correo electronico
+                    usuario.setCorreoElectronico(etCorreoElectronicoForm1.getText().toString());
 
-                //obtener provincia
-                MantenedorTresAtributos provincia=(MantenedorTresAtributos)spProvinciaForm1.getSelectedItem();
-                usuario.setFkProvincia(provincia.getIdMantenedorTresAtributos());
+                    //ontener id region
+                    MantenedorDosAtributos region=(MantenedorDosAtributos) spRegionForm1.getSelectedItem();
+                    usuario.setFkRegion(region.getIdMantenedorDosAtributos());
 
-                //obtener comuna
-                Comuna comuna=(Comuna)spComunaForm1.getSelectedItem();
+                    //obtener provincia
+                    MantenedorTresAtributos provincia=(MantenedorTresAtributos)spProvinciaForm1.getSelectedItem();
+                    usuario.setFkProvincia(provincia.getIdMantenedorTresAtributos());
+
+                    //obtener comuna
+                    Comuna comuna=(Comuna)spComunaForm1.getSelectedItem();
 //                usuario.setFkComuna(comuna.getIdComuna());
 
-                //Enviamos objeto a siguente actividad
-                intent.putExtra("usuario",  usuario);
-                startActivity(intent);
+                    //Enviamos objeto a siguente actividad
+                    intent.putExtra("usuario",  usuario);
+                    startActivity(intent);
+                }
+
+
             }
         });
+        //#endregion
 
+
+        //Boton para ir atras
         btnBackForm1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,6 +224,8 @@ public class Form1Activity extends AppCompatActivity {
             }
         });
 
+
+        //#region Spinner Region y accion con seleccon
         spRegionForm1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -228,9 +245,10 @@ public class Form1Activity extends AppCompatActivity {
 
             }
         });
+       //#endregion
 
-       // spRegionForm1.seton
 
+        //#region Spinner provincia y acciones de seleccion
         spProvinciaForm1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -250,12 +268,15 @@ public class Form1Activity extends AppCompatActivity {
 
             }
         });
-
+       //#endregion
 
     }
 
 
-
+    //#region metodo de llenado de spinner sexo y region
+    /**
+     * metodo de llenado de Spinner sexo y region
+     */
     public void llenarSpinner(){
         new SeleccionSexo();
         adapterSexo=new SpinAdapter(this,android.R.layout.simple_list_item_1,SeleccionSexo.getListaSexo());
@@ -266,6 +287,6 @@ public class Form1Activity extends AppCompatActivity {
 
 
     }
-
+ //#endregion
 
 }

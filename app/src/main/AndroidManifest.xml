@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuLateralActivity"
+            android:name=".SessionUserActivity"
             android:label="@string/title_activity_men"
             android:theme="@style/AppTheme" />
         <activity android:name=".Form1Activity" />
