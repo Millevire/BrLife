@@ -102,6 +102,50 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
         return position;
     }
 
+    public static String buscarNombreREgion(int idRegion){
+        for (MantenedorDosAtributos region:listaRegion){
+            if (region.getIdMantenedorDosAtributos()==idRegion){
+                return region.getNombreMantenedorDosAtributos();
+            }
+        }
+        return "";
+    }
+
+    public static String buscarTipoPersona(int idTipoPersona){
+        for (MantenedorDosAtributos tipoPersona:listaTipoPersona){
+            if (tipoPersona.getIdMantenedorDosAtributos()==idTipoPersona){
+                return tipoPersona.getNombreMantenedorDosAtributos();
+            }
+        }
+        return "";
+    }
+
+    public static String buscarNombreRol(int idRol){
+        for (MantenedorDosAtributos rol:listaRol){
+            if (rol.getIdMantenedorDosAtributos()==idRol){
+                return rol.getNombreMantenedorDosAtributos();
+            }
+        }
+        return "";
+    }
+
+    public static String buscarNombreObjetivo(int idObjetivo){
+        for (MantenedorDosAtributos objetivo:listaObjetivo){
+            if (objetivo.getIdMantenedorDosAtributos()==idObjetivo){
+                return objetivo.getNombreMantenedorDosAtributos();
+            }
+        }
+        return "";
+    }
+
+    public static String buscarNombreInteres(int idInteres){
+        for (MantenedorDosAtributos interes:listaInteres){
+            if (interes.getIdMantenedorDosAtributos()==idInteres){
+                return interes.getNombreMantenedorDosAtributos();
+            }
+        }
+        return "";
+    }
     public static void editar(int id,String nombre){
         for(int x = 0; x< listaMantenedorDosAtributos.size(); ++x){
             if (listaMantenedorDosAtributos.get(x).getIdMantenedorDosAtributos()==id){

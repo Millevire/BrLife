@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.esteban.brlife.Clases.Usuario;
+
 public class Fomr3Activity extends AppCompatActivity {
  private Button btnFinalizarRegistroForm3,btnBackForm3;
  private EditText etNombreUsuarioForm3,etContrasenaForm3,etRepitaContrasenaForm3;
@@ -23,9 +25,12 @@ public class Fomr3Activity extends AppCompatActivity {
         etContrasenaForm3=(EditText)findViewById(R.id.etContrasenaForm3);
         etRepitaContrasenaForm3=(EditText)findViewById(R.id.etRepitaContrasenaForm3);
 
+        //Bundle que traera objeto usuario
+        final Bundle bundle=getIntent().getExtras();
+
 
        //Envio a siguente actividad
-        final Intent intent =new Intent(this, SessionUserActivity.class);
+        final Intent intent =new Intent(this, ValidacionRegistroUsuarioActivity.class);
 
 
         //Validacion de campo vacio o espacios
@@ -78,6 +83,7 @@ public class Fomr3Activity extends AppCompatActivity {
         });
 
 
+
         btnFinalizarRegistroForm3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +94,26 @@ public class Fomr3Activity extends AppCompatActivity {
                         if (etNombreUsuarioForm3.getText().toString().equals("")) etNombreUsuarioForm3.setError("Campo requerido");
                         else  if (etContrasenaForm3.getText().toString().equals("")) etContrasenaForm3.setError("Campo requerido");
                         else  if (etRepitaContrasenaForm3.getText().toString().equals("")) etRepitaContrasenaForm3.setError("Campo requerido");
-                    }else startActivity(intent);
+                    }else {
+                      //Validacion de bundle recibido
+                        if (bundle!=null){
+                            //Objeto recibido
+                            Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+
+                            //Nombre de usuario
+                            usuario.setNombreAlias(etNombreUsuarioForm3.getText().toString());
+
+                            //Contraseña
+                            usuario.setContraseña(etRepitaContrasenaForm3.getText().toString());
+
+                            //Envio de objeto a siguente actividad
+                            intent.putExtra("usuario",usuario);
+                            startActivity(intent);
+                        }
+
+
+
+                    }
 
                 }else etRepitaContrasenaForm3.setError("Las contraseñas no coinciden");
 

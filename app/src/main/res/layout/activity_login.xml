@@ -159,14 +159,15 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btnRegistrar"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Olvide mi contraseña"
                     android:textColor="@color/colorPrimaryDark" />
+
                 <Button
 
+                    android:id="@+id/btnRegistrar"
                     style="@style/Widget.AppCompat.Button.Borderless"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

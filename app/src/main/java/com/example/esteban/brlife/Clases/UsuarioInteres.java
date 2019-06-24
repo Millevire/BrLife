@@ -1,5 +1,8 @@
 package com.example.esteban.brlife.Clases;
 
+import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
+import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
+
 public class UsuarioInteres {
     private int idUsuarioInteres;
     private int idUsuario;
@@ -33,5 +36,11 @@ public class UsuarioInteres {
 
     public void setIdInteres(int idInteres) {
         this.idInteres = idInteres;
+    }
+
+    @Override
+    public String toString() {
+
+        return CargarBaseDeDatosDosAtributos.buscarNombreInteres(this.idInteres);
     }
 }

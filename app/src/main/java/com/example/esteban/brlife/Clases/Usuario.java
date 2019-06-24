@@ -7,8 +7,8 @@ public class Usuario implements Serializable{
     private String nombreUsuario;
     private String apellidoPaterno;
     private String apellidoMaterno;
-    private int edad;
     private int sexo;
+    private String fechaNacimiento;
     private String correoElectronico;
     private int fkRegion;
     private int fkProvincia;
@@ -16,21 +16,22 @@ public class Usuario implements Serializable{
     private int fkObjetivo;
     private int fkSomatipo;
     private int fkRol;
-    private int peso;
-    private int estatura;
+    private float peso;
+    private float estatura;
     private String nombreAlias;
     private String contraseña;
+
 
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nombreUsuario, String apellidoPaterno, String apellidoMaterno, int edad, int sexo, String correoElectronico, int fkRegion, int fkProvincia, int fkComuna, int fkObjetivo, int fkSomatipo, int fkRol, int peso, int estatura, String nombreAlias, String contraseña) {
+    public Usuario(int idUsuario, String nombreUsuario, String apellidoPaterno, String apellidoMaterno, int sexo, String fechaNacimiento, String correoElectronico, int fkRegion, int fkProvincia, int fkComuna, int fkObjetivo, int fkSomatipo, int fkRol, float peso, float estatura, String nombreAlias, String contraseña) {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
-        this.edad = edad;
         this.sexo = sexo;
+        this.fechaNacimiento = fechaNacimiento;
         this.correoElectronico = correoElectronico;
         this.fkRegion = fkRegion;
         this.fkProvincia = fkProvincia;
@@ -76,20 +77,20 @@ public class Usuario implements Serializable{
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
     public int getSexo() {
         return sexo;
     }
 
     public void setSexo(int sexo) {
         this.sexo = sexo;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     public String getCorreoElectronico() {
@@ -148,19 +149,19 @@ public class Usuario implements Serializable{
         this.fkRol = fkRol;
     }
 
-    public int getPeso() {
+    public float getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(float peso) {
         this.peso = peso;
     }
 
-    public int getEstatura() {
+    public float getEstatura() {
         return estatura;
     }
 
-    public void setEstatura(int estatura) {
+    public void setEstatura(float estatura) {
         this.estatura = estatura;
     }
 
@@ -179,5 +180,4 @@ public class Usuario implements Serializable{
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-
 }

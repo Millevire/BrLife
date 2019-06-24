@@ -60,6 +60,10 @@ public class SessionUserActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
+    /**
+     * metodo que escaneara codigo de barra
+     */
     public void scanner(){
         IntentIntegrator intent= new IntentIntegrator(this);
         intent.setDesiredBarcodeFormats(IntentIntegrator.PRODUCT_CODE_TYPES);

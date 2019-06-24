@@ -54,9 +54,18 @@ public class CargarBaseDeDatosComuna implements Response.Listener<JSONObject>,Re
     }
 
     public static Comuna buscar(int idMantenedor){
-        for(Comuna Comuna: listaComuna){
-            if (Comuna.getIdComuna()==idMantenedor){
-                return Comuna;
+        for(Comuna comuna: listaComuna){
+            if (comuna.getIdComuna()==idMantenedor){
+                return comuna;
+            }
+        }
+        return null;
+    }
+
+    public static String buscarNombreComuna(int idMantenedor){
+        for(Comuna comuna: listaComuna){
+            if (comuna.getIdComuna()==idMantenedor){
+                return comuna.getNombreComuna() ;
             }
         }
         return null;

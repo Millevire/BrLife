@@ -11,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
 import com.example.esteban.brlife.Clases.MantenedorTresAtributos;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.R;
@@ -75,6 +76,15 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
         }
         return "";
 
+    }
+
+    public static String buscarNombreProvincia(int idProvincia){
+        for (MantenedorTresAtributos provincia: listaMantenedorTresAtributos){
+            if (provincia.getIdMantenedorTresAtributos()==idProvincia){
+                return provincia.getNombreMantenedorTresAtributos();
+            }
+        }
+        return "";
     }
 
     public static void eliminar(int id){

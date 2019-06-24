@@ -17,6 +17,7 @@ import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
 import com.example.esteban.brlife.Clases.MantenedorTresAtributos;
 import com.example.esteban.brlife.Clases.Usuario;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
+import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
 
 import java.util.ArrayList;
 
@@ -112,16 +113,34 @@ public class Form2Activity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if (bundle !=null){
-                    Usuario usuario=(Usuario)bundle.getSerializable("usuario");
+                if (bundle !=null) {
+                    Usuario usuario = (Usuario) bundle.getSerializable("usuario");
 
                     //obtener id objetivo
-                    MantenedorDosAtributos objetivo=(MantenedorDosAtributos)spObjetivoForm2.getSelectedItem();
+                    MantenedorDosAtributos objetivo = (MantenedorDosAtributos) spObjetivoForm2.getSelectedItem();
                     usuario.setFkObjetivo(objetivo.getIdMantenedorDosAtributos());
 
+                    //Obtener id somatipo
+                    MantenedorDosAtributos somatipo = (MantenedorDosAtributos) spTipoPersonaForm2.getSelectedItem();
+                    usuario.setFkSomatipo(somatipo.getIdMantenedorDosAtributos());
+
+                    //Obtener Rol
+                    MantenedorDosAtributos rol = (MantenedorDosAtributos) spRolForm2.getSelectedItem();
+                    usuario.setFkRol(rol.getIdMantenedorDosAtributos());
+
+                    //Peso
+                    usuario.setPeso(Float.parseFloat(etPesoForm2.getText().toString()));
+
+                    //Estatura
+                    usuario.setEstatura(Float.parseFloat(etEstaturaForm2.getText().toString()));
+
+                    //Enviar listaInteres
+                    CargarBaseDeDatosUsuarioInteres.llenarListaUsuarioInteres(listaIntereses);
 
 
 
+
+                    intent.putExtra("usuario",usuario);
                     startActivity(intent);
                 }
 

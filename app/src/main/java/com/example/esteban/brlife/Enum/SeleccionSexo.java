@@ -16,4 +16,13 @@ public class SeleccionSexo {
     public static ArrayList<MantenedorDosAtributos> getListaSexo() {
         return listaSexo;
     }
+
+    public static String buscaSexo(int idSexo){
+        for (MantenedorDosAtributos sexo: listaSexo){
+            if (sexo.getIdMantenedorDosAtributos()==idSexo){
+                return sexo.getNombreMantenedorDosAtributos();
+            }
+        }
+        return "";
+    }
 }

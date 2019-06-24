@@ -36,7 +36,7 @@ import java.util.ArrayList;
 public class Form1Activity extends AppCompatActivity {
   private Button btnSifuenteForm1,btnBackForm1;
   private Spinner spSexoFomr1,spRegionForm1,spProvinciaForm1,spComunaForm1;
-  private EditText etNombresForm1,etApellidoPaternoForm1,etApelidoMaternoForm1,etEdadForm1,etCorreoElectronicoForm1;
+  private EditText etNombresForm1,etApellidoPaternoForm1,etApelidoMaternoForm1,etCorreoElectronicoForm1,etDiaForm1,etMesForm1,etAnoForm1;
   private SpinAdapter adapterSexo;
 
   //Sdapter
@@ -71,8 +71,10 @@ public class Form1Activity extends AppCompatActivity {
         etNombresForm1=(EditText)findViewById(R.id.etNombresForm1);
         etApellidoPaternoForm1=(EditText)findViewById(R.id.etApellidoPaternoForm1);
         etApelidoMaternoForm1=(EditText)findViewById(R.id.etApelidoMaternoForm1);
-        etEdadForm1=(EditText)findViewById(R.id.etEdadForm1);
         etCorreoElectronicoForm1=(EditText)findViewById(R.id.etCorreoElectronicoForm1);
+        etDiaForm1=(EditText)findViewById(R.id.etDiaForm1);
+        etMesForm1=(EditText)findViewById(R.id.etMesForm1);
+        etAnoForm1=(EditText)findViewById(R.id.etAnoForm1);
         //#endregion
 
      //Objeto Usuario
@@ -128,16 +130,48 @@ public class Form1Activity extends AppCompatActivity {
             }
         });
 
-        etEdadForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        etDiaForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus){
                 }else {
                     int count = 0;
-                    for(int i = 0; i < etEdadForm1.getText().length(); i++) {
-                        if(Character.isWhitespace(etEdadForm1.getText().charAt(i))) count++; }
-                    if (count==etEdadForm1.getText().length() || etEdadForm1.getText().toString().equals("")) {
-                        etEdadForm1.setError("Ingrese una edad valida");
+                    for(int i = 0; i < etDiaForm1.getText().length(); i++) {
+                        if(Character.isWhitespace(etDiaForm1.getText().charAt(i))) count++; }
+                    if (count==etDiaForm1.getText().length() || etDiaForm1.getText().toString().equals("")) {
+                        etDiaForm1.setError("Ingrese dia");
+                        btnSifuenteForm1.setEnabled(false);
+                    }else btnSifuenteForm1.setEnabled(true);
+                }
+            }
+        });
+
+        etMesForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etMesForm1.getText().length(); i++) {
+                        if(Character.isWhitespace(etMesForm1.getText().charAt(i))) count++; }
+                    if (count==etMesForm1.getText().length() || etMesForm1.getText().toString().equals("")) {
+                        etMesForm1.setError("Ingrese dia");
+                        btnSifuenteForm1.setEnabled(false);
+                    }else btnSifuenteForm1.setEnabled(true);
+                }
+            }
+        });
+
+        etAnoForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etAnoForm1.getText().length(); i++) {
+                        if(Character.isWhitespace(etAnoForm1.getText().charAt(i))) count++; }
+                    if (count==etAnoForm1.getText().length() || etAnoForm1.getText().toString().equals("")) {
+                        etAnoForm1.setError("Ingrese dia");
                         btnSifuenteForm1.setEnabled(false);
                     }else btnSifuenteForm1.setEnabled(true);
                 }
@@ -175,16 +209,14 @@ public class Form1Activity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (etNombresForm1.getText().toString().equals("") || etApellidoPaternoForm1.getText().toString().equals("")
-                    || etApelidoMaternoForm1.getText().toString().equals("") || etEdadForm1.getText().toString().equals("") ||
-                        etCorreoElectronicoForm1.getText().toString().equals("") ){
+                    || etApelidoMaternoForm1.getText().toString().equals("") || etDiaForm1.getText().toString().equals("") || etMesForm1.getText().toString().equals("") || etAnoForm1.getText().toString().equals("")
+                      ||  etCorreoElectronicoForm1.getText().toString().equals("") ){
                     Toast.makeText(Form1Activity.this, "¡Todos los campos son requeridos!", Toast.LENGTH_SHORT).show();
                 }else{
                     usuario.setNombreUsuario(etNombresForm1.getText().toString());
                     usuario.setApellidoPaterno(etApellidoPaternoForm1.getText().toString());
                     usuario.setApellidoMaterno(etApelidoMaternoForm1.getText().toString());
 
-                    //Parsear edad para ingresar a onjeto
-                    usuario.setEdad(Integer.parseInt(etEdadForm1.getText().toString()));
 
                     //obtener id de sexo
                     MantenedorDosAtributos sexo = (MantenedorDosAtributos) spSexoFomr1.getSelectedItem();
@@ -192,6 +224,12 @@ public class Form1Activity extends AppCompatActivity {
 
                     //Obtener correo electronico
                     usuario.setCorreoElectronico(etCorreoElectronicoForm1.getText().toString());
+
+                    //fecha de nacimiento
+                    //crear variable con formato
+                    String fecha=etDiaForm1.getText().toString()+"/"+etMesForm1.getText().toString()+"/"+etAnoForm1.getText().toString();
+                    usuario.setFechaNacimiento(fecha);
+
 
                     //ontener id region
                     MantenedorDosAtributos region=(MantenedorDosAtributos) spRegionForm1.getSelectedItem();
