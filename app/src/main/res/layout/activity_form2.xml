@@ -189,6 +189,7 @@
 
                         <Button
                             android:id="@+id/btnSomatipoForm2"
+                            style="@style/Widget.AppCompat.Button.Borderless"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/ic_action_questions" />
@@ -236,18 +237,23 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/input"
                     android:gravity="center">
-
-                    <EditText
-                        android:id="@+id/etPesoForm2"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@null"
-                        android:hint="Peso (Kg)"
-                        android:inputType="number"
-                        android:textSize="14sp" />
+                        android:layout_height="match_parent">
+                        <EditText
+                            android:id="@+id/etPesoForm2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@null"
+                            android:hint="Peso (Kg)"
+                            android:inputType="number"
+                            android:textSize="14sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+
                 </LinearLayout>
 
 
@@ -259,18 +265,23 @@
                     android:layout_marginTop="20dp"
                     android:background="@drawable/input"
                     android:gravity="center">
-
-                    <EditText
-                        android:id="@+id/etEstaturaForm2"
+                    <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@null"
-                        android:hint="Estatura (cm)"
-                        android:inputType="number"
-                        android:textSize="14sp" />
+                        android:layout_height="match_parent">
+                        <EditText
+                            android:id="@+id/etEstaturaForm2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@null"
+                            android:hint="Estatura (cm)"
+                            android:inputType="number"
+                            android:textSize="14sp" />
+                    </android.support.design.widget.TextInputLayout>
+
+
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"

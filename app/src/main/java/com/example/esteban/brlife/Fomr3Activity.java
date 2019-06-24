@@ -24,10 +24,58 @@ public class Fomr3Activity extends AppCompatActivity {
         etRepitaContrasenaForm3=(EditText)findViewById(R.id.etRepitaContrasenaForm3);
 
 
-
+       //Envio a siguente actividad
         final Intent intent =new Intent(this,MenuLateralActivity.class);
 
 
+        //Validacion de campo vacio o espacios
+        etNombreUsuarioForm3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etNombreUsuarioForm3.getText().length(); i++) {
+                        if(Character.isWhitespace(etNombreUsuarioForm3.getText().charAt(i))) count++; }
+                    if (count==etNombreUsuarioForm3.getText().length() || etNombreUsuarioForm3.getText().toString().equals("")) {
+                        etNombreUsuarioForm3.setError("Ingrese un valor valido");
+                        btnFinalizarRegistroForm3.setEnabled(false);
+                    }else btnFinalizarRegistroForm3.setEnabled(true);
+                }
+            }
+        });
+
+        etContrasenaForm3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etContrasenaForm3.getText().length(); i++) {
+                        if(Character.isWhitespace(etContrasenaForm3.getText().charAt(i))) count++; }
+                    if (count==etContrasenaForm3.getText().length() || etContrasenaForm3.getText().toString().equals("")) {
+                        etContrasenaForm3.setError("Ingrese un valor valido");
+                        btnFinalizarRegistroForm3.setEnabled(false);
+                    }else btnFinalizarRegistroForm3.setEnabled(true);
+                }
+            }
+        });
+
+        etRepitaContrasenaForm3.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etRepitaContrasenaForm3.getText().length(); i++) {
+                        if(Character.isWhitespace(etRepitaContrasenaForm3.getText().charAt(i))) count++; }
+                    if (count==etRepitaContrasenaForm3.getText().length() || etRepitaContrasenaForm3.getText().toString().equals("")) {
+                        etRepitaContrasenaForm3.setError("Ingrese un valor valido");
+                        btnFinalizarRegistroForm3.setEnabled(false);
+                    }else btnFinalizarRegistroForm3.setEnabled(true);
+                }
+            }
+        });
 
 
         btnFinalizarRegistroForm3.setOnClickListener(new View.OnClickListener() {

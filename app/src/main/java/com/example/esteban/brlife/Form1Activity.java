@@ -5,12 +5,16 @@ import android.os.Parcelable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TabWidget;
+import android.widget.Toast;
 
 import com.example.esteban.brlife.Adaptadores.SpinAdapter;
 import com.example.esteban.brlife.Adaptadores.SpinAdapterComuna;
@@ -76,6 +80,86 @@ public class Form1Activity extends AppCompatActivity {
         final Usuario usuario=new Usuario();
 
 
+        //Validaciones de Edit text
+        etNombresForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etNombresForm1.getText().length(); i++) {
+                        if(Character.isWhitespace(etNombresForm1.getText().charAt(i))) count++; }
+                    if (count==etNombresForm1.getText().length() || etNombresForm1.getText().toString().equals("")) {
+                        etNombresForm1.setError("Ingrese un nombre valido");
+                        btnSifuenteForm1.setEnabled(false);
+                    }else btnSifuenteForm1.setEnabled(true);
+                }
+            }
+        });
+
+        etApellidoPaternoForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etApellidoPaternoForm1.getText().length(); i++) {
+                        if(Character.isWhitespace(etApellidoPaternoForm1.getText().charAt(i))) count++; }
+                    if (count==etApellidoPaternoForm1.getText().length() || etApellidoPaternoForm1.getText().toString().equals("")) {
+                        etApellidoPaternoForm1.setError("Ingrese un apellido valido");
+                        btnSifuenteForm1.setEnabled(false);
+                    }else btnSifuenteForm1.setEnabled(true);
+                }
+            }
+        });
+
+        etApelidoMaternoForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etApelidoMaternoForm1.getText().length(); i++) {
+                        if(Character.isWhitespace(etApelidoMaternoForm1.getText().charAt(i))) count++; }
+                    if (count==etApelidoMaternoForm1.getText().length() || etApelidoMaternoForm1.getText().toString().equals("")) {
+                        etApelidoMaternoForm1.setError("Ingrese un apellido valido");
+                        btnSifuenteForm1.setEnabled(false);
+                    }else btnSifuenteForm1.setEnabled(true);
+                }
+            }
+        });
+
+        etEdadForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etEdadForm1.getText().length(); i++) {
+                        if(Character.isWhitespace(etEdadForm1.getText().charAt(i))) count++; }
+                    if (count==etEdadForm1.getText().length() || etEdadForm1.getText().toString().equals("")) {
+                        etEdadForm1.setError("Ingrese una edad valida");
+                        btnSifuenteForm1.setEnabled(false);
+                    }else btnSifuenteForm1.setEnabled(true);
+                }
+            }
+        });
+
+        etCorreoElectronicoForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etCorreoElectronicoForm1.getText().length(); i++) {
+                        if(Character.isWhitespace(etCorreoElectronicoForm1.getText().charAt(i))) count++; }
+                    if (count==etCorreoElectronicoForm1.getText().length() || etCorreoElectronicoForm1.getText().toString().equals("")) {
+                        etCorreoElectronicoForm1.setError("Ingrese un correo electronico valido");
+                        btnSifuenteForm1.setEnabled(false);
+                    }else btnSifuenteForm1.setEnabled(true);
+                }
+            }
+        });
 
 
 
@@ -91,6 +175,7 @@ public class Form1Activity extends AppCompatActivity {
                 usuario.setNombreUsuario(etNombresForm1.getText().toString());
                 usuario.setApellidoPaterno(etApellidoPaternoForm1.getText().toString());
                 usuario.setApellidoMaterno(etApelidoMaternoForm1.getText().toString());
+
                 usuario.setEdad(Integer.parseInt(etEdadForm1.getText().toString()));
 
                 //obtener id de sexo
@@ -109,7 +194,7 @@ public class Form1Activity extends AppCompatActivity {
 
                 //obtener comuna
                 Comuna comuna=(Comuna)spComunaForm1.getSelectedItem();
-                usuario.setFkComuna(comuna.getIdComuna());
+//                usuario.setFkComuna(comuna.getIdComuna());
 
                 //Enviamos objeto a siguente actividad
                 intent.putExtra("usuario",  usuario);

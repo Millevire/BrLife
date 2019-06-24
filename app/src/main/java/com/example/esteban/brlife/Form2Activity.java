@@ -59,6 +59,42 @@ public class Form2Activity extends AppCompatActivity {
 
 
 
+        //Validacion de textos vacios o espacios en EditText
+
+        etEstaturaForm2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etEstaturaForm2.getText().length(); i++) {
+                        if(Character.isWhitespace(etEstaturaForm2.getText().charAt(i))) count++; }
+                    if (count==etEstaturaForm2.getText().length() || etEstaturaForm2.getText().toString().equals("")) {
+                        etEstaturaForm2.setError("Ingrese un valor valido");
+                        btnSiguenteForm2.setEnabled(false);
+                    }else btnSiguenteForm2.setEnabled(true);
+                }
+            }
+        });
+
+        etPesoForm2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                }else {
+                    int count = 0;
+                    for(int i = 0; i < etPesoForm2.getText().length(); i++) {
+                        if(Character.isWhitespace(etPesoForm2.getText().charAt(i))) count++; }
+                    if (count==etPesoForm2.getText().length() || etPesoForm2.getText().toString().equals("")) {
+                        etPesoForm2.setError("Ingrese un valor valido");
+                        btnSiguenteForm2.setEnabled(false);
+                    }else btnSiguenteForm2.setEnabled(true);
+                }
+            }
+        });
+
+
+        //envio a siguente actividad
         final Intent intent =new Intent(this,Fomr3Activity.class);
 
 
