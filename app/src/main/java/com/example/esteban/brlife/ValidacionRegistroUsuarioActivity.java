@@ -2,6 +2,7 @@ package com.example.esteban.brlife;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -12,9 +13,16 @@ import com.example.esteban.brlife.Clases.UsuarioInteres;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
+import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuario;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
+import com.example.esteban.brlife.ConeionWebServices.CargarNuevoIdHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CrudUsuario;
+import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.Enum.SeleccionSexo;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.List;
 
 public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
@@ -82,5 +90,36 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
 
         }
 
+
+        btnAceptarValidacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bundle !=null) {
+                    Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+
+                    try {
+                       //Agregar nuevo id usuario
+                        int idUsuario=CargarNuevoIdHttpConecction.buscarMantenedorNuevoId(ValidacionRegistroUsuarioActivity.this,SelccionMantenedor.Usuario.getSeleccion());
+                        usuario.setIdUsuario(idUsuario);
+
+                        new CrudUsuario(ValidacionRegistroUsuarioActivity.this,usuario,ValidacionRegistroUsuarioActivity.this.getString(R.string.insertar));
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+
+
+                }
+
+
+            }
+
+        });
     }
 }

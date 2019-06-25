@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.esteban.brlife.Adaptadores.AdapterIntereses;
 import com.example.esteban.brlife.Adaptadores.SpinAdapter;
@@ -113,35 +114,40 @@ public class Form2Activity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if (bundle !=null) {
-                    Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+                if (etEstaturaForm2.getText().toString().equals("") || etPesoForm2.getText().toString().equals("")){
+                    Toast.makeText(Form2Activity.this, "Todos los campos son requeridos", Toast.LENGTH_SHORT).show();
+                }else{
+                    if (bundle !=null) {
+                        Usuario usuario = (Usuario) bundle.getSerializable("usuario");
 
-                    //obtener id objetivo
-                    MantenedorDosAtributos objetivo = (MantenedorDosAtributos) spObjetivoForm2.getSelectedItem();
-                    usuario.setFkObjetivo(objetivo.getIdMantenedorDosAtributos());
+                        //obtener id objetivo
+                        MantenedorDosAtributos objetivo = (MantenedorDosAtributos) spObjetivoForm2.getSelectedItem();
+                        usuario.setFkObjetivo(objetivo.getIdMantenedorDosAtributos());
 
-                    //Obtener id somatipo
-                    MantenedorDosAtributos somatipo = (MantenedorDosAtributos) spTipoPersonaForm2.getSelectedItem();
-                    usuario.setFkSomatipo(somatipo.getIdMantenedorDosAtributos());
+                        //Obtener id somatipo
+                        MantenedorDosAtributos somatipo = (MantenedorDosAtributos) spTipoPersonaForm2.getSelectedItem();
+                        usuario.setFkSomatipo(somatipo.getIdMantenedorDosAtributos());
 
-                    //Obtener Rol
-                    MantenedorDosAtributos rol = (MantenedorDosAtributos) spRolForm2.getSelectedItem();
-                    usuario.setFkRol(rol.getIdMantenedorDosAtributos());
+                        //Obtener Rol
+                        MantenedorDosAtributos rol = (MantenedorDosAtributos) spRolForm2.getSelectedItem();
+                        usuario.setFkRol(rol.getIdMantenedorDosAtributos());
 
-                    //Peso
-                    usuario.setPeso(Float.parseFloat(etPesoForm2.getText().toString()));
+                        //Peso
+                        usuario.setPeso(Float.parseFloat(etPesoForm2.getText().toString()));
 
-                    //Estatura
-                    usuario.setEstatura(Float.parseFloat(etEstaturaForm2.getText().toString()));
+                        //Estatura
+                        usuario.setEstatura(Float.parseFloat(etEstaturaForm2.getText().toString()));
 
-                    //Enviar listaInteres
-                    CargarBaseDeDatosUsuarioInteres.llenarListaUsuarioInteres(listaIntereses);
-
-
+                        //Enviar listaInteres
+                        CargarBaseDeDatosUsuarioInteres.llenarListaUsuarioInteres(listaIntereses);
 
 
-                    intent.putExtra("usuario",usuario);
-                    startActivity(intent);
+
+
+                        intent.putExtra("usuario",usuario);
+                        startActivity(intent);
+                    }
+
                 }
 
 
@@ -175,10 +181,19 @@ public class Form2Activity extends AppCompatActivity {
                 if (cantidadVeces>1){
                     MantenedorDosAtributos mantenedorDosAtributos=(MantenedorDosAtributos) spInteresForm2.getSelectedItem();
 
-                    size=size+120;
+                    //parametro a comparar para validad existencia
+                    boolean val=validarExistenciaInteresEnLista(mantenedorDosAtributos.getIdMantenedorDosAtributos());
+
+                    //validar existencia para evitar redundancia
+                    //si el resultado es igual a "false" procedera a agregar, sino no lo permitira.
+                   if (val==false){
+                       if(size<=300){
+                           size=size+120;
+                       }
+
                     listaIntereses.add(mantenedorDosAtributos);
                     adaptadorIntereses.notifyDataSetChanged();
-                    lvInteresesForm2.getLayoutParams().height=size;
+                    lvInteresesForm2.getLayoutParams().height=size;}
 
                 }
 
@@ -213,5 +228,20 @@ public class Form2Activity extends AppCompatActivity {
 
 
 
+    }
+
+    /**
+     * metodo para validar existencia de un objeto interes en lista para evitar redundancia
+     * @param idInteres parametro para comparar y buscar si existe
+     * @return retorno de un valor boolean. Si es "true" el registro ya se ha ingresado en la lista.
+     *         si es "false" es por que no existe en la lista y se prodra agregar
+     */
+    public boolean validarExistenciaInteresEnLista(int idInteres){
+        for (MantenedorDosAtributos intereses:listaIntereses){
+            if (intereses.getIdMantenedorDosAtributos()==idInteres){
+                return true;
+            }
+        }
+        return false;
     }
 }

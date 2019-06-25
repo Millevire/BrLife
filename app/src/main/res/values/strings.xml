@@ -15,5 +15,8 @@
     <string name="ERROR">ERROR</string>
     <string name="nueva_provincia">Nueva Provincia</string>
     <string name="cancelar">CANCELAR</string>
+    <string name="insertar">insertar</string>
+    <string name="editar">CANCELAR</string>
+    <string name="eliminar">CANCELAR</string>
 
 </resources>
