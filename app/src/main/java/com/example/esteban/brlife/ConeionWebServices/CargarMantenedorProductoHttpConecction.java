@@ -50,6 +50,16 @@ public class CargarMantenedorProductoHttpConecction {
 
     }
 
+    public static Producto buscarProducto(int idProducto){
+        for (Producto producto:listaProducto){
+            if (producto.getIdProducto()==idProducto){
+                return producto;
+            }
+
+        }
+        return null;
+    }
+
     public static void agregar(Producto producto){
 
         listaProducto.add(producto);

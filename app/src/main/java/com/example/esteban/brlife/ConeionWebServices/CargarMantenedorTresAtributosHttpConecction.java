@@ -168,7 +168,12 @@ public class CargarMantenedorTresAtributosHttpConecction {
     public static void limpiarListaMarcaSabor(){
         listaSabor.clear();
         listaMarca.clear();
+
+    }
+
+    public static void voidlimpiarListaProvincia(){
         listaProvincia.clear();
+
     }
 
     public static String buscarNombreProvincia(int idProvincia){

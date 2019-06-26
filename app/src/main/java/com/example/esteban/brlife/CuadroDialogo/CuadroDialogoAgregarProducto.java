@@ -20,7 +20,7 @@ public CuadroDialogoAgregarProducto(final Context context){
     dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
     dialogo.show();
 
-    Button btnAgregarAlimento=dialogo.findViewById(R.id.btnAgregarComida);
+    Button btnAgregarAlimento=dialogo.findViewById(R.id.btnAgregarRegistro);
 
     btnAgregarAlimento.setOnClickListener(new View.OnClickListener() {
         @Override

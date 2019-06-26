@@ -124,7 +124,7 @@
 
 
         <Button
-            android:id="@+id/btnAgregarComida"
+            android:id="@+id/btnAgregarRegistro"
             android:layout_width="120dp"
             android:layout_height="50dp"
             android:backgroundTint="@color/colorPrimaryDark"

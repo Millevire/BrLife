@@ -40,9 +40,20 @@ public class MainActivity extends AppCompatActivity {
            //Cargar Productos
 
                 try {
+                    //limpiar listas Marca y sabor
+
+                    CargarMantenedorTresAtributosHttpConecction.limpiarListaMarcaSabor();
+
+                    //Cargar losta producto
                     CargarMantenedorProductoHttpConecction.buscarMantenedorProducto(MainActivity.this, SelccionMantenedor.Producto.getSeleccion());
+
+                    //Cargar lista tipo producto
                     CargarMantenedorTipoProductoHttpConecction.buscarMantenedorTipoProducto(MainActivity.this,SelccionMantenedor.TipoProducto.getSeleccion());
+
+                    //Cargar lista Marca
                     CargarMantenedorTresAtributosHttpConecction.buscarMantenedorTresAtributos(MainActivity.this,SelccionMantenedor.Marca.getSeleccion());
+
+                    //Cargar lista sabor
                     CargarMantenedorTresAtributosHttpConecction.buscarMantenedorTresAtributos(MainActivity.this,SelccionMantenedor.Sabor.getSeleccion());
                 } catch (IOException e) {
                     e.printStackTrace();
