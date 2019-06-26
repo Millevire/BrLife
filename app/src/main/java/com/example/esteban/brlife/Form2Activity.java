@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.esteban.brlife.Adaptadores.AdapterIntereses;
@@ -17,8 +18,13 @@ import com.example.esteban.brlife.Adaptadores.SpinAdapter;
 import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
 import com.example.esteban.brlife.Clases.MantenedorTresAtributos;
 import com.example.esteban.brlife.Clases.Usuario;
+import com.example.esteban.brlife.Clases.ValorRol;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
+import com.example.esteban.brlife.Enum.SeleccionValorRol;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -30,6 +36,7 @@ public class Form2Activity extends AppCompatActivity {
   private EditText etPesoForm2,etEstaturaForm2;
   private ListView lvInteresesForm2;
   private AdapterIntereses adaptadorIntereses;
+  private TextView tvNombreActividadFisicaForm2;
  int size=60;
  int cantidadVeces=0;
   private ArrayList <MantenedorDosAtributos> listaIntereses=new ArrayList<>();
@@ -51,6 +58,9 @@ public class Form2Activity extends AppCompatActivity {
 
         etPesoForm2=(EditText)findViewById(R.id.etPesoForm2);
         etEstaturaForm2=(EditText)findViewById(R.id.etEstaturaForm2);
+
+        tvNombreActividadFisicaForm2=(TextView)findViewById(R.id.tvNombreActividadFisicaForm2);
+
 
         lvInteresesForm2=(ListView)findViewById(R.id.lvInteresesForm2);
 
@@ -173,6 +183,31 @@ public class Form2Activity extends AppCompatActivity {
         etEstaturaForm2.clearFocus();
 
 
+
+        spRolForm2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                MantenedorDosAtributos rol=(MantenedorDosAtributos)spInteresForm2.getSelectedItem();
+
+                new SeleccionValorRol();
+                ValorRol nombreRol= SeleccionValorRol.buscarValorRol(rol.getNombreMantenedorDosAtributos());
+
+                if (nombreRol !=null){
+                    tvNombreActividadFisicaForm2.setText(nombreRol.getComentario());
+                }
+
+
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         spInteresForm2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -210,20 +245,20 @@ public class Form2Activity extends AppCompatActivity {
     public void llenarSpinner(){
 
         //Spinner objetivo
-        adapterObjetivo=new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarBaseDeDatosDosAtributos.getListaObjetivo());
+        adapterObjetivo=new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarMantenedorDosAtributosHttpConecction.getListaObjetivo());
         spObjetivoForm2.setAdapter(adapterObjetivo);
 
 
         //Spinner Interes
-        adapterInteres=new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarBaseDeDatosDosAtributos.getListaInteres());
+        adapterInteres=new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarMantenedorDosAtributosHttpConecction.getListaInteres());
         spInteresForm2.setAdapter(adapterInteres);
 
         //Spinner TipoPerson
-        adapterTipoPersona=new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarBaseDeDatosDosAtributos.getListaTipoPersona());
+        adapterTipoPersona=new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarMantenedorDosAtributosHttpConecction.getListaTipoPersona());
         spTipoPersonaForm2.setAdapter(adapterTipoPersona);
 
         //Spinner Rol
-        adapterRol=new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarBaseDeDatosDosAtributos.getListaRol());
+        adapterRol=new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarMantenedorDosAtributosHttpConecction.getListaRol());
         spRolForm2.setAdapter(adapterRol);
 
 

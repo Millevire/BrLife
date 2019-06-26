@@ -17,6 +17,16 @@ public class BaseDeDatosInterna extends SQLiteOpenHelper {
 
         db.execSQL("create table VTablas(Id_Tabla integer, Version numeric, Nombre_Tabla text)");
 
+        db.execSQL("create table Marca(Id_Marca integer, Nombre_Marca text, Id_TipoProducto integer)");
+
+        db.execSQL("create table Provincia(Id_Provincia integer, Id_Region integer,Nombre_Provincia text)");
+
+        db.execSQL("create table Region(Id_Region integer, Nombre_Region text)");
+
+        db.execSQL("create table Nutriente(Id_Nutriente integer, Nombre_Nutriente text)");
+
+        db.execSQL("create table Comuna(Id_Comuna integer, Nombre_Comuna text, Id_Provicia integer, Id_Region integer)");
+
 
     }
 

@@ -2,6 +2,7 @@ package com.example.esteban.brlife.ConeionWebServices;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.widget.Toast;
 
 import com.example.esteban.brlife.Version;
 import com.example.esteban.brlife.R;
@@ -64,8 +65,10 @@ public class CargarVersionHttpConecction {
                         version =new Version();
                         jsonObject=json.getJSONObject(i);
                         version.setId_Tabla(jsonObject.getInt("Id_Tabla"));
+
                         version.setValor((float) jsonObject.getDouble("Version"));
                         version.setNombre_Tabla(jsonObject.getString("Nombre_Tabla"));
+                        Toast.makeText(context, ""+jsonObject.getString("Nombre_Tabla"), Toast.LENGTH_SHORT).show();
                         listaVersion.add(version);
 
                     }

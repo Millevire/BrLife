@@ -2,6 +2,7 @@ package com.example.esteban.brlife;
 
 import android.content.Intent;
 import android.os.Parcelable;
+import android.os.StrictMode;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,10 +27,16 @@ import com.example.esteban.brlife.Clases.Usuario;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantendorComunaHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.Enum.SeleccionSexo;
 import com.example.esteban.brlife.Enum.SeleccionValorRol;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -80,6 +87,10 @@ public class Form1Activity extends AppCompatActivity {
      //Objeto Usuario
         final Usuario usuario=new Usuario();
 
+
+        //permisos httpconection
+        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         //#region Validacion
         etNombresForm1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -267,10 +278,10 @@ public class Form1Activity extends AppCompatActivity {
         spRegionForm1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-               idregion = CargarBaseDeDatosDosAtributos.getListaRegion().get(position).getIdMantenedorDosAtributos();
+               idregion = CargarMantenedorDosAtributosHttpConecction.getListaRegion().get(position).getIdMantenedorDosAtributos();
 
 
-                listaFiltroProvincia = CargarBaseDeDatosMantenedorTresAtributos.filtro(idregion);
+                listaFiltroProvincia = CargarMantenedorTresAtributosHttpConecction.filtro(idregion);
 
                 adapterProvincia=new SpinAdapterTresAtributos(Form1Activity.this,android.R.layout.simple_list_item_1,listaFiltroProvincia);
                 spProvinciaForm1.setAdapter(adapterProvincia);
@@ -290,11 +301,11 @@ public class Form1Activity extends AppCompatActivity {
         spProvinciaForm1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            int idProvincia=CargarBaseDeDatosMantenedorTresAtributos.getListaMantenedorTresAtributos().get(position).getIdMantenedorTresAtributos();
+            int idProvincia=CargarMantenedorTresAtributosHttpConecction.getListaProvincia().get(position).getIdMantenedorTresAtributos();
 
 
 
-            listaFiltroComuna= CargarBaseDeDatosComuna.filtro(idProvincia,idregion);
+            listaFiltroComuna= CargarMantendorComunaHttpConecction.filtro(idProvincia,idregion);
 
             adapterComuna=new SpinAdapterComuna(Form1Activity.this,android.R.layout.simple_list_item_1,listaFiltroComuna);
             spComunaForm1.setAdapter(adapterComuna);
@@ -320,11 +331,12 @@ public class Form1Activity extends AppCompatActivity {
         adapterSexo=new SpinAdapter(this,android.R.layout.simple_list_item_1,SeleccionSexo.getListaSexo());
         spSexoFomr1.setAdapter(adapterSexo);
 
-        adapterRegion=new SpinAdapter(this,android.R.layout.simple_list_item_1,CargarBaseDeDatosDosAtributos.getListaRegion());
+        adapterRegion=new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarMantenedorDosAtributosHttpConecction.getListaRegion());
         spRegionForm1.setAdapter(adapterRegion);
 
 
-    }
  //#endregion
+
+}
 
 }

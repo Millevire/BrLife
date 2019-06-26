@@ -1,5 +1,8 @@
 package com.example.esteban.brlife;
 
+import android.os.Build;
+import android.os.StrictMode;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.esteban.brlife.Clases.Usuario;
 import com.example.esteban.brlife.Clases.UsuarioInteres;
@@ -15,6 +19,9 @@ import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtribut
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuario;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantendorComunaHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarNuevoIdHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CrudUsuario;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
@@ -23,18 +30,26 @@ import com.example.esteban.brlife.Enum.SeleccionSexo;
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+
 
 public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
     private Button btnBackValidacion,btnAceptarValidacion;
     private TextView tvNombreValidacion,tvNombreUsuarioValidacion,tvApellidosValidacion,tvSexoValidacion,tvFehcaNacimientoValidacion,
             tvCorreoValidacion,tvComunaValidacion,tvProvinciaValidacion,tvRegionValidacion,tvAlturaValidacion,tvPesoValidacion,tvSomatotipoValidacion,
-            tvRolValidacion,tvObjetivoValidacion;
+            tvRolValidacion,tvObjetivoValidacion,tvCaloriasMaximasValidacion,tvEdadValidacion;
     private ListView lvInteresesValidacion;
     private ArrayAdapter<UsuarioInteres> adapterUsuarioInteres;
+    private DateTimeFormatter ftm;
+   public  LocalDate fechaNac;
+    public LocalDate ahora;
 
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,16 +73,35 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
         tvSomatotipoValidacion=(TextView) findViewById(R.id.tvSomatotipoValidacion);
         tvRolValidacion=(TextView) findViewById(R.id.tvRolValidacion);
         tvObjetivoValidacion=(TextView) findViewById(R.id.tvObjetivoValidacion);
+        tvCaloriasMaximasValidacion=(TextView)findViewById(R.id.tvCaloriasMaximasValidacion);
+        tvEdadValidacion=(TextView)findViewById(R.id.tvEdadValidacion);
 
         lvInteresesValidacion=(ListView)findViewById(R.id.lvInteresesValidacion);
         //#endregion
 
+        ahora=LocalDate.now();
+
+        //permisos httpconection
+        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         //Bundle que traera objeto usuario
         final Bundle bundle=getIntent().getExtras();
 
-        if (bundle !=null){
+        if (bundle !=null) {
             Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+
+            //Obtener edad
+            DateTimeFormatter formater=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            fechaNac = LocalDate.parse(usuario.getFechaNacimiento(), formater);
+          // String fechaNac= String.for
+              Period periodo= Period.between(fechaNac,ahora);
+
+              tvEdadValidacion.setText(periodo.getYears());
+
+            //Calcular calorias maximas
+
 
             tvNombreValidacion.setText(usuario.getNombreUsuario());
             tvNombreUsuarioValidacion.setText(usuario.getNombreAlias());
@@ -75,14 +109,14 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
             tvSexoValidacion.setText(SeleccionSexo.buscaSexo(usuario.getSexo()));
             tvFehcaNacimientoValidacion.setText(usuario.getFechaNacimiento());
             tvCorreoValidacion.setText(usuario.getCorreoElectronico());
-            tvComunaValidacion.setText(CargarBaseDeDatosComuna.buscarNombreComuna(usuario.getFkComuna()));
-            tvProvinciaValidacion.setText(CargarBaseDeDatosMantenedorTresAtributos.buscarNombreProvincia(usuario.getFkProvincia()));
-            tvRegionValidacion.setText(CargarBaseDeDatosDosAtributos.buscarNombreREgion(usuario.getFkRegion()));
+            tvComunaValidacion.setText(CargarMantendorComunaHttpConecction.buscarNombreComuna(usuario.getFkComuna()));
+            tvProvinciaValidacion.setText(CargarMantenedorTresAtributosHttpConecction.buscarNombreProvincia(usuario.getFkProvincia()));
+            tvRegionValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarNombreREgion(usuario.getFkRegion()));
             tvAlturaValidacion.setText(String.valueOf(usuario.getEstatura()));
             tvPesoValidacion.setText(String.valueOf(usuario.getPeso()));
-            tvSomatotipoValidacion.setText(CargarBaseDeDatosDosAtributos.buscarTipoPersona(usuario.getFkSomatipo()));
-            tvRolValidacion.setText(CargarBaseDeDatosDosAtributos.buscarNombreRol(usuario.getFkRol()));
-            tvObjetivoValidacion.setText(CargarBaseDeDatosDosAtributos.buscarNombreObjetivo(usuario.getFkObjetivo()));
+            tvSomatotipoValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarTipoPersona(usuario.getFkSomatipo()));
+            tvRolValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarNombreRol(usuario.getFkRol()));
+            tvObjetivoValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarNombreObjetivo(usuario.getFkObjetivo()));
 
             //Agregar Intereses
             adapterUsuarioInteres=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, CargarBaseDeDatosUsuarioInteres.getListaUsuarioInteres());
@@ -100,9 +134,12 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
                     try {
                        //Agregar nuevo id usuario
                         int idUsuario=CargarNuevoIdHttpConecction.buscarMantenedorNuevoId(ValidacionRegistroUsuarioActivity.this,SelccionMantenedor.Usuario.getSeleccion());
+
+                        Toast.makeText(ValidacionRegistroUsuarioActivity.this, ""+idUsuario, Toast.LENGTH_SHORT).show();
+
                         usuario.setIdUsuario(idUsuario);
 
-                        new CrudUsuario(ValidacionRegistroUsuarioActivity.this,usuario,ValidacionRegistroUsuarioActivity.this.getString(R.string.insertar));
+                        new CrudUsuario(ValidacionRegistroUsuarioActivity.this,usuario,ValidacionRegistroUsuarioActivity.this.getString(R.string.nuevo));
 
                     } catch (IOException e) {
                         e.printStackTrace();

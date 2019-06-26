@@ -17,14 +17,14 @@
             android:layout_height="60dp"
             android:backgroundTint="@color/colorPrimaryDark"
             android:drawableLeft="@drawable/ic_action_back" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:fontFamily="@font/bevan"
             android:text="BrLife"
 
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:textColor="@color/blanco" />
     </LinearLayout>
     <LinearLayout
@@ -36,24 +36,11 @@
         android:gravity="center"
         android:background="@drawable/input">
 
-        <AutoCompleteTextView
-            android:id="@+id/etBuscarAlimentoSelAlimAct"
-            android:layout_width="263dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
 
-            android:background="@null"
-            android:hint="Buscar alimento" />
-
-        <Button
-            android:id="@+id/btnBuscarSelAlimAct"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:drawableStart="@drawable/ic_action_buscar" />
+        <android.support.v7.widget.SearchView
+            android:id="@+id/svFiltroProducto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.SearchView>
     </LinearLayout>
     <View android:layout_width="wrap_content"
         android:layout_height="0.1dp"
@@ -61,7 +48,7 @@
         android:layout_marginTop="10dp"/>
 
     <ListView
-        android:id="@+id/lvSeleAlimAct"
+        android:id="@+id/lvFiltoProducto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="10dp" />

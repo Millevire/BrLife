@@ -2,6 +2,7 @@ package com.example.esteban.brlife.Clases;
 
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
 
 public class UsuarioInteres {
     private int idUsuarioInteres;
@@ -41,6 +42,6 @@ public class UsuarioInteres {
     @Override
     public String toString() {
 
-        return CargarBaseDeDatosDosAtributos.buscarNombreInteres(this.idInteres);
+        return CargarMantenedorDosAtributosHttpConecction.buscarNombreInteres(this.idInteres);
     }
 }

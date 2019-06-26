@@ -1,6 +1,7 @@
 package com.example.esteban.brlife;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,9 +11,16 @@ import android.widget.Toast;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantendorComunaHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import org.json.JSONException;
+
+import java.io.IOException;
 
 public class MenuPrincipalActivity extends AppCompatActivity {
   private Button btnProbarAplicacion,btnIniciarSession,btnRegistrarsePre;
@@ -50,25 +58,52 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         });
 
 
+        //permisos httpconection
+        StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+
         //Cargar listas de region,provincia y comuna
-        new CargarBaseDeDatosComuna(this, SelccionMantenedor.Comuna.getSeleccion());
+        //new CargarBaseDeDatosComuna(this, SelccionMantenedor.Comuna.getSeleccion());
+
         //Para Cargar la provincia
-        new CargarBaseDeDatosMantenedorTresAtributos(this,SelccionMantenedor.Provincia.getSeleccion());
+       // new CargarBaseDeDatosMantenedorTresAtributos(this,SelccionMantenedor.Provincia.getSeleccion());
         //Cargar base de datos para Spinner de AlertNuevoMantenedorTresAtributos con Region
-        new CargarBaseDeDatosDosAtributos(this,SelccionMantenedor.Region.getSeleccion());
+        //new CargarBaseDeDatosDosAtributos(this,SelccionMantenedor.Region.getSeleccion());
 
         //limpiar listas
-        CargarBaseDeDatosDosAtributos.limpiarListas();
+        //CargarBaseDeDatosDosAtributos.limpiarListas();
 
         //llenar spinner Objetivo
-        new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.Objetivo.getSeleccion());
+        //new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.Objetivo.getSeleccion());
 
         //llenar spinner Interes
-        new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.Interes.getSeleccion());
+        //new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.Interes.getSeleccion());
         //llenar spinner TipoPersona
-        new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.TipoPersona.getSeleccion());
+        //new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.TipoPersona.getSeleccion());
         //llenar spinner Rol
-        new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.Rol.getSeleccion());
+        //new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.Rol.getSeleccion());
+
+        CargarMantenedorDosAtributosHttpConecction.limpiarListas();
+        CargarMantenedorTresAtributosHttpConecction.limpiarListaMarcaSabor();
+
+        try {
+            CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(this,SelccionMantenedor.Region.getSeleccion());
+            CargarMantendorComunaHttpConecction.buscarMantenedorComuna(this,SelccionMantenedor.Comuna.getSeleccion());
+            CargarMantenedorTresAtributosHttpConecction.buscarMantenedorTresAtributos(this,SelccionMantenedor.Provincia.getSeleccion());
+
+            CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(this,SelccionMantenedor.Objetivo.getSeleccion());
+            CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(this,SelccionMantenedor.Interes.getSeleccion());
+            CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(this,SelccionMantenedor.Rol.getSeleccion());
+            CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(this,SelccionMantenedor.TipoPersona.getSeleccion());
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
     }
 

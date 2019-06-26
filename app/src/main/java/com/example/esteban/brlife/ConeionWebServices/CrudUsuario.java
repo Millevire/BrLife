@@ -3,6 +3,7 @@ package com.example.esteban.brlife.ConeionWebServices;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +19,7 @@ public class CrudUsuario implements Response.Listener<JSONObject>,Response.Error
     static RequestQueue request;
     static JsonObjectRequest jsonObjectRequest;
     static ProgressDialog progreso;
+    Context context;
 
     /**
      * constructor para crud Usuario
@@ -27,6 +29,7 @@ public class CrudUsuario implements Response.Listener<JSONObject>,Response.Error
      */
     public CrudUsuario(Context context, Usuario usuario,String tipoConsulta){
         request= Volley.newRequestQueue(context);
+        this.context=context;
 
         switch (tipoConsulta){
             case "nuevo":
@@ -77,7 +80,7 @@ public class CrudUsuario implements Response.Listener<JSONObject>,Response.Error
         progreso.setMessage("Cargando...");
         progreso.show();
 
-        String url="http://http://www.brotherwareoficial.com/WebServices/MantenedorUsuario.php?tipoconsulta=a&"+
+        String url="http://www.brotherwareoficial.com/WebServices/MantenedorUsuario.php?tipoconsulta=a&"+
                 "Id_Usuario="+usuario.getIdUsuario()+
                 "&Nombre_Usuario="+ usuario.getNombreUsuario()+
                 "&Apellido_Paterno="+usuario.getApellidoPaterno()+
@@ -93,7 +96,9 @@ public class CrudUsuario implements Response.Listener<JSONObject>,Response.Error
                 "&Id_Objetivo="+usuario.getFkObjetivo()
                 +"&Id_Rol="+usuario.getFkRol()+
                 "&Id_TipoPersona="+usuario.getFkSomatipo()+
-                "&CorreoElectronico="+usuario.getCorreoElectronico();
+                "&CorreoElectronico="+usuario.getCorreoElectronico()+
+                "&Contrasena="+usuario.getContraseña()+
+                "&MaximoCalorias="+1000;
         jsonObjectRequest= new JsonObjectRequest(Request.Method.GET,url,null,this,this);
         request.add(jsonObjectRequest);
     }
@@ -109,5 +114,6 @@ public class CrudUsuario implements Response.Listener<JSONObject>,Response.Error
     @Override
     public void onResponse(JSONObject response) {
         progreso.hide();
+        Toast.makeText(context, "Nuevo usuario agregado", Toast.LENGTH_SHORT).show();
     }
 }

@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class SeleccionValorRol {
-    public  static ArrayList<ValorRol> listaValorRol;
+    public  static ArrayList<ValorRol> listaValorRol=new ArrayList<>();
 
 
     /**
      * metodo autollenado de lista Valor rol
      */
     public SeleccionValorRol(){
-        listaValorRol=new ArrayList<>();
+
 
         listaValorRol.add(new ValorRol("Sedentario", (float) 1.200,"Poca actividad física"));
         listaValorRol.add(new ValorRol("Actividad ligera", (float) 1.375 ,"Poco ejercicio, deportes 1-3 días/semana"));
