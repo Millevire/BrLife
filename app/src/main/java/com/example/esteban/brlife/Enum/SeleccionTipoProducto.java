@@ -1,18 +1,23 @@
 package com.example.esteban.brlife.Enum;
 
-     public enum  SeleccionTipoProducto {
+     public enum SeleccionTipoProducto {
          Crustaceo("Crustaceo"),
          Agua("Agua"),
          Huevo("Huevo"),
          Pescado("Pescado"),
          Carne("Carne"),
          Cereal("Cereal"),
-         Legrumbres("Legumbres"),
-         Lacteos("Lacteos"),
-         Bebidas("Bebidas"),
-         Frutas("Frutas"),
-         Galleta("Galleta")
-         ;
+         Legrumbre("Legumbre"),
+         Lacteo("Lacteo"),
+         Bebida("Bebida"),
+         Fruta("Fruta"),
+         Galleta("Galleta"),
+         Fritura("Fritura"),
+         Cafe("Cafe"),
+         Caramelo("Caramelo"),
+         Te("Te"),
+         Chocolate("Chocolate"),
+         Pan("Pan");
 
      private String seleccion;
 

@@ -8,7 +8,15 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTipoProductoHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
+import com.example.esteban.brlife.Enum.SeleccionTipoProducto;
+
+import org.json.JSONException;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,9 +33,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 
+              //permisos httpconection
+                StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
+                StrictMode.setThreadPolicy(policy);
 
+           //Cargar Productos
 
+                try {
+                    CargarMantenedorProductoHttpConecction.buscarMantenedorProducto(MainActivity.this, SelccionMantenedor.Producto.getSeleccion());
+                    CargarMantenedorTipoProductoHttpConecction.buscarMantenedorTipoProducto(MainActivity.this,SelccionMantenedor.TipoProducto.getSeleccion());
+                    CargarMantenedorTresAtributosHttpConecction.buscarMantenedorTresAtributos(MainActivity.this,SelccionMantenedor.Marca.getSeleccion());
+                    CargarMantenedorTresAtributosHttpConecction.buscarMantenedorTresAtributos(MainActivity.this,SelccionMantenedor.Sabor.getSeleccion());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
+                //#region pruebaPersistenciaPendiente
                 //Validacion de versiones
                 int valVersion=Negocio.ValidarExistenciaTablaVtablas(MainActivity.this);
             if (valVersion>0){
@@ -61,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     Negocio.CargarProvincia(MainActivity.this);
 
                 }
+                //#endregion
               
               startActivity(intent);
               finish();

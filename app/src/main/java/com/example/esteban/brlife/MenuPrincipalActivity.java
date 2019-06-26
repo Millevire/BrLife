@@ -62,30 +62,8 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-
-        //Cargar listas de region,provincia y comuna
-        //new CargarBaseDeDatosComuna(this, SelccionMantenedor.Comuna.getSeleccion());
-
-        //Para Cargar la provincia
-       // new CargarBaseDeDatosMantenedorTresAtributos(this,SelccionMantenedor.Provincia.getSeleccion());
-        //Cargar base de datos para Spinner de AlertNuevoMantenedorTresAtributos con Region
-        //new CargarBaseDeDatosDosAtributos(this,SelccionMantenedor.Region.getSeleccion());
-
-        //limpiar listas
-        //CargarBaseDeDatosDosAtributos.limpiarListas();
-
-        //llenar spinner Objetivo
-        //new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.Objetivo.getSeleccion());
-
-        //llenar spinner Interes
-        //new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.Interes.getSeleccion());
-        //llenar spinner TipoPersona
-        //new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.TipoPersona.getSeleccion());
-        //llenar spinner Rol
-        //new CargarBaseDeDatosDosAtributos(this, SelccionMantenedor.Rol.getSeleccion());
-
         CargarMantenedorDosAtributosHttpConecction.limpiarListas();
-        CargarMantenedorTresAtributosHttpConecction.limpiarListaMarcaSabor();
+        //CargarMantenedorTresAtributosHttpConecction.limpiarListaMarcaSabor();
 
         try {
             CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(this,SelccionMantenedor.Region.getSeleccion());

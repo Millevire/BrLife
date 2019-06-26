@@ -18,5 +18,6 @@
     <string name="nuevo">nuevo</string>
     <string name="editar">CANCELAR</string>
     <string name="eliminar">CANCELAR</string>
+    <string name="title_activity_registro_producto_horario">RegistroProductoHorarioActivity</string>
 
 </resources>
