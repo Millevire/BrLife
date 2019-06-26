@@ -44,7 +44,7 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
     private ListView lvInteresesValidacion;
     private ArrayAdapter<UsuarioInteres> adapterUsuarioInteres;
     private DateTimeFormatter ftm;
-   public  LocalDate fechaNac;
+    public LocalDate fechaNac;
     public LocalDate ahora;
 
 
@@ -92,13 +92,21 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
             Usuario usuario = (Usuario) bundle.getSerializable("usuario");
 
             //Obtener edad
-            DateTimeFormatter formater=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            LocalDate date = null;
+            ftm = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            //usuario.setFechaNacimiento(date.format(ftm));
+            fechaNac = LocalDate.parse(usuario.getFechaNacimiento(),ftm);
 
-            fechaNac = LocalDate.parse(usuario.getFechaNacimiento(), formater);
+            //fechaNac = LocalDate.parse(usuario.getFechaNacimiento(), ftm);
           // String fechaNac= String.for
-              Period periodo= Period.between(fechaNac,ahora);
+            Period periodo = Period.between(fechaNac, ahora);
 
-              tvEdadValidacion.setText(periodo.getYears());
+            try {
+                tvEdadValidacion.setText(periodo.getYears() + "");
+            }catch (Exception ex){
+                tvEdadValidacion.setText("");
+
+            }
 
             //Calcular calorias maximas
 

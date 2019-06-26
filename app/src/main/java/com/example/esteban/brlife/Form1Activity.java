@@ -57,7 +57,7 @@ public class Form1Activity extends AppCompatActivity {
     private ArrayList<Comuna> listaComuna = new ArrayList<>();
 
     //Variable global de idRegion
-    public int idregion;
+    public int idregion, idprovincia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -252,7 +252,7 @@ public class Form1Activity extends AppCompatActivity {
 
                     //obtener comuna
                     Comuna comuna=(Comuna)spComunaForm1.getSelectedItem();
-//                usuario.setFkComuna(comuna.getIdComuna());
+                    usuario.setFkComuna(comuna.getIdComuna());
 
                     //Enviamos objeto a siguente actividad
                     intent.putExtra("usuario",  usuario);
@@ -280,7 +280,7 @@ public class Form1Activity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                idregion = CargarMantenedorDosAtributosHttpConecction.getListaRegion().get(position).getIdMantenedorDosAtributos();
 
-
+                listaFiltroProvincia.clear();
                 listaFiltroProvincia = CargarMantenedorTresAtributosHttpConecction.filtro(idregion);
 
                 adapterProvincia=new SpinAdapterTresAtributos(Form1Activity.this,android.R.layout.simple_list_item_1,listaFiltroProvincia);
@@ -301,11 +301,12 @@ public class Form1Activity extends AppCompatActivity {
         spProvinciaForm1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            int idProvincia=CargarMantenedorTresAtributosHttpConecction.getListaProvincia().get(position).getIdMantenedorTresAtributos();
+            idprovincia = listaFiltroProvincia.get(position).getIdMantenedorTresAtributos();
+            //idprovincia=CargarMantenedorTresAtributosHttpConecction.getListaProvincia().get(position).getFkMantenedorTresAtributos();
 
 
-
-            listaFiltroComuna= CargarMantendorComunaHttpConecction.filtro(idProvincia,idregion);
+            listaFiltroComuna.clear();
+            listaFiltroComuna= CargarMantendorComunaHttpConecction.filtro(idprovincia,idregion);
 
             adapterComuna=new SpinAdapterComuna(Form1Activity.this,android.R.layout.simple_list_item_1,listaFiltroComuna);
             spComunaForm1.setAdapter(adapterComuna);

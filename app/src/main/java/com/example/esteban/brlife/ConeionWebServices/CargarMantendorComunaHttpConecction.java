@@ -72,7 +72,7 @@ public class CargarMantendorComunaHttpConecction {
 
     public static ArrayList<Comuna>filtro(int fkProvincia,int fkRegion){
         listaFiltroComuna.clear();
-
+        listaAuxComuna.clear();
         for (Comuna c: listaComuna){
             if (c.getIdRegion()==fkRegion ){
                 listaAuxComuna.add(c);
