@@ -23,6 +23,11 @@ import com.example.esteban.brlife.ConeionWebServices.CrudUsuarioHttpConecction;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -30,8 +35,12 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class SessionUserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  {
       private Button btnScannBar1,btnAgregarComidaManual;
-      private TextView tvNombreUsuario, tvCorreo, tvMaximoCalorias;
+      private TextView tvNombreUsuario, tvCorreo, tvMaximoCalorias, tvHorarioComidaDesayuno, tvHorarioComidaAlmuerzo, tvHorarioComidaOnce, tvHorarioComidaCena, tvCaloriasConsumidas;
       private ZXingScannerView scanner;
+      public SimpleDateFormat sdfDia = new SimpleDateFormat("dd");
+      public SimpleDateFormat sdfMes = new SimpleDateFormat("MM");
+      public SimpleDateFormat sdfAno = new SimpleDateFormat("yyyy");
+
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -43,17 +52,50 @@ public class SessionUserActivity extends AppCompatActivity
         btnScannBar1=(Button)findViewById(R.id.btnScannBar1);
         btnAgregarComidaManual=(Button)findViewById(R.id.btnAgregarComidaManual);
         tvMaximoCalorias = (TextView)findViewById(R.id.tvMaximoCalorias);
+        tvHorarioComidaDesayuno = (TextView)findViewById(R.id.tvHorarioComidaDesayuno);
+        tvHorarioComidaAlmuerzo = (TextView)findViewById(R.id.tvHorarioComidaAlmuerzo);
+        tvHorarioComidaOnce = (TextView)findViewById(R.id.tvHorarioComidaOnce);
+        tvHorarioComidaCena = (TextView)findViewById(R.id.tvHorarioComidaCena);
+        tvCaloriasConsumidas = (TextView)findViewById(R.id.tvCaloriasConsumidas);
 
         Date fechactual = new Date();
-        CargarRegistroUsuarioHttpConexion.dia = fechactual.getDay();
-        CargarRegistroUsuarioHttpConexion.mes = fechactual.getMonth();
-        CargarRegistroUsuarioHttpConexion.ano = fechactual.getYear();
+
+        CargarRegistroUsuarioHttpConexion.dia = Integer.parseInt(sdfDia.format(fechactual));
+        CargarRegistroUsuarioHttpConexion.mes = Integer.parseInt(sdfMes.format(fechactual));
+        CargarRegistroUsuarioHttpConexion.ano = Integer.parseInt(sdfAno.format(fechactual));
 
 
 
+        try {
+            CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuarioTotales("RegistroUsuario",
+                    CrudUsuarioHttpConecction.usuario.getIdUsuario(),
+                    CargarRegistroUsuarioHttpConexion.dia,
+                    CargarRegistroUsuarioHttpConexion.mes,
+                    CargarRegistroUsuarioHttpConexion.ano);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 
+        tvHorarioComidaDesayuno.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(0).getTotalhorariocomida() + "");
+        tvHorarioComidaAlmuerzo.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(1).getTotalhorariocomida() + "");
+        tvHorarioComidaOnce.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(2).getTotalhorariocomida() + "");
+        tvHorarioComidaCena.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(3).getTotalhorariocomida() + "");
 
+
+        try {
+            tvCaloriasConsumidas.setText(CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuarioDiaria("RegistroUsuario",
+                    CrudUsuarioHttpConecction.usuario.getIdUsuario(),
+                    CargarRegistroUsuarioHttpConexion.dia,
+                    CargarRegistroUsuarioHttpConexion.mes,
+                    CargarRegistroUsuarioHttpConexion.ano) + "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         if (CrudUsuarioHttpConecction.usuario != null) {
             tvMaximoCalorias.setText(CrudUsuarioHttpConecction.maximocalorias + "");
         }

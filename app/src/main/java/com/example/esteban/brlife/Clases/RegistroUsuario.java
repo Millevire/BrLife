@@ -23,6 +23,10 @@ public class RegistroUsuario {
         this.valorporcion = valorporcion;
     }
 
+    public RegistroUsuario() {
+
+    }
+
     public int getIdregistrousuario() {
         return idregistrousuario;
     }
