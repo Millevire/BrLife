@@ -166,5 +166,12 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
             }
 
         });
+
+        btnBackValidacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

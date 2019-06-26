@@ -34,8 +34,8 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class SessionUserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  {
-      private Button btnScannBar1,btnAgregarComidaManual;
-      private TextView tvNombreUsuario, tvCorreo, tvMaximoCalorias, tvHorarioComidaDesayuno, tvHorarioComidaAlmuerzo, tvHorarioComidaOnce, tvHorarioComidaCena, tvCaloriasConsumidas;
+      private Button btnScannBar1,btnAgregarComidaManual, btnHorarioComidaDesayuno, btnHorarioComidaAlmuerzo, btnHorarioComidaOnce, btnHorarioComidaCena;
+      private TextView tvNombreUsuario, tvCorreo, tvMaximoCalorias, tvCaloriasConsumidas;
       private ZXingScannerView scanner;
       public SimpleDateFormat sdfDia = new SimpleDateFormat("dd");
       public SimpleDateFormat sdfMes = new SimpleDateFormat("MM");
@@ -52,11 +52,21 @@ public class SessionUserActivity extends AppCompatActivity
         btnScannBar1=(Button)findViewById(R.id.btnScannBar1);
         btnAgregarComidaManual=(Button)findViewById(R.id.btnAgregarComidaManual);
         tvMaximoCalorias = (TextView)findViewById(R.id.tvMaximoCalorias);
-        tvHorarioComidaDesayuno = (TextView)findViewById(R.id.tvHorarioComidaDesayuno);
-        tvHorarioComidaAlmuerzo = (TextView)findViewById(R.id.tvHorarioComidaAlmuerzo);
-        tvHorarioComidaOnce = (TextView)findViewById(R.id.tvHorarioComidaOnce);
-        tvHorarioComidaCena = (TextView)findViewById(R.id.tvHorarioComidaCena);
+        btnHorarioComidaDesayuno = (Button)findViewById(R.id.btnHorarioComidaDesayuno);
+        btnHorarioComidaAlmuerzo = (Button)findViewById(R.id.btnHorarioComidaAlmuerzo);
+        btnHorarioComidaOnce = (Button)findViewById(R.id.btnHorarioComidaOnce);
+        btnHorarioComidaCena = (Button)findViewById(R.id.btnHorarioComidaCena);
+
+        btnHorarioComidaDesayuno.setEnabled(true);
+        btnHorarioComidaAlmuerzo.setEnabled(true);
+        btnHorarioComidaOnce.setEnabled(true);
+        btnHorarioComidaCena.setEnabled(true);
+
+
         tvCaloriasConsumidas = (TextView)findViewById(R.id.tvCaloriasConsumidas);
+
+        final Intent intent =new Intent(this,RegistroProductoHorarioActivity.class);
+
 
         Date fechactual = new Date();
 
@@ -79,10 +89,10 @@ public class SessionUserActivity extends AppCompatActivity
         }
 
 
-        tvHorarioComidaDesayuno.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(0).getTotalhorariocomida() + "");
-        tvHorarioComidaAlmuerzo.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(1).getTotalhorariocomida() + "");
-        tvHorarioComidaOnce.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(2).getTotalhorariocomida() + "");
-        tvHorarioComidaCena.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(3).getTotalhorariocomida() + "");
+        btnHorarioComidaDesayuno.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(0).getTotalhorariocomida() + "");
+        btnHorarioComidaAlmuerzo.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(1).getTotalhorariocomida() + "");
+        btnHorarioComidaOnce.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(2).getTotalhorariocomida() + "");
+        btnHorarioComidaCena.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(3).getTotalhorariocomida() + "");
 
 
         try {
@@ -122,6 +132,86 @@ public class SessionUserActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        btnHorarioComidaDesayuno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnHorarioComidaDesayuno.setEnabled(false);
+                try {
+                    CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuario("RegistroUsuario",
+                            CrudUsuarioHttpConecction.usuario.getIdUsuario(),
+                            CargarRegistroUsuarioHttpConexion.dia,
+                            CargarRegistroUsuarioHttpConexion.mes,
+                            CargarRegistroUsuarioHttpConexion.ano,1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                startActivity(intent);
+            }
+        });
+
+        btnHorarioComidaAlmuerzo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnHorarioComidaAlmuerzo.setEnabled(false);
+                try {
+                    CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuario("RegistroUsuario",
+                            CrudUsuarioHttpConecction.usuario.getIdUsuario(),
+                            CargarRegistroUsuarioHttpConexion.dia,
+                            CargarRegistroUsuarioHttpConexion.mes,
+                            CargarRegistroUsuarioHttpConexion.ano,2);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                startActivity(intent);
+            }
+        });
+        btnHorarioComidaOnce.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnHorarioComidaOnce.setEnabled(false);
+                try {
+                    CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuario("RegistroUsuario",
+                            CrudUsuarioHttpConecction.usuario.getIdUsuario(),
+                            CargarRegistroUsuarioHttpConexion.dia,
+                            CargarRegistroUsuarioHttpConexion.mes,
+                            CargarRegistroUsuarioHttpConexion.ano,3);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                startActivity(intent);
+            }
+        });
+
+        btnHorarioComidaCena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                btnHorarioComidaCena.setEnabled(false);
+                try {
+                    CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuario("RegistroUsuario",
+                            CrudUsuarioHttpConecction.usuario.getIdUsuario(),
+                            CargarRegistroUsuarioHttpConexion.dia,
+                            CargarRegistroUsuarioHttpConexion.mes,
+                            CargarRegistroUsuarioHttpConexion.ano,4);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -217,5 +307,12 @@ public class SessionUserActivity extends AppCompatActivity
         return true;
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        btnHorarioComidaDesayuno.setEnabled(true);
+        btnHorarioComidaAlmuerzo.setEnabled(true);
+        btnHorarioComidaOnce.setEnabled(true);
+        btnHorarioComidaCena.setEnabled(true);
+    }
 }

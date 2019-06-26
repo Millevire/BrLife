@@ -213,7 +213,7 @@
                         android:gravity="center">
 
                         <Button
-                            android:id="@+id/tvHorarioComidaDesayuno"
+                            android:id="@+id/btnHorarioComidaDesayuno"
                             style="@style/Widget.AppCompat.Button.Borderless"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -259,7 +259,7 @@
                         android:gravity="center">
 
                         <Button
-                            android:id="@+id/tvHorarioComidaAlmuerzo"
+                            android:id="@+id/btnHorarioComidaAlmuerzo"
                             style="@style/Widget.AppCompat.Button.Borderless"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -307,7 +307,7 @@
                         android:gravity="center">
 
                         <Button
-                            android:id="@+id/tvHorarioComidaOnce"
+                            android:id="@+id/btnHorarioComidaOnce"
                             style="@style/Widget.AppCompat.Button.Borderless"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -354,7 +354,7 @@
                         android:gravity="center">
 
                         <Button
-                            android:id="@+id/tvHorarioComidaCena"
+                            android:id="@+id/btnHorarioComidaCena"
                             style="@style/Widget.AppCompat.Button.Borderless"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"

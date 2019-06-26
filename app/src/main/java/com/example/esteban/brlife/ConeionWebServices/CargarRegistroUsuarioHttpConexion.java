@@ -311,4 +311,11 @@ public class CargarRegistroUsuarioHttpConexion {
         listaRegistro.add(registroUsuario);
     }
 
+    public static ArrayList<RegistroHorarioTotales> getListatotales() {
+        return listatotales;
+    }
+
+    public static ArrayList<RegistroDiario> getListadiaria() {
+        return listadiaria;
+    }
 }

@@ -1,6 +1,7 @@
 package com.example.esteban.brlife.ConeionWebServices;
 
 import com.example.esteban.brlife.Clases.Usuario;
+import com.example.esteban.brlife.Clases.UsuarioInteres;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -12,6 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class CrudUsuarioHttpConecction {
     public static int acceso;
@@ -19,6 +21,7 @@ public class CrudUsuarioHttpConecction {
     public static int correovalidado;
     public static float maximocalorias;
     public static int nuevoidusuario;
+    public static ArrayList<UsuarioInteres> listausuariointeres = new ArrayList<>();
 
     public static int ValidarAccesoUsuario(String mantenedo, String alias, String corrreoelectronico, String contrasena) throws IOException, JSONException {
 
@@ -349,19 +352,47 @@ public class CrudUsuarioHttpConecction {
                 while ((linea = br.readLine()) != null)
                     responseSTR.append(linea);
 
-//                JSONObject response = new JSONObject(responseSTR.toString());
-//                JSONArray json=response.optJSONArray("Usuario");
-//
-//                try {
-//                    for (int i=0; i<json.length(); i++){
-//                        JSONObject jsonObject= null ;
-//                        jsonObject=json.getJSONObject(i);
-//                        usuario.setIdUsuario(jsonObject.getInt("Id_Usuario"));
-//                    }
-//
-//                }catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
+            }else
+                throw new RuntimeException("No se puede contectar al servidor");
+        }finally {
+            conexion.disconnect();
+        }
+    }
+
+    public static void InsertarUsuarioInteres(String mantenedo, int idusuario, int idinteres) throws IOException, JSONException {
+        int nuevoid = 0;
+
+        URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=i" +
+                "&idUsuario="+idusuario+
+                "&idInteres="+idinteres);
+        HttpURLConnection conexion = null;
+        try {
+            conexion = (HttpURLConnection) url.openConnection();
+            conexion.setConnectTimeout(20000);
+            conexion.setReadTimeout(20000);
+            conexion.setUseCaches(false);
+            if (conexion.getResponseCode() == 200) {
+                InputStream responseBody = conexion.getInputStream();
+                InputStreamReader isr = new InputStreamReader(responseBody, "UTF-8");
+                BufferedReader br = new BufferedReader(isr);
+                String linea;
+                StringBuilder responseSTR = new StringBuilder();
+                while ((linea = br.readLine()) != null)
+                    responseSTR.append(linea);
+
+                JSONObject response = new JSONObject(responseSTR.toString());
+                JSONArray json=response.optJSONArray("Id_InteresUsuario_Nuevo");
+
+                try {
+                    for (int i=0; i<json.length(); i++){
+                        JSONObject jsonObject= null ;
+                        jsonObject=json.getJSONObject(i);
+                         nuevoid = jsonObject.getInt("Id_InteresUsuario_Nuevo");
+                    }
+
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
 
             }else
@@ -369,5 +400,86 @@ public class CrudUsuarioHttpConecction {
         }finally {
             conexion.disconnect();
         }
+        listausuariointeres.add(new UsuarioInteres(nuevoid,idusuario,idinteres));
+    }
+
+    public static void eliminarUsuarioInteres(String mantenedo, int idusuariointeres, int idusuario, int idinteres) throws IOException, JSONException {
+
+        URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=e" +
+                "&idUsuario="+idusuario+
+                "&idInteres="+idinteres);
+        HttpURLConnection conexion = null;
+        try {
+            conexion = (HttpURLConnection) url.openConnection();
+            conexion.setConnectTimeout(20000);
+            conexion.setReadTimeout(20000);
+            conexion.setUseCaches(false);
+            if (conexion.getResponseCode() == 200) {
+                InputStream responseBody = conexion.getInputStream();
+                InputStreamReader isr = new InputStreamReader(responseBody, "UTF-8");
+                BufferedReader br = new BufferedReader(isr);
+                String linea;
+                StringBuilder responseSTR = new StringBuilder();
+                while ((linea = br.readLine()) != null)
+                    responseSTR.append(linea);
+
+
+            }else
+                throw new RuntimeException("No se puede contectar al servidor");
+        }finally {
+            conexion.disconnect();
+        }
+        listausuariointeres.remove(new UsuarioInteres(idusuariointeres,idusuario,idinteres));
+    }
+
+    public static void traerUsuarioInteres(String mantenedo, int idusuariointeres, int idusuario, int idinteres) throws IOException, JSONException {
+
+        URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=s" +
+                "&idUsuario="+idusuario);
+        HttpURLConnection conexion = null;
+        try {
+            conexion = (HttpURLConnection) url.openConnection();
+            conexion.setConnectTimeout(20000);
+            conexion.setReadTimeout(20000);
+            conexion.setUseCaches(false);
+            if (conexion.getResponseCode() == 200) {
+                InputStream responseBody = conexion.getInputStream();
+                InputStreamReader isr = new InputStreamReader(responseBody, "UTF-8");
+                BufferedReader br = new BufferedReader(isr);
+                String linea;
+                StringBuilder responseSTR = new StringBuilder();
+                while ((linea = br.readLine()) != null)
+                    responseSTR.append(linea);
+
+                JSONObject response = new JSONObject(responseSTR.toString());
+                JSONArray json=response.optJSONArray("InteresUsuario");
+
+                try {
+                    for (int i=0; i<json.length(); i++){
+                        JSONObject jsonObject= null ;
+                        jsonObject=json.getJSONObject(i);
+                        listausuariointeres.add(new UsuarioInteres(jsonObject.getInt("Id_InteresUsuario"),
+                                jsonObject.getInt("Id_Usuario"),jsonObject.getInt("Id_Interes")));
+                    }
+
+                }catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }else
+                throw new RuntimeException("No se puede contectar al servidor");
+        }finally {
+            conexion.disconnect();
+        }
+    }
+
+
+    public static ArrayList<UsuarioInteres> getListausuariointeres() {
+        return listausuariointeres;
+    }
+
+    public static void setListausuariointeres(ArrayList<UsuarioInteres> listausuariointeres) {
+        CrudUsuarioHttpConecction.listausuariointeres = listausuariointeres;
     }
 }
