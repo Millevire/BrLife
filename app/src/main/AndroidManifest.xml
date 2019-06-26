@@ -16,7 +16,7 @@
             android:name=".RegistroProductoHorarioActivity"
             android:label="@string/title_activity_registro_producto_horario"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".RegistroProductoUsuarioActivity" />
+        <activity android:name=".NuevoRegistroProductoUsuarioActivity" />
         <activity android:name=".ValidacionRegistroUsuarioActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

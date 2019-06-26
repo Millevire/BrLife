@@ -20,7 +20,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/ivImagen"
+            android:id="@+id/ivImagenProductoRegistrado"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/tvNombreProducto"
+                    android:id="@+id/tvNombreProductoRegistrado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nombre"
@@ -56,14 +56,14 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/tvSaborProducto"
+                    android:id="@+id/tvSaborProductoProductoRegistrado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Sabor"
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/tvMarcaProducto"
+                    android:id="@+id/tvMarcaProductoRegistrado"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Marca"

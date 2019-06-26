@@ -1,12 +1,10 @@
 package com.example.esteban.brlife.Adaptadores;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -63,10 +61,10 @@ public class AdapterProducto extends BaseAdapter {
 
 
 
-        TextView tvNombreProducto=(TextView)convertView.findViewById(R.id.tvNombreProducto);
-        TextView tvSaborProducto=(TextView)convertView.findViewById(R.id.tvSaborProducto);
-        TextView tvMarcaProducto=(TextView)convertView.findViewById(R.id.tvMarcaProducto);
-        ImageView ivImagen=(ImageView)convertView.findViewById(R.id.ivImagen);
+        TextView tvNombreProducto=(TextView)convertView.findViewById(R.id.tvNombreProductoRegistrado);
+        TextView tvSaborProducto=(TextView)convertView.findViewById(R.id.tvSaborProductoProductoRegistrado);
+        TextView tvMarcaProducto=(TextView)convertView.findViewById(R.id.tvMarcaProductoRegistrado);
+        ImageView ivImagen=(ImageView)convertView.findViewById(R.id.ivImagenProductoRegistrado);
 
 
 

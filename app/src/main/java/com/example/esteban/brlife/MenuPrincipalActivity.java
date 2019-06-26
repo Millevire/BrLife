@@ -63,7 +63,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         CargarMantenedorDosAtributosHttpConecction.limpiarListas();
-        //CargarMantenedorTresAtributosHttpConecction.limpiarListaMarcaSabor();
+        CargarMantenedorTresAtributosHttpConecction.voidlimpiarListaProvincia();
 
         try {
             CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(this,SelccionMantenedor.Region.getSeleccion());
