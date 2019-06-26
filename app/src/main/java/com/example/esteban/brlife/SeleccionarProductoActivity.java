@@ -10,6 +10,7 @@ public class SeleccionarProductoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccionar_producto);
+        btnMostrarAlimento=(Button)findViewById(R.id.btnBuscarSelAlimAct);
       //  btnMostrarAlimento=(Button)findViewById(R.id.btnMostrarAliemento);
 
 

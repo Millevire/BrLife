@@ -1,12 +1,20 @@
 package com.example.esteban.brlife;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.esteban.brlife.ConeionWebServices.CrudUsuario;
+import com.example.esteban.brlife.ConeionWebServices.CrudUsuarioHttpConecction;
+
+import org.json.JSONException;
+
+import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
     private Button btnRegistar,btnIngresar;
@@ -20,6 +28,9 @@ public class LoginActivity extends AppCompatActivity {
         final Intent in2=new Intent(this, SessionUserActivity.class);
         btnRegistar=(Button)findViewById(R.id.btnRegistrar);
         btnIngresar=(Button)findViewById(R.id.btnIngresar);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         etContraseñaLogin=(EditText)findViewById(R.id.etContraseñaLogin);
         etUsuarioLogin=(EditText)findViewById(R.id.etUsuarioLogin);
@@ -77,8 +88,36 @@ public class LoginActivity extends AppCompatActivity {
                     if (count==etContraseñaLogin.getText().length() || etContraseñaLogin.getText().toString().equals("")) {
                         etContraseñaLogin.setError("Ingrese una contraseña"); etContraseñaLogin.setText("");
                     }else if(!etUsuarioLogin.getText().toString().equals("") ||!etContraseñaLogin.getText().toString().equals("") ) {
-                        startActivity(in2);
-                        
+
+                        int validacion = 0;
+                        String correo = (etUsuarioLogin.getText().toString().contains("@")) ? etUsuarioLogin.getText().toString() : "";
+                        String alias = "";
+                        if (correo.isEmpty()){
+                            alias = etUsuarioLogin.getText().toString();
+                        }
+
+
+                        try {
+                            validacion =  CrudUsuarioHttpConecction.ValidarAccesoUsuario("Usuario",alias,correo,etContraseñaLogin.getText().toString());
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        if (validacion > 0) {
+                            Toast.makeText(LoginActivity.this, "id_usuario:" + validacion, Toast.LENGTH_SHORT).show();
+                            btnIngresar.setEnabled(false);
+                            try {
+                                CrudUsuarioHttpConecction.TraerDatosUsuario("Usuario",validacion);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            startActivity(in2);
+                        }else{
+                            Toast.makeText(LoginActivity.this, "Usuario y/o Correo Electronico/Alias es incorrecto", Toast.LENGTH_SHORT).show();
+                        }
                     }else if(etContraseñaLogin.getText().toString().equals("") && etUsuarioLogin.getText().toString().equals("")){
                         Toast.makeText(LoginActivity.this, "Todos los campos son requeridos", Toast.LENGTH_SHORT).show();
                         etUsuarioLogin.setError("Campo requerido");
@@ -90,9 +129,14 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        btnIngresar.setEnabled(true);
     }
 }

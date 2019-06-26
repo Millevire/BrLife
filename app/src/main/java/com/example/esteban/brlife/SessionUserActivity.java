@@ -14,16 +14,23 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esteban.brlife.ConeionWebServices.CargarRegistroUsuarioHttpConexion;
+import com.example.esteban.brlife.ConeionWebServices.CrudUsuarioHttpConecction;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+import java.util.Date;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 public class SessionUserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  {
       private Button btnScannBar1,btnAgregarComidaManual;
+      private TextView tvNombreUsuario, tvCorreo, tvMaximoCalorias;
       private ZXingScannerView scanner;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -35,8 +42,23 @@ public class SessionUserActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         btnScannBar1=(Button)findViewById(R.id.btnScannBar1);
         btnAgregarComidaManual=(Button)findViewById(R.id.btnAgregarComidaManual);
+        tvMaximoCalorias = (TextView)findViewById(R.id.tvMaximoCalorias);
 
-        final Intent in =new Intent(this,SeleccionarProductoActivity.class);
+        Date fechactual = new Date();
+        CargarRegistroUsuarioHttpConexion.dia = fechactual.getDay();
+        CargarRegistroUsuarioHttpConexion.mes = fechactual.getMonth();
+        CargarRegistroUsuarioHttpConexion.ano = fechactual.getYear();
+
+
+
+
+
+
+        if (CrudUsuarioHttpConecction.usuario != null) {
+            tvMaximoCalorias.setText(CrudUsuarioHttpConecction.maximocalorias + "");
+        }
+
+            final Intent in =new Intent(this,SeleccionarProductoActivity.class);
         btnScannBar1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,6 +129,15 @@ public class SessionUserActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.opciones_menu2, menu);
+        tvNombreUsuario = (TextView)findViewById(R.id.tvNombreUsuarioNav);
+        tvCorreo = (TextView)findViewById(R.id.tvCorreoElectronicoNav);
+
+        if (CrudUsuarioHttpConecction.usuario != null){
+            String alias = CrudUsuarioHttpConecction.usuario.getNombreAlias();
+            String correo= CrudUsuarioHttpConecction.usuario.getCorreoElectronico();
+            tvNombreUsuario.setText(alias);
+            tvCorreo.setText(correo);
+        }
         return true;
     }
 
@@ -118,9 +149,9 @@ public class SessionUserActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
