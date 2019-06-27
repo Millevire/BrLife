@@ -26,6 +26,7 @@ public class CargarMantenedorDosAtributosHttpConecction {
     public static ArrayList<MantenedorDosAtributos> listaTipoPersona =new ArrayList<>();
     public static ArrayList<MantenedorDosAtributos> listaRol =new ArrayList<>();
     public static ArrayList<MantenedorDosAtributos> listaRegion =new ArrayList<>();
+    public static ArrayList<MantenedorDosAtributos> listaHorarioComida =new ArrayList<>();
     static ProgressDialog progreso;
 
     public static ArrayList<MantenedorDosAtributos> buscarMantenedorDosAtributos(Context context, String mantenedo) throws  IOException, JSONException {
@@ -97,6 +98,9 @@ public class CargarMantenedorDosAtributosHttpConecction {
                             case Rol:
                                 listaRol.add(mantenedor);
                                 break;
+                            case HorarioComida:
+                                listaHorarioComida.add(mantenedor);
+                                break;
                         }
                         listaMantenedors.add(mantenedor);
 
@@ -138,12 +142,17 @@ public class CargarMantenedorDosAtributosHttpConecction {
         return listaTipoPersona;
     }
 
+    public static ArrayList<MantenedorDosAtributos> getListaHorarioComida() {
+        return listaHorarioComida;
+    }
+
     public static void limpiarListas(){
         listaInteres.clear();
         listaTipoPersona.clear();
         listaRol.clear();
         listaObjetivo.clear();
         listaRegion.clear();
+        listaHorarioComida.clear();
     }
 
 

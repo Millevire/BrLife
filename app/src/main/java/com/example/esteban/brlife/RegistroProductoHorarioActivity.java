@@ -45,4 +45,9 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapterRegistroProducto.notifyDataSetChanged();
+    }
 }
