@@ -315,7 +315,7 @@ public class SessionUserActivity extends AppCompatActivity
             Toast.makeText(this, "Configuracion", Toast.LENGTH_SHORT).show();
 
             if (CrudUsuarioHttpConecction.usuario != null){
-                intentSetting.putExtra("usuarioSetting",CrudUsuarioHttpConecction.usuario);
+                intentSetting.putExtra("usuario",CrudUsuarioHttpConecction.usuario);
                 startActivity(intentSetting);
             }
 
@@ -337,6 +337,10 @@ public class SessionUserActivity extends AppCompatActivity
         btnHorarioComidaOnce.setEnabled(true);
         btnHorarioComidaCena.setEnabled(true);
 
+if (Float.parseFloat(tvCaloriasConsumidas.getText().toString())>Float.parseFloat(tvMaximoCalorias.getText().toString())){
+
+    tvCaloriasConsumidas.setTextColor(this.getResources().getColor(R.color.rojo));
+}
 
         try {
             CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuarioTotales("RegistroUsuario",

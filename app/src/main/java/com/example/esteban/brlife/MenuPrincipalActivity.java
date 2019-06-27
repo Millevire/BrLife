@@ -111,8 +111,9 @@ public class MenuPrincipalActivity extends AppCompatActivity {
 
             }else{
 
+
                 //BuscarProducto
-                Producto producto= CargarMantenedorProductoHttpConecction.buscarProductoCodigoBarra(result.getContents().toString());
+                Producto producto=CargarMantenedorProductoHttpConecction.buscarProductoCodigoBarra(result.getContents().toString());
 
                 if (producto !=null){
 
