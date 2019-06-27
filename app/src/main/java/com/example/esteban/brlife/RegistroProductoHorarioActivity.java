@@ -9,11 +9,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ListView;
 
+import com.example.esteban.brlife.Adaptadores.AdapterRegistroProducto;
+import com.example.esteban.brlife.ConeionWebServices.CargarRegistroUsuarioHttpConexion;
+
 import java.util.List;
 
 public class RegistroProductoHorarioActivity extends AppCompatActivity {
-    private SearchView svFiltroProductoHorario;
+    private android.support.v7.widget.SearchView svFiltroProductoHorario;
     private ListView lvProductoHorario;
+    private AdapterRegistroProducto adapterRegistroProducto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +26,12 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        svFiltroProductoHorario =(SearchView)findViewById(R.id.svFiltroProductoHorario);
-        lvProductoHorario=(ListView)findViewById(R.id.svFiltroProductoHorario);
+        svFiltroProductoHorario =(android.support.v7.widget.SearchView) findViewById(R.id.svFiltroProductoHorario);
+        lvProductoHorario=(ListView)findViewById(R.id.lvProductoHorario);
 
 
+        adapterRegistroProducto = new AdapterRegistroProducto(this, CargarRegistroUsuarioHttpConexion.getListaRegistro());
+        lvProductoHorario.setAdapter(adapterRegistroProducto);
         //Accion boton flotante
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -35,6 +41,8 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
     }
 
 }

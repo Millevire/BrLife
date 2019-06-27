@@ -25,7 +25,9 @@
             android:layout_height="60dp"
             android:background="@drawable/doscolores"
             android:elevation="3dp">
+
             <Button
+                android:id="@+id/btnbacklogin"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="40dp"
                 android:layout_height="60dp"
@@ -130,6 +132,7 @@
                     android:gravity="right">
 
                     <Switch
+                        android:id="@+id/swguardarcon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Recordar inicio de sesion"

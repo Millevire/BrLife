@@ -71,6 +71,7 @@ public class AdapterProducto extends BaseAdapter {
         //Variables id
         int idSabor;
         int idMarca;
+        int idtipoproducto;
         String nombreMarca;
         String nombreSabor;
 
@@ -137,10 +138,10 @@ public class AdapterProducto extends BaseAdapter {
         //id de marca y sabor de registro
         idMarca=listaProducto.get(position).getIdMarca();
         idSabor=listaProducto.get(position).getIdSabor();
-
+        idtipoproducto=listaProducto.get(position).getFkTipoProducto();
         //obtener nombre
-        nombreMarca= CargarMantenedorTresAtributosHttpConecction.buscarMarca(idMarca);
-        nombreSabor=CargarMantenedorTresAtributosHttpConecction.buscaSabor(idSabor);
+        nombreMarca= CargarMantenedorTresAtributosHttpConecction.buscarMarca(idMarca, idtipoproducto);
+        nombreSabor=CargarMantenedorTresAtributosHttpConecction.buscaSabor(idSabor, idtipoproducto);
 
         //Setear nombres en textview
         tvMarcaProducto.setText(nombreMarca);
@@ -170,8 +171,8 @@ public class AdapterProducto extends BaseAdapter {
                     listaProducto.add(producto);
 
                 }else {
-                    String sabor= CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor());
-                    String marca=CargarMantenedorTresAtributosHttpConecction.buscarMarca(producto.getIdMarca());
+                    String sabor= CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor(), producto.getIdProducto());
+                    String marca=CargarMantenedorTresAtributosHttpConecction.buscarMarca(producto.getIdMarca(), producto.getIdProducto());
                     String tipoProducto= CargarMantenedorTipoProductoHttpConecction.buscarNombre(producto.getFkTipoProducto());
                    if (sabor.toLowerCase(Locale.getDefault()).contains(filtro)){
                        listaProducto.add(producto);

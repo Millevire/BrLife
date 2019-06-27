@@ -34,9 +34,9 @@ public class CargarMantenedorTresAtributosHttpConecction {
     public static ArrayList<MantenedorTresAtributos>listaFiltroMarca=new ArrayList<>();
     public static ArrayList<MantenedorTresAtributos>listaFiltrSabor=new ArrayList<>();
 
-    public static String buscarMarca(int idMarca){
+    public static String buscarMarca(int idMarca, int idtiṕo){
         for (MantenedorTresAtributos mantenedorTresAtributos: listaMarca){
-            if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMarca){
+            if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMarca && mantenedorTresAtributos.getFkMantenedorTresAtributos() == idtiṕo){
                 return mantenedorTresAtributos.getNombreMantenedorTresAtributos();
             }
 
@@ -45,9 +45,10 @@ public class CargarMantenedorTresAtributosHttpConecction {
 
     }
 
-    public static String buscaSabor(int idMarca){
+
+    public static String buscaSabor(int idMarca, int idtipo){
         for (MantenedorTresAtributos mantenedorTresAtributos: listaSabor){
-            if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMarca){
+            if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMarca && mantenedorTresAtributos.getFkMantenedorTresAtributos() == idtipo){
                 return mantenedorTresAtributos.getNombreMantenedorTresAtributos();
             }
 

@@ -54,8 +54,8 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
             Producto producto=(Producto) bundle.getSerializable("producto");
 
             tvNombreProductoRegistro.setText(producto.getNombreProducto());
-            tvSaborRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor()));
-            tvMarcaRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscarMarca(producto.getIdMarca()));
+            tvSaborRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor(),producto.getFkTipoProducto()));
+            tvMarcaRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscarMarca(producto.getIdMarca(),producto.getFkTipoProducto()));
 
         }
 

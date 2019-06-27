@@ -7,6 +7,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TabWidget;
 import android.widget.Toast;
 
+import com.example.esteban.brlife.Adaptadores.InputFilterMinMax;
 import com.example.esteban.brlife.Adaptadores.SpinAdapter;
 import com.example.esteban.brlife.Adaptadores.SpinAdapterComuna;
 import com.example.esteban.brlife.Adaptadores.SpinAdapterTresAtributos;
@@ -79,6 +81,7 @@ public class Form1Activity extends AppCompatActivity {
         etApellidoPaternoForm1=(EditText)findViewById(R.id.etApellidoPaternoForm1);
         etApelidoMaternoForm1=(EditText)findViewById(R.id.etApelidoMaternoForm1);
         etCorreoElectronicoForm1=(EditText)findViewById(R.id.etCorreoElectronicoForm1);
+
         etDiaForm1=(EditText)findViewById(R.id.etDiaForm1);
         etMesForm1=(EditText)findViewById(R.id.etMesForm1);
         etAnoForm1=(EditText)findViewById(R.id.etAnoForm1);
@@ -86,7 +89,9 @@ public class Form1Activity extends AppCompatActivity {
 
      //Objeto Usuario
         final Usuario usuario=new Usuario();
-
+        etDiaForm1.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "31")});
+        etMesForm1.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "12")});
+        etAnoForm1.setFilters(new InputFilter[]{ new InputFilterMinMax("1", "2010")});
 
         //permisos httpconection
         StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();

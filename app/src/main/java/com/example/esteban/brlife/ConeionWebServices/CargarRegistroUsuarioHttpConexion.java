@@ -67,8 +67,8 @@ public class CargarRegistroUsuarioHttpConexion {
                         registroUsuario.setMes(jsonObject.getInt("Mes"));
                         registroUsuario.setAno(jsonObject.getInt("Ano"));
                         registroUsuario.setHora(jsonObject.getString("Hora"));
-                        registroUsuario.setAno(jsonObject.getInt("Id_Producto"));
-                        registroUsuario.setAno(jsonObject.getInt("Id_HorarioComida"));
+                        registroUsuario.setIdproducto(jsonObject.getInt("Id_Producto"));
+                        registroUsuario.setIdhorariocomida(jsonObject.getInt("Id_HorarioComida"));
                         registroUsuario.setValorporcion((float) jsonObject.getDouble("Valor_Porcion"));
                         listaRegistro.add(registroUsuario);
 
@@ -139,6 +139,7 @@ public class CargarRegistroUsuarioHttpConexion {
     public static float TraerDatosRegistroUsuarioDiaria(String mantenedo, int idusuario, int dia, int mes, int ano) throws IOException, JSONException {
 
         listadiaria = new ArrayList<>();
+        listadiaria.clear();
         URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=sd" +
                 "&Id_Usuario="+idusuario+
                 "&Dia="+dia +

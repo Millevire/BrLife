@@ -14,7 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +26,6 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -46,7 +44,7 @@ public class SessionUserActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_session_user);
+        setContentView(R.layout.barra_lateral);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         btnScannBar1=(Button)findViewById(R.id.btnScannBar1);
@@ -130,7 +128,7 @@ public class SessionUserActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.barra);
         navigationView.setNavigationItemSelectedListener(this);
 
         btnHorarioComidaDesayuno.setOnClickListener(new View.OnClickListener() {
@@ -294,10 +292,10 @@ public class SessionUserActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
+        if (id == R.id.nav_exit) {
+            finish();
+        } else if (id == R.id.nav_manage) {
+            Toast.makeText(this, "Configuracion", Toast.LENGTH_SHORT).show();
         }  else if (id == R.id.nav_manage) {
 
         }

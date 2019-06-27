@@ -14,6 +14,7 @@ import com.example.esteban.brlife.Clases.ProductoNutriente;
 import com.example.esteban.brlife.Clases.RegistroUsuario;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTipoProductoHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.Enum.SeleccionTipoProducto;
 import com.example.esteban.brlife.R;
 
@@ -70,6 +71,13 @@ public AdapterRegistroProducto(Context context, ArrayList<RegistroUsuario>listaR
 
         //BuscarProducto
         Producto producto=CargarMantenedorProductoHttpConecction.buscarProducto(listaRegistroUsuario.get(position).getIdproducto());
+
+        tvNombreProductoRegistrado.setText(producto.getNombreTipoProducto());
+        tvSaborProductoProductoRegistrado.setText(CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor(),producto.getFkTipoProducto()));
+        tvMarcaProductoRegistrado.setText(CargarMantenedorTresAtributosHttpConecction.buscarMarca(producto.getIdMarca(),producto.getFkTipoProducto()));
+        tvHoraProductoRegistrado.setText(listaRegistroUsuario.get(position).getHora());
+        tvProcionProductoRegistrado.setText(listaRegistroUsuario.get(position).getValorporcion() +"");
+
 
       SeleccionTipoProducto nombreTipoProducto= SeleccionTipoProducto.valueOf(producto.getNombreTipoProducto());
 
