@@ -231,7 +231,7 @@ public class CargarRegistroUsuarioHttpConexion {
         }finally {
             conexion.disconnect();
         }
-        listaRegistro.add(registroUsuario);
+        //listaRegistro.add(registroUsuario);
     }
 
     public static void EliminarRegistro(String mantenedo, RegistroUsuario registroUsuario) throws IOException, JSONException {

@@ -24,6 +24,7 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
     private TextView tvNombreProductoRegistro,tvSaborRegistro,tvMarcaRegistro;
@@ -62,9 +63,6 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
         spinAdapter = new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarMantenedorDosAtributosHttpConecction.getListaHorarioComida());
         spHorarioComidaRegistro.setAdapter(spinAdapter);
 
-        adapterProductoNutriente = new AdapterProductoNutriente(this, CargarMantenedorProductoNutrienteHttpConecction.getListaProductoNutriente());
-        lvNutrientesRegistro.setAdapter(adapterProductoNutriente);
-
         final Bundle bundle=getIntent().getExtras();
 
         if (bundle !=null){
@@ -73,15 +71,41 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
             tvNombreProductoRegistro.setText(producto.getNombreProducto());
             tvSaborRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor(),producto.getFkTipoProducto()));
             tvMarcaRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscarMarca(producto.getIdMarca(),producto.getFkTipoProducto()));
+            etPorcionRegistro.setText(producto.getCantidadRacion()+"");
+            try {
+                CargarMantenedorProductoNutrienteHttpConecction.buscarMantenedorProductoNutriente(this,"ProductoNutriente",producto.getIdProducto());
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
 
         }
+
+        adapterProductoNutriente = new AdapterProductoNutriente(this, CargarMantenedorProductoNutrienteHttpConecction.getListaProductoNutriente());
+        lvNutrientesRegistro.setAdapter(adapterProductoNutriente);
 
 
         btnAgregarRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                float porcion = 0;
+                try{
+                    porcion = Float.parseFloat(etPorcionRegistro.getText().toString());
+                }catch (Exception ex){
+                    porcion = 0;
+                }
+                Date date  =  new Date();
+
+                String hora = date.getHours() + ":"+  date.getMinutes();
+
                 RegistroUsuario registroUsuario = new RegistroUsuario(0, CrudUsuarioHttpConecction.usuario.getIdUsuario(),
-                        CargarRegistroUsuarioHttpConexion.dia,CargarRegistroUsuarioHttpConexion.mes,CargarRegistroUsuarioHttpConexion.ano,"",producto.getIdProducto(),1,Float.parseFloat(etPorcionRegistro.getText().toString()));
+                        CargarRegistroUsuarioHttpConexion.dia,
+                        CargarRegistroUsuarioHttpConexion.mes,
+                        CargarRegistroUsuarioHttpConexion.ano,hora,producto.getIdProducto(),
+                        1,
+                        porcion);
                 try {
                     CargarRegistroUsuarioHttpConexion.GuardarRegistro("RegistroUsuario",registroUsuario);
                 } catch (IOException e) {
@@ -89,6 +113,7 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                finish();
             }
         });
     }
