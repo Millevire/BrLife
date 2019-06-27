@@ -326,5 +326,34 @@ public class SessionUserActivity extends AppCompatActivity
         btnHorarioComidaAlmuerzo.setEnabled(true);
         btnHorarioComidaOnce.setEnabled(true);
         btnHorarioComidaCena.setEnabled(true);
+
+
+        try {
+            CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuarioTotales("RegistroUsuario",
+                    CrudUsuarioHttpConecction.usuario.getIdUsuario(),
+                    CargarRegistroUsuarioHttpConexion.dia,
+                    CargarRegistroUsuarioHttpConexion.mes,
+                    CargarRegistroUsuarioHttpConexion.ano);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        btnHorarioComidaDesayuno.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(0).getTotalhorariocomida() + "");
+        btnHorarioComidaAlmuerzo.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(1).getTotalhorariocomida() + "");
+        btnHorarioComidaOnce.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(2).getTotalhorariocomida() + "");
+        btnHorarioComidaCena.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(3).getTotalhorariocomida() + "");
+        try {
+            tvCaloriasConsumidas.setText(CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuarioDiaria("RegistroUsuario",
+                    CrudUsuarioHttpConecction.usuario.getIdUsuario(),
+                    CargarRegistroUsuarioHttpConexion.dia,
+                    CargarRegistroUsuarioHttpConexion.mes,
+                    CargarRegistroUsuarioHttpConexion.ano) + "");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,14 +1,22 @@
 package com.example.esteban.brlife;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.esteban.brlife.Adaptadores.AdapterProducto;
+import com.example.esteban.brlife.Clases.Producto;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoNutrienteHttpConecction;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.List;
 
 public class SeleccionarProductoActivity extends AppCompatActivity {
@@ -45,6 +53,27 @@ public class SeleccionarProductoActivity extends AppCompatActivity {
                 adapterProducto.Filtro(filtro);
 
                 return true;
+            }
+        });
+
+
+        lvFiltoProducto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Intent intent =new Intent(SeleccionarProductoActivity.this,NuevoRegistroProductoUsuarioActivity.class);
+                Producto producto = CargarMantenedorProductoHttpConecction.listaProducto.get(position);
+
+                try {
+                    CargarMantenedorProductoNutrienteHttpConecction.buscarMantenedorProductoNutriente(SeleccionarProductoActivity.this,"ProductoNutriente",producto.getIdProducto());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                intent.putExtra("Producto",producto);
+                startActivity(intent);
+
             }
         });
 

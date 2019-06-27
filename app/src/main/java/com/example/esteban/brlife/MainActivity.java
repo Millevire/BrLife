@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTipoProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
@@ -55,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
                     //Cargar lista sabor
                     CargarMantenedorTresAtributosHttpConecction.buscarMantenedorTresAtributos(MainActivity.this,SelccionMantenedor.Sabor.getSeleccion());
+                    CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(MainActivity.this,SelccionMantenedor.HorarioComida.getSeleccion());
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {

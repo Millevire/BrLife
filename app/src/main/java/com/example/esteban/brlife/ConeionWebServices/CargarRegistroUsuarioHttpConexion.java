@@ -201,7 +201,7 @@ public class CargarRegistroUsuarioHttpConexion {
 
     public static void GuardarRegistro(String mantenedo, RegistroUsuario registroUsuario) throws IOException, JSONException {
 
-        listadiaria = new ArrayList<>();
+        //listadiaria = new ArrayList<>();
         URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=i" +
                 "&Id_Usuario="+registroUsuario.getIdusuario()+
                 "&Dia="+registroUsuario.getDia() +
@@ -236,7 +236,7 @@ public class CargarRegistroUsuarioHttpConexion {
 
     public static void EliminarRegistro(String mantenedo, RegistroUsuario registroUsuario) throws IOException, JSONException {
 
-        listadiaria = new ArrayList<>();
+        //listadiaria = new ArrayList<>();
         URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=e" +
                 "&Id_RegistroUsuario="+registroUsuario.getIdregistrousuario()+
                 "&Id_Usuario="+registroUsuario.getIdusuario()+
