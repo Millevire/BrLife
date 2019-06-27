@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    btnIngresar.setVisibility(View.GONE);
+                    btnIngresar.setEnabled(false);
                     int count = 0;
                     for(int i = 0; i < etContraseñaLogin.getText().length(); i++) {
                         if(Character.isWhitespace(etContraseñaLogin.getText().charAt(i))) count++; }
@@ -163,6 +163,8 @@ public class LoginActivity extends AppCompatActivity {
                         etUsuarioLogin.setError("Campo requerido");
                         etContraseñaLogin.setError("Campo requediro");
                     }
+                btnIngresar.setEnabled(true);
+
 
             }
         });

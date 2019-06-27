@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.esteban.brlife.Clases.ProductoNutriente;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoNutrienteHttpConecction;
 import com.example.esteban.brlife.R;
 
 import java.lang.reflect.Array;
@@ -51,8 +52,8 @@ public class AdapterProductoNutriente extends BaseAdapter {
         TextView tvNombreNutriente=convertView.findViewById(R.id.tvNombreNutriente);
         TextView tvValorProductoNutriente=convertView.findViewById(R.id.tvValorProductoNutriente);
 
-
-        tvValorProductoNutriente.setText(String.valueOf(listaProductoNutriente.get(position).getIdNutriente()));
+        tvNombreNutriente.setText(CargarMantenedorProductoNutrienteHttpConecction.listaProductoNutriente.get(position).getNombreNutriente());
+        tvValorProductoNutriente.setText(String.valueOf(listaProductoNutriente.get(position).getValor()));
 
         return convertView;
     }

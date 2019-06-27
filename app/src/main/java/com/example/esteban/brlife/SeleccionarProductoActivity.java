@@ -63,14 +63,6 @@ public class SeleccionarProductoActivity extends AppCompatActivity {
                 final Intent intent =new Intent(SeleccionarProductoActivity.this,NuevoRegistroProductoUsuarioActivity.class);
                 Producto producto = CargarMantenedorProductoHttpConecction.listaProducto.get(position);
 
-                try {
-                    CargarMantenedorProductoNutrienteHttpConecction.buscarMantenedorProductoNutriente(SeleccionarProductoActivity.this,"ProductoNutriente",producto.getIdProducto());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
                 intent.putExtra("Producto",producto);
                 startActivity(intent);
 
