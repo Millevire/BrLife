@@ -15,7 +15,8 @@ package com.example.esteban.brlife.Enum;
          TipoPersona("TipoPersona"),
          Objetivo("Objetivo"),
          ProductoNutriente("ProductoNutriente"),
-         Usuario("Usuario");
+         Usuario("Usuario"),
+         InteresUsuario("InteresUsuario");
 
         private String seleccion;
 

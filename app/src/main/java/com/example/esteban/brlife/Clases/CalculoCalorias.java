@@ -14,7 +14,7 @@ public class CalculoCalorias {
 
     public static float caloriasMaximasDiarias;
 
-    public static float calcularCalorias(int peso, int altura, int edad, int rol, int sexo, int objetivo) {
+   public static float calcularCalorias(float peso, float altura, int edad, int rol, int sexo, int objetivo) {
 
         //Variable globales
         float TMB = 0;
@@ -45,13 +45,16 @@ public class CalculoCalorias {
 
             //Verificamos que el objeto no sea nulo
             if (valorRol != null) {
+
+                float valor=valorRol.getValorRol();
+
                 caloriasMaximasDiarias = (TMB * valorRol.getValorRol());
 
                 //retornamos valor de calorias para un hombre
                 if (nombreObjetivo.equals("Bajar de peso")) {
-                    return caloriasMaximasDiarias-valorBajarPeso;
+                    return (float) (caloriasMaximasDiarias-500.0);
                 }else if(nombreObjetivo.equals("Subir de peso")){
-                    return caloriasMaximasDiarias+valorAumentoPeso;
+                    return (float) (caloriasMaximasDiarias+500.0);
                 }else return caloriasMaximasDiarias;
 
 
@@ -68,9 +71,9 @@ public class CalculoCalorias {
 
             //retornamos valor de calorias para una mujer
             if (nombreObjetivo.equals("Bajar de peso")) {
-                return caloriasMaximasDiarias-valorBajarPeso;
+                return (float) (caloriasMaximasDiarias-500.0);
             }else if(nombreObjetivo.equals("Subir de peso")){
-                return caloriasMaximasDiarias+valorAumentoPeso;
+                return (float) (caloriasMaximasDiarias+500.0);
             }else return caloriasMaximasDiarias;
         }
 

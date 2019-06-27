@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.esteban.brlife.Clases.CalculoCalorias;
 import com.example.esteban.brlife.Clases.Usuario;
 import com.example.esteban.brlife.Clases.UsuarioInteres;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
@@ -24,8 +25,10 @@ import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributo
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarNuevoIdHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CrudUsuario;
+import com.example.esteban.brlife.ConeionWebServices.CrudUsuarioHttpConecction;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.Enum.SeleccionSexo;
+import com.example.esteban.brlife.Enum.SeleccionValorRol;
 
 import org.json.JSONException;
 
@@ -46,6 +49,7 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
     private DateTimeFormatter ftm;
     public LocalDate fechaNac;
     public LocalDate ahora;
+    public float caloriasMaximas=0;
 
 
 
@@ -91,24 +95,26 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
         if (bundle !=null) {
             Usuario usuario = (Usuario) bundle.getSerializable("usuario");
 
+
+
             //Obtener edad
             LocalDate date = null;
             ftm = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            //usuario.setFechaNacimiento(date.format(ftm));
             fechaNac = LocalDate.parse(usuario.getFechaNacimiento(),ftm);
-
-            //fechaNac = LocalDate.parse(usuario.getFechaNacimiento(), ftm);
-          // String fechaNac= String.for
             Period periodo = Period.between(fechaNac, ahora);
-
             try {
                 tvEdadValidacion.setText(periodo.getYears() + "");
+
+                new SeleccionValorRol();
+                tvCaloriasMaximasValidacion.setText(String.valueOf(CalculoCalorias.calcularCalorias(usuario.getPeso(),usuario.getEstatura(),periodo.getYears(),usuario.getFkRol(),usuario.getSexo(),usuario.getFkObjetivo())));
+                caloriasMaximas=CalculoCalorias.calcularCalorias(usuario.getPeso(),usuario.getEstatura(),periodo.getYears(),usuario.getFkRol(),usuario.getSexo(),usuario.getFkObjetivo());
             }catch (Exception ex){
                 tvEdadValidacion.setText("");
 
             }
 
             //Calcular calorias maximas
+
 
 
             tvNombreValidacion.setText(usuario.getNombreUsuario());
@@ -147,7 +153,15 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
 
                         usuario.setIdUsuario(idUsuario);
 
-                        new CrudUsuario(ValidacionRegistroUsuarioActivity.this,usuario,ValidacionRegistroUsuarioActivity.this.getString(R.string.nuevo));
+                        //new CrudUsuario(ValidacionRegistroUsuarioActivity.this,usuario,ValidacionRegistroUsuarioActivity.this.getString(R.string.nuevo));
+
+                       CrudUsuarioHttpConecction.ActualizarUsuario(SelccionMantenedor.Usuario.getSeleccion(),usuario,caloriasMaximas);
+
+                        //Inserat interes
+                       for (UsuarioInteres usuarioInteres: CargarBaseDeDatosUsuarioInteres.getListaUsuarioInteres()){
+                           CrudUsuarioHttpConecction.InsertarUsuarioInteres(SelccionMantenedor.InteresUsuario.getSeleccion(),usuario.getIdUsuario(),usuarioInteres.getIdInteres());
+                        }
+
 
                     } catch (IOException e) {
                         e.printStackTrace();
