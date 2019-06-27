@@ -60,6 +60,17 @@ public class CargarMantenedorProductoHttpConecction {
         return null;
     }
 
+    public static Producto buscarProductoCodigoBarra(String codigoBarra){
+        for (Producto producto:listaProducto){
+            if (producto.getCodigoBarra().equals(codigoBarra)){
+                return producto;
+            }
+
+        }
+        return null;
+    }
+
+
     public static void agregar(Producto producto){
 
         listaProducto.add(producto);

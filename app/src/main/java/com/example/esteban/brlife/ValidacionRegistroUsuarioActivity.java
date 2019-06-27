@@ -1,5 +1,6 @@
 package com.example.esteban.brlife;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.annotation.RequiresApi;
@@ -89,6 +90,10 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        //Envio a siguente actividad
+        final Intent intent =new Intent(this, SessionUserActivity.class);
+
+
         //Bundle que traera objeto usuario
         final Bundle bundle=getIntent().getExtras();
 
@@ -161,6 +166,14 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
                        for (UsuarioInteres usuarioInteres: CargarBaseDeDatosUsuarioInteres.getListaUsuarioInteres()){
                            CrudUsuarioHttpConecction.InsertarUsuarioInteres(SelccionMantenedor.InteresUsuario.getSeleccion(),usuario.getIdUsuario(),usuarioInteres.getIdInteres());
                         }
+
+
+                       CrudUsuarioHttpConecction.usuario=usuario;
+                       CrudUsuarioHttpConecction.maximocalorias=caloriasMaximas;
+                          //Enviar a sessionActivity
+                       // intent.putExtra("nuevoUsuario",usuario);
+
+                        startActivity(intent);
 
 
                     } catch (IOException e) {

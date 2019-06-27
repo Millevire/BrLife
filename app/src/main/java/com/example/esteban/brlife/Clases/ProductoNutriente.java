@@ -5,12 +5,20 @@ public class ProductoNutriente {
     private int idProducto;
     private int idNutriente;
     private float valor;
+    private String accion;
+    private String nombreNutriente;
 
-    public ProductoNutriente(int idProductoNutriente, int idProducto, int idNutriente, float valor) {
+
+    public ProductoNutriente(int idProductoNutriente, int idProducto, int idNutriente, float valor, String accion,String nombreNutriente) {
         this.idProductoNutriente = idProductoNutriente;
         this.idProducto = idProducto;
         this.idNutriente = idNutriente;
         this.valor = valor;
+        this.accion=accion;
+        this.nombreNutriente=nombreNutriente;
+    }
+
+    public ProductoNutriente() {
     }
 
     public int getIdProductoNutriente() {
@@ -44,4 +52,21 @@ public class ProductoNutriente {
     public void setValor(float valor) {
         this.valor = valor;
     }
+
+    public String getAccion() {
+        return accion;
+    }
+
+    public void setAccion(String accion) {
+        this.accion = accion;
+    }
+
+    public String getNombreNutriente() {
+        return nombreNutriente;
+    }
+
+    public void setNombreNutriente(String nombreNutriente) {
+        this.nombreNutriente = nombreNutriente;
+    }
 }
+
