@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.esteban.brlife.Clases.Producto;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantendorComunaHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -101,12 +103,23 @@ public class MenuPrincipalActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         IntentResult result=IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
 
+        final Intent intentProducto =new Intent(this,NuevoRegistroProductoUsuarioActivity.class);
+
         if (result !=null){
             if (result.getContents()==null){
                 Toast.makeText(this, "Cancelaste escaneo", Toast.LENGTH_LONG).show();
 
             }else{
 
+                //BuscarProducto
+                Producto producto= CargarMantenedorProductoHttpConecction.buscarProductoCodigoBarra(result.getContents().toString());
+
+                if (producto !=null){
+
+                    intentProducto.putExtra("Producto",producto);
+                    startActivity(intentProducto);
+
+                }
 
                 Toast.makeText(this, " "+result.getContents().toString(), Toast.LENGTH_SHORT).show();
             }

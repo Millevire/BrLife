@@ -68,6 +68,7 @@ public class SessionUserActivity extends AppCompatActivity
         final Intent intent =new Intent(this,RegistroProductoHorarioActivity.class);
 
 
+
         Date fechactual = new Date();
 
         CargarRegistroUsuarioHttpConexion.dia = Integer.parseInt(sdfDia.format(fechactual));
@@ -304,12 +305,21 @@ public class SessionUserActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
+        final Intent intentSetting =new Intent(this,ValidacionRegistroUsuarioActivity.class);
         int id = item.getItemId();
 
         if (id == R.id.nav_exit) {
             finish();
         } else if (id == R.id.nav_manage) {
             Toast.makeText(this, "Configuracion", Toast.LENGTH_SHORT).show();
+
+            if (CrudUsuarioHttpConecction.usuario != null){
+                intentSetting.putExtra("usuarioSetting",CrudUsuarioHttpConecction.usuario);
+                startActivity(intentSetting);
+            }
+
+
         }  else if (id == R.id.nav_manage) {
 
         }
