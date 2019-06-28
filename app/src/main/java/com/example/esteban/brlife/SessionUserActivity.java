@@ -90,11 +90,28 @@ public class SessionUserActivity extends AppCompatActivity
         }
 
 
-        btnHorarioComidaDesayuno.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(0).getTotalhorariocomida() + "");
-        btnHorarioComidaAlmuerzo.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(1).getTotalhorariocomida() + "");
-        btnHorarioComidaOnce.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(2).getTotalhorariocomida() + "");
-        btnHorarioComidaCena.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(3).getTotalhorariocomida() + "");
+        try{
+            btnHorarioComidaDesayuno.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(0).getTotalhorariocomida() + "");
+        }catch (Exception ex){
+            btnHorarioComidaDesayuno.setText("");
 
+        }
+        try{
+            btnHorarioComidaAlmuerzo.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(1).getTotalhorariocomida() + "");
+        }catch (Exception ex){
+            btnHorarioComidaAlmuerzo.setText("");
+
+        }
+        try{
+            btnHorarioComidaOnce.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(2).getTotalhorariocomida() + "");
+        }catch (Exception ex){
+            btnHorarioComidaOnce.setText("");
+        }
+        try{
+            btnHorarioComidaCena.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(3).getTotalhorariocomida() + "");
+        }catch (Exception ex){
+            btnHorarioComidaCena.setText("");
+        }
 
         try {
             tvCaloriasConsumidas.setText(CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuarioDiaria("RegistroUsuario",
@@ -103,12 +120,16 @@ public class SessionUserActivity extends AppCompatActivity
                     CargarRegistroUsuarioHttpConexion.mes,
                     CargarRegistroUsuarioHttpConexion.ano) + "");
         } catch (IOException e) {
-            e.printStackTrace();
+            tvCaloriasConsumidas.setText("0");
         } catch (JSONException e) {
-            e.printStackTrace();
+            tvCaloriasConsumidas.setText("0");
         }
         if (CrudUsuarioHttpConecction.usuario != null) {
-            tvMaximoCalorias.setText(CrudUsuarioHttpConecction.maximocalorias + "");
+            try {
+                tvMaximoCalorias.setText(CrudUsuarioHttpConecction.maximocalorias + "");
+            }catch (Exception ex){
+                tvMaximoCalorias.setText("");
+            }
         }
 
             final Intent in =new Intent(this,SeleccionarProductoActivity.class);
@@ -339,7 +360,7 @@ public class SessionUserActivity extends AppCompatActivity
 
 if (Float.parseFloat(tvCaloriasConsumidas.getText().toString())>Float.parseFloat(tvMaximoCalorias.getText().toString())){
 
-    tvCaloriasConsumidas.setTextColor(this.getResources().getColor(R.color.rojo));
+    //tvCaloriasConsumidas.setTextColor(this.getResources().getColor(R.color.rojo));
 }
 
         try {
@@ -354,10 +375,28 @@ if (Float.parseFloat(tvCaloriasConsumidas.getText().toString())>Float.parseFloat
             e.printStackTrace();
         }
 
-        btnHorarioComidaDesayuno.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(0).getTotalhorariocomida() + "");
-        btnHorarioComidaAlmuerzo.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(1).getTotalhorariocomida() + "");
-        btnHorarioComidaOnce.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(2).getTotalhorariocomida() + "");
-        btnHorarioComidaCena.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(3).getTotalhorariocomida() + "");
+        try{
+            btnHorarioComidaDesayuno.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(0).getTotalhorariocomida() + "");
+        }catch (Exception ex){
+            btnHorarioComidaDesayuno.setText("");
+
+        }
+        try{
+            btnHorarioComidaAlmuerzo.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(1).getTotalhorariocomida() + "");
+        }catch (Exception ex){
+            btnHorarioComidaAlmuerzo.setText("");
+
+        }
+        try{
+            btnHorarioComidaOnce.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(2).getTotalhorariocomida() + "");
+        }catch (Exception ex){
+            btnHorarioComidaOnce.setText("");
+        }
+        try{
+            btnHorarioComidaCena.setText(CargarRegistroUsuarioHttpConexion.listatotales.get(3).getTotalhorariocomida() + "");
+        }catch (Exception ex){
+            btnHorarioComidaCena.setText("");
+        }
         try {
             tvCaloriasConsumidas.setText(CargarRegistroUsuarioHttpConexion.TraerDatosRegistroUsuarioDiaria("RegistroUsuario",
                     CrudUsuarioHttpConecction.usuario.getIdUsuario(),
@@ -365,9 +404,9 @@ if (Float.parseFloat(tvCaloriasConsumidas.getText().toString())>Float.parseFloat
                     CargarRegistroUsuarioHttpConexion.mes,
                     CargarRegistroUsuarioHttpConexion.ano) + "");
         } catch (IOException e) {
-            e.printStackTrace();
+            tvCaloriasConsumidas.setText("0");
         } catch (JSONException e) {
-            e.printStackTrace();
+            tvCaloriasConsumidas.setText("0");
         }
     }
 }

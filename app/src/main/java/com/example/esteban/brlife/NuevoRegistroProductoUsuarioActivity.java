@@ -3,6 +3,7 @@ package com.example.esteban.brlife;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,6 +20,7 @@ import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoNut
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarRegistroUsuarioHttpConexion;
 import com.example.esteban.brlife.ConeionWebServices.CrudUsuarioHttpConecction;
+import com.example.esteban.brlife.Enum.SelccionMantenedor;
 
 import org.json.JSONException;
 
@@ -36,6 +38,7 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
     public AdapterProductoNutriente adapterProductoNutriente;
     public ArrayList<ProductoNutriente> listaProductoNutrientes;
     public Producto producto;
+    public int idhorario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +63,6 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
         btnAgregarRegistro=(Button)findViewById(R.id.btnAgregarRegistro);
         //#endregion
 
-        spinAdapter = new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarMantenedorDosAtributosHttpConecction.getListaHorarioComida());
-        spHorarioComidaRegistro.setAdapter(spinAdapter);
-
         final Bundle bundle=getIntent().getExtras();
 
         if (bundle !=null){
@@ -73,6 +73,7 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
             tvMarcaRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscarMarca(producto.getIdMarca(),producto.getFkTipoProducto()));
             etPorcionRegistro.setText(producto.getCantidadRacion()+"");
             try {
+                CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(this, SelccionMantenedor.HorarioComida.getSeleccion());
                 CargarMantenedorProductoNutrienteHttpConecction.buscarMantenedorProductoNutriente(this,"ProductoNutriente",producto.getIdProducto());
             } catch (IOException e) {
                 e.printStackTrace();
@@ -85,7 +86,20 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
 
         adapterProductoNutriente = new AdapterProductoNutriente(this, CargarMantenedorProductoNutrienteHttpConecction.getListaProductoNutriente());
         lvNutrientesRegistro.setAdapter(adapterProductoNutriente);
+        spinAdapter = new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarMantenedorDosAtributosHttpConecction.getListaHorarioComida());
+        spHorarioComidaRegistro.setAdapter(spinAdapter);
 
+        spHorarioComidaRegistro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                idhorario = CargarMantenedorDosAtributosHttpConecction.listaHorarioComida.get(position).getIdMantenedorDosAtributos();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         btnAgregarRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +118,7 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
                         CargarRegistroUsuarioHttpConexion.dia,
                         CargarRegistroUsuarioHttpConexion.mes,
                         CargarRegistroUsuarioHttpConexion.ano,hora,producto.getIdProducto(),
-                        1,
+                        idhorario,
                         porcion);
                 try {
                     CargarRegistroUsuarioHttpConexion.GuardarRegistro("RegistroUsuario",registroUsuario);

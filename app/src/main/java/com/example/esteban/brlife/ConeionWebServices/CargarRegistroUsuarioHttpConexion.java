@@ -20,9 +20,9 @@ public class CargarRegistroUsuarioHttpConexion {
     public static int dia;
     public static int mes;
     public static int ano;
-    public static ArrayList<RegistroUsuario> listaRegistro;
-    public static ArrayList<RegistroHorarioTotales> listatotales;
-    public static ArrayList<RegistroDiario> listadiaria;
+    public static ArrayList<RegistroUsuario> listaRegistro = new ArrayList<>();
+    public static ArrayList<RegistroHorarioTotales> listatotales = new ArrayList<>();
+    public static ArrayList<RegistroDiario> listadiaria = new ArrayList<>();
 
     public static ArrayList<RegistroUsuario> getListaRegistro() {
         return listaRegistro;
@@ -30,7 +30,8 @@ public class CargarRegistroUsuarioHttpConexion {
 
     public static void TraerDatosRegistroUsuario(String mantenedo, int idusuario, int dia, int mes, int ano, int horariocomida) throws IOException, JSONException {
 
-        listaRegistro = new ArrayList<>();
+        //listaRegistro = new ArrayList<>();
+        listaRegistro.clear();
         URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=s" +
                 "&Id_Usuario="+idusuario+
                 "&Dia="+dia +
@@ -55,10 +56,11 @@ public class CargarRegistroUsuarioHttpConexion {
                 JSONObject response = new JSONObject(responseSTR.toString());
                 JSONArray json=response.optJSONArray("RegistroUsuario");
 
-                RegistroUsuario registroUsuario = new RegistroUsuario();
+                RegistroUsuario registroUsuario;
 
                 try {
                     for (int i=0; i<json.length(); i++){
+                        registroUsuario = new RegistroUsuario();
                         JSONObject jsonObject= null ;
                         jsonObject=json.getJSONObject(i);
                         registroUsuario.setIdregistrousuario(jsonObject.getInt("Id_RegistroUsuario"));
@@ -88,7 +90,8 @@ public class CargarRegistroUsuarioHttpConexion {
 
     public static void TraerDatosRegistroUsuarioTotales(String mantenedo, int idusuario, int dia, int mes, int ano) throws IOException, JSONException {
 
-        listatotales = new ArrayList<>();
+        //listatotales = new ArrayList<>();
+        listatotales.clear();
         URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=stth" +
                 "&Id_Usuario="+idusuario+
                 "&Dia="+dia +
@@ -202,6 +205,7 @@ public class CargarRegistroUsuarioHttpConexion {
     public static void GuardarRegistro(String mantenedo, RegistroUsuario registroUsuario) throws IOException, JSONException {
 
         //listadiaria = new ArrayList<>();
+        listadiaria.clear();
         URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=i" +
                 "&Id_Usuario="+registroUsuario.getIdusuario()+
                 "&Dia="+registroUsuario.getDia() +
@@ -231,7 +235,7 @@ public class CargarRegistroUsuarioHttpConexion {
         }finally {
             conexion.disconnect();
         }
-        //listaRegistro.add(registroUsuario);
+        listaRegistro.add(registroUsuario);
     }
 
     public static void EliminarRegistro(String mantenedo, RegistroUsuario registroUsuario) throws IOException, JSONException {
@@ -270,7 +274,7 @@ public class CargarRegistroUsuarioHttpConexion {
 
     public static void ActualizarRegistro(String mantenedo, RegistroUsuario registroUsuario) throws IOException, JSONException {
 
-        listadiaria = new ArrayList<>();
+        //listadiaria = new ArrayList<>();
         URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=a" +
                 "&Id_RegistroUsuario="+registroUsuario.getIdregistrousuario()+
                 "&Id_Usuario="+registroUsuario.getIdusuario()+

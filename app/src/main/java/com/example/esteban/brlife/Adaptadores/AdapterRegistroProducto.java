@@ -72,7 +72,7 @@ public AdapterRegistroProducto(Context context, ArrayList<RegistroUsuario>listaR
         //BuscarProducto
         Producto producto=CargarMantenedorProductoHttpConecction.buscarProducto(listaRegistroUsuario.get(position).getIdproducto());
 
-        tvNombreProductoRegistrado.setText(producto.getNombreTipoProducto());
+        tvNombreProductoRegistrado.setText(producto.getNombreProducto());
         tvSaborProductoProductoRegistrado.setText(CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor(),producto.getFkTipoProducto()));
         tvMarcaProductoRegistrado.setText(CargarMantenedorTresAtributosHttpConecction.buscarMarca(producto.getIdMarca(),producto.getFkTipoProducto()));
         tvHoraProductoRegistrado.setText(listaRegistroUsuario.get(position).getHora());

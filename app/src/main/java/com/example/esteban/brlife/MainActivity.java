@@ -12,6 +12,7 @@ import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributo
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTipoProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarRegistroUsuarioHttpConexion;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.Enum.SeleccionTipoProducto;
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
                     CargarMantenedorTresAtributosHttpConecction.limpiarListaMarcaSabor();
 
+
                     //Cargar losta producto
                     CargarMantenedorProductoHttpConecction.buscarMantenedorProducto(MainActivity.this, SelccionMantenedor.Producto.getSeleccion());
 
@@ -56,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
 
                     //Cargar lista sabor
                     CargarMantenedorTresAtributosHttpConecction.buscarMantenedorTresAtributos(MainActivity.this,SelccionMantenedor.Sabor.getSeleccion());
-                    CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(MainActivity.this,SelccionMantenedor.HorarioComida.getSeleccion());
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {

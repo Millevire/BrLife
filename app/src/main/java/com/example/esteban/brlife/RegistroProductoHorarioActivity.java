@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.example.esteban.brlife.Adaptadores.AdapterRegistroProducto;
+import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarRegistroUsuarioHttpConexion;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
 
         svFiltroProductoHorario =(android.support.v7.widget.SearchView) findViewById(R.id.svFiltroProductoHorario);
         lvProductoHorario=(ListView)findViewById(R.id.lvProductoHorario);
-
+        CargarMantenedorDosAtributosHttpConecction.listaHorarioComida.clear();
 
         adapterRegistroProducto = new AdapterRegistroProducto(this, CargarRegistroUsuarioHttpConexion.getListaRegistro());
         lvProductoHorario.setAdapter(adapterRegistroProducto);
@@ -49,5 +50,6 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         adapterRegistroProducto.notifyDataSetChanged();
+        CargarMantenedorDosAtributosHttpConecction.listaHorarioComida.clear();
     }
 }
