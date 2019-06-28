@@ -103,7 +103,7 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
 
             //Obtener edad
             LocalDate date = null;
-            ftm = DateTimeFormatter.ofPattern("dd/M/yyyy");
+            ftm = DateTimeFormatter.ofPattern("d/M/yyyy");
             fechaNac = LocalDate.parse(usuario.getFechaNacimiento(),ftm);
             Period periodo = Period.between(fechaNac, ahora);
             try {
