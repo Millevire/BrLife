@@ -360,7 +360,7 @@ public class SessionUserActivity extends AppCompatActivity
 
 if (Float.parseFloat(tvCaloriasConsumidas.getText().toString())>Float.parseFloat(tvMaximoCalorias.getText().toString())){
 
-    //tvCaloriasConsumidas.setTextColor(this.getResources().getColor(R.color.rojo));
+    tvCaloriasConsumidas.setTextColor(this.getResources().getColor(R.color.rojo));
 }
 
         try {

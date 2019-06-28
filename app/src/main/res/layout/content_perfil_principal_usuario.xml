@@ -44,7 +44,6 @@
                     android:textSize="24sp"
                     app:fontFamily="@font/bevan"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button3"
                     app:layout_constraintHorizontal_bias="0.242"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -98,7 +97,7 @@
                     android:id="@+id/tvCaloriasConsumidas"
                     android:layout_width="149dp"
                     android:layout_height="wrap_content"
-                    android:text="700"
+                    android:text="0"
                     android:textAlignment="center"
                     android:textColor="@android:color/holo_orange_dark"
                     android:textSize="24sp" />
