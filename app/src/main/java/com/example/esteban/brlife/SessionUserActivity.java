@@ -327,7 +327,7 @@ public class SessionUserActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
 
-        final Intent intentSetting =new Intent(this,ValidacionRegistroUsuarioActivity.class);
+        final Intent intentSetting =new Intent(this,EditarUsuarioActivity.class);
         int id = item.getItemId();
 
         if (id == R.id.nav_exit) {

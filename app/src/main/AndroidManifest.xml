@@ -12,10 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".EditarUsuarioActivity"></activity>
         <activity
             android:name=".RegistroProductoHorarioActivity"
             android:label="@string/title_activity_registro_producto_horario"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".NuevoRegistroProductoUsuarioActivity" />
         <activity android:name=".ValidacionRegistroUsuarioActivity" />
         <activity android:name=".MainActivity">

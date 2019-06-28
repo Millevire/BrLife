@@ -16,16 +16,11 @@ import android.widget.Toast;
 import com.example.esteban.brlife.Clases.CalculoCalorias;
 import com.example.esteban.brlife.Clases.Usuario;
 import com.example.esteban.brlife.Clases.UsuarioInteres;
-import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosComuna;
-import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
-import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
-import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuario;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantendorComunaHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarNuevoIdHttpConecction;
-import com.example.esteban.brlife.ConeionWebServices.CrudUsuario;
 import com.example.esteban.brlife.ConeionWebServices.CrudUsuarioHttpConecction;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.Enum.SeleccionSexo;
@@ -37,7 +32,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 
 public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
@@ -99,46 +93,49 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
         if (bundle !=null) {
             Usuario usuario = (Usuario) bundle.getSerializable("usuario");
 
+            if(usuario!=null){
+
+                //Obtener edad
+                LocalDate date = null;
+                ftm = DateTimeFormatter.ofPattern("dd/M/yyyy");
+                fechaNac = LocalDate.parse(usuario.getFechaNacimiento(),ftm);
+                Period periodo = Period.between(fechaNac, ahora);
+                try {
+                    tvEdadValidacion.setText(periodo.getYears() + "");
+
+                    new SeleccionValorRol();
+                    tvCaloriasMaximasValidacion.setText(String.valueOf(CalculoCalorias.calcularCalorias(usuario.getPeso(),usuario.getEstatura(),periodo.getYears(),usuario.getFkRol(),usuario.getSexo(),usuario.getFkObjetivo())));
+                    caloriasMaximas=CalculoCalorias.calcularCalorias(usuario.getPeso(),usuario.getEstatura(),periodo.getYears(),usuario.getFkRol(),usuario.getSexo(),usuario.getFkObjetivo());
+                }catch (Exception ex){
+                    tvEdadValidacion.setText("");
+
+                }
+
+                //Calcular calorias maximas
 
 
-            //Obtener edad
-            LocalDate date = null;
-            ftm = DateTimeFormatter.ofPattern("d/M/yyyy");
-            fechaNac = LocalDate.parse(usuario.getFechaNacimiento(),ftm);
-            Period periodo = Period.between(fechaNac, ahora);
-            try {
-                tvEdadValidacion.setText(periodo.getYears() + "");
 
-                new SeleccionValorRol();
-                tvCaloriasMaximasValidacion.setText(String.valueOf(CalculoCalorias.calcularCalorias(usuario.getPeso(),usuario.getEstatura(),periodo.getYears(),usuario.getFkRol(),usuario.getSexo(),usuario.getFkObjetivo())));
-                caloriasMaximas=CalculoCalorias.calcularCalorias(usuario.getPeso(),usuario.getEstatura(),periodo.getYears(),usuario.getFkRol(),usuario.getSexo(),usuario.getFkObjetivo());
-            }catch (Exception ex){
-                tvEdadValidacion.setText("");
+                tvNombreValidacion.setText(usuario.getNombreUsuario());
+                tvNombreUsuarioValidacion.setText(usuario.getNombreAlias());
+                tvApellidosValidacion.setText(usuario.getApellidoPaterno()+" "+usuario.getApellidoMaterno());
+                tvSexoValidacion.setText(SeleccionSexo.buscaSexo(usuario.getSexo()));
+                tvFehcaNacimientoValidacion.setText(usuario.getFechaNacimiento());
+                tvCorreoValidacion.setText(usuario.getCorreoElectronico());
+                tvComunaValidacion.setText(CargarMantendorComunaHttpConecction.buscarNombreComuna(usuario.getFkComuna()));
+                tvProvinciaValidacion.setText(CargarMantenedorTresAtributosHttpConecction.buscarNombreProvincia(usuario.getFkProvincia()));
+                tvRegionValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarNombreREgion(usuario.getFkRegion()));
+                tvAlturaValidacion.setText(String.valueOf(usuario.getEstatura()));
+                tvPesoValidacion.setText(String.valueOf(usuario.getPeso()));
+                tvSomatotipoValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarTipoPersona(usuario.getFkSomatipo()));
+                tvRolValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarNombreRol(usuario.getFkRol()));
+                tvObjetivoValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarNombreObjetivo(usuario.getFkObjetivo()));
 
+                //Agregar Intereses
+                adapterUsuarioInteres=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, CargarBaseDeDatosUsuarioInteres.getListaUsuarioInteres());
+                lvInteresesValidacion.setAdapter(adapterUsuarioInteres);
             }
 
-            //Calcular calorias maximas
 
-
-
-            tvNombreValidacion.setText(usuario.getNombreUsuario());
-            tvNombreUsuarioValidacion.setText(usuario.getNombreAlias());
-            tvApellidosValidacion.setText(usuario.getApellidoPaterno()+" "+usuario.getApellidoMaterno());
-            tvSexoValidacion.setText(SeleccionSexo.buscaSexo(usuario.getSexo()));
-            tvFehcaNacimientoValidacion.setText(usuario.getFechaNacimiento());
-            tvCorreoValidacion.setText(usuario.getCorreoElectronico());
-            tvComunaValidacion.setText(CargarMantendorComunaHttpConecction.buscarNombreComuna(usuario.getFkComuna()));
-            tvProvinciaValidacion.setText(CargarMantenedorTresAtributosHttpConecction.buscarNombreProvincia(usuario.getFkProvincia()));
-            tvRegionValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarNombreREgion(usuario.getFkRegion()));
-            tvAlturaValidacion.setText(String.valueOf(usuario.getEstatura()));
-            tvPesoValidacion.setText(String.valueOf(usuario.getPeso()));
-            tvSomatotipoValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarTipoPersona(usuario.getFkSomatipo()));
-            tvRolValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarNombreRol(usuario.getFkRol()));
-            tvObjetivoValidacion.setText(CargarMantenedorDosAtributosHttpConecction.buscarNombreObjetivo(usuario.getFkObjetivo()));
-
-            //Agregar Intereses
-            adapterUsuarioInteres=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, CargarBaseDeDatosUsuarioInteres.getListaUsuarioInteres());
-            lvInteresesValidacion.setAdapter(adapterUsuarioInteres);
 
         }
 
@@ -149,8 +146,10 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
         btnAceptarValidacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if (bundle !=null) {
-                    Usuario usuario = (Usuario) bundle.getSerializable("usuarioSetting");
+                    Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+
 
                     try {
                        //Agregar nuevo id usuario

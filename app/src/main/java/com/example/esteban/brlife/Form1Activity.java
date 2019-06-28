@@ -40,6 +40,8 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class Form1Activity extends AppCompatActivity {
@@ -189,7 +191,12 @@ public class Form1Activity extends AppCompatActivity {
                     if (count==etAnoForm1.getText().length() || etAnoForm1.getText().toString().equals("")) {
                         etAnoForm1.setError("Ingrese dia");
                         btnSifuenteForm1.setEnabled(false);
-                    }else btnSifuenteForm1.setEnabled(true);
+                    }else if(validarFecha(etDiaForm1.getText().toString()+"/"+etMesForm1.getText().toString()+"/"+etAnoForm1.getText().toString())){
+
+                        btnSifuenteForm1.setEnabled(true);
+                    }else{etAnoForm1.setError("Fecha invalida");}
+
+
                 }
             }
         });
@@ -228,7 +235,13 @@ public class Form1Activity extends AppCompatActivity {
                     || etApelidoMaternoForm1.getText().toString().equals("") || etDiaForm1.getText().toString().equals("") || etMesForm1.getText().toString().equals("") || etAnoForm1.getText().toString().equals("")
                       ||  etCorreoElectronicoForm1.getText().toString().equals("") ){
                     Toast.makeText(Form1Activity.this, "¡Todos los campos son requeridos!", Toast.LENGTH_SHORT).show();
-                }else{
+                }else if (validarFecha(etDiaForm1.getText().toString()+"/"+etMesForm1.getText().toString()+"/"+etAnoForm1.getText().toString())==false){
+                    Toast.makeText(Form1Activity.this, "Fecha invalida", Toast.LENGTH_SHORT).show();
+                    
+                    
+                }
+                
+                else{
                     usuario.setNombreUsuario(etNombresForm1.getText().toString());
                     usuario.setApellidoPaterno(etApellidoPaternoForm1.getText().toString());
                     usuario.setApellidoMaterno(etApelidoMaternoForm1.getText().toString());
@@ -344,5 +357,18 @@ public class Form1Activity extends AppCompatActivity {
  //#endregion
 
 }
+
+    public boolean validarFecha(String fecha) {
+
+
+        try {
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/M/yyyy");
+            formatoFecha.setLenient(false);
+            formatoFecha.parse(fecha);
+        } catch (ParseException e) {
+            return false;
+        }
+        return true;
+    }
 
 }

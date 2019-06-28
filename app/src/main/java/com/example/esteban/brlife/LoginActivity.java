@@ -1,5 +1,6 @@
 package com.example.esteban.brlife;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.StrictMode;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -22,6 +24,8 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnRegistar,btnIngresar, btnbacklogin;
     private EditText etUsuarioLogin,etContraseñaLogin;
     private Switch swguardarcon;
+    public ProgressDialog progreso;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +37,18 @@ public class LoginActivity extends AppCompatActivity {
         btnIngresar=(Button)findViewById(R.id.btnIngresar);
         btnbacklogin =(Button) findViewById(R.id.btnbacklogin);
         swguardarcon=(Switch)findViewById(R.id.swguardarcon);
+        progressBar=(ProgressBar)findViewById(R.id.progressBarLogin);
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
         etContraseñaLogin=(EditText)findViewById(R.id.etContraseñaLogin);
         etUsuarioLogin=(EditText)findViewById(R.id.etUsuarioLogin);
+
+        //Progreso
+        //iniProgres();
+
+
 
 
         //Validacion de capos vacios o solo espacios en edittext
@@ -107,9 +117,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         btnIngresar.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                    btnIngresar.setEnabled(false);
+
+
+                showDialog();
+
+
+
+                   // btnIngresar.setEnabled(false);
                     int count = 0;
                     for(int i = 0; i < etContraseñaLogin.getText().length(); i++) {
                         if(Character.isWhitespace(etContraseñaLogin.getText().charAt(i))) count++; }
@@ -128,6 +145,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                         try {
+
                             validacion =  CrudUsuarioHttpConecction.ValidarAccesoUsuario("Usuario",alias,correo,etContraseñaLogin.getText().toString());
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -135,10 +153,12 @@ public class LoginActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
                         if (validacion > 0) {
+                            progressBar.setVisibility(View.GONE);
                             Toast.makeText(LoginActivity.this, "id_usuario:" + validacion, Toast.LENGTH_SHORT).show();
                             btnIngresar.setEnabled(false);
                             try {
                                 CrudUsuarioHttpConecction.TraerDatosUsuario("Usuario",validacion);
+
                             } catch (IOException e) {
                                 e.printStackTrace();
                             } catch (JSONException e) {
@@ -156,6 +176,8 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             startActivity(in2);
                         }else{
+                            progressBar.setVisibility(View.GONE);
+
                             Toast.makeText(LoginActivity.this, "Usuario y/o Correo Electronico/Alias es incorrecto", Toast.LENGTH_SHORT).show();
                         }
                     }else if(etContraseñaLogin.getText().toString().equals("") && etUsuarioLogin.getText().toString().equals("")){
@@ -171,9 +193,18 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    public void iniProgres(){
+        this.progreso=new ProgressDialog(this);
+    }
+   public void showDialog(){
+       progressBar.setVisibility(View.VISIBLE);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
         btnIngresar.setEnabled(true);
     }
+
+
 }

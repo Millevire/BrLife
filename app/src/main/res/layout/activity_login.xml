@@ -139,6 +139,16 @@
                         android:textColor="@color/colorPrimaryDark" />
                 </LinearLayout>
 
+
+                <ProgressBar
+                    android:id="@+id/progressBarLogin"
+                    style="?android:attr/progressBarStyleInverse"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:visibility="gone"
+                   />
                 <LinearLayout
                     android:id="@+id/linearLayout4"
                     android:layout_width="match_parent"
@@ -149,6 +159,7 @@
                     android:background="@drawable/buttonbackground"
                     android:gravity="bottom"
                     android:orientation="horizontal">
+
 
                     <Button
                         android:id="@+id/btnIngresar"
