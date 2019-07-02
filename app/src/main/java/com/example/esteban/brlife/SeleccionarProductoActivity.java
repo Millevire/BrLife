@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class SeleccionarProductoActivity extends AppCompatActivity {
-   private Button btnMostrarAlimento;
+   private Button btnBackSeleccionarProducto;
    private android.support.v7.widget.SearchView svFiltroProducto;
    private ListView lvFiltoProducto;
    private AdapterProducto adapterProducto;
@@ -34,6 +34,7 @@ public class SeleccionarProductoActivity extends AppCompatActivity {
         lvFiltoProducto=(ListView)findViewById(R.id.lvFiltoProducto);
         svFiltroProducto=(android.support.v7.widget.SearchView)findViewById(R.id.svFiltroProducto);
 
+        btnBackSeleccionarProducto=(Button)findViewById(R.id.btnBackSeleccionarProducto);
 
         //Cragar losta a listview
         adapterProducto = new AdapterProducto(this, CargarMantenedorProductoHttpConecction.getListaProducto());
@@ -70,5 +71,12 @@ public class SeleccionarProductoActivity extends AppCompatActivity {
         });
 
 
+        //Funcionalidad boton back
+        btnBackSeleccionarProducto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

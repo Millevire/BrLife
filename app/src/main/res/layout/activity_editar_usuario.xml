@@ -28,13 +28,6 @@
             android:text="BrLife"
             android:textColor="@color/blanco" />
     </LinearLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Revise si sus datos son correctos"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark" />
 
 
     <ScrollView
@@ -69,7 +62,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Calorias maximas Diarias:"
+                    android:text="@string/calorias_maximas_diarias_editar_udsuario"
                     android:textAlignment="center"
                     android:textColor="@color/colorPrimaryDark" />
 
@@ -84,14 +77,14 @@
                         android:id="@+id/tvCaloriasMaximasEditar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Calorias maximas Diarias:"
+                        android:text="@string/calorias_maximas_diarias_editar_usuario"
                         android:textColor="@android:color/holo_orange_dark"
                         android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" Kcal" />
+                        android:text="@string/kcal_editar_usuario" />
 
                 </LinearLayout>
 
@@ -116,7 +109,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Usuario"
+                        android:text="Usuario:"
                         android:textAlignment="center"
                         android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -185,7 +178,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Informacion Personal"
+                        android:text="Informacion Personal:"
                         android:textAlignment="center"
                         android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -452,7 +445,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
                         android:layout_marginBottom="8dp"
-                        android:text="Informacion fisica, objetivos e intereses"
+                        android:text="@string/informacion_fisica_objetivos_e_intereses_editar_uduario"
                         android:textAlignment="center"
                         android:textColor="@color/colorPrimaryDark"
                         app:layout_constraintBottom_toBottomOf="parent"

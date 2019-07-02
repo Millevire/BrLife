@@ -19,5 +19,9 @@
     <string name="editar">CANCELAR</string>
     <string name="eliminar">CANCELAR</string>
     <string name="title_activity_registro_producto_horario">RegistroProductoHorarioActivity</string>
+    <string name="informacion_fisica_objetivos_e_intereses_editar_uduario">Informacion fisica, objetivos e intereses:</string>
+    <string name="calorias_maximas_diarias_editar_udsuario">Calorias maximas Diarias:</string>
+    <string name="calorias_maximas_diarias_editar_usuario">Calorias maximas Diarias:</string>
+    <string name="kcal_editar_usuario">Kcal</string>
 
 </resources>

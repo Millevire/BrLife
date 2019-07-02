@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,15 +15,11 @@ import android.widget.Toast;
 import com.example.esteban.brlife.Adaptadores.AdapterIntereses;
 import com.example.esteban.brlife.Adaptadores.SpinAdapter;
 import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
-import com.example.esteban.brlife.Clases.MantenedorTresAtributos;
 import com.example.esteban.brlife.Clases.Usuario;
 import com.example.esteban.brlife.Clases.ValorRol;
-import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
 import com.example.esteban.brlife.Enum.SeleccionValorRol;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -49,7 +44,7 @@ public class Form2Activity extends AppCompatActivity {
         //Referencia de widget
         btnSiguenteForm2=(Button)findViewById(R.id.btnSiguenteForm2);
         btnSomatipoForm2=(Button)findViewById(R.id.btnSomatipoForm2);
-        btnBackForm2=(Button)findViewById(R.id.btnBackForm2);
+        btnBackForm2=(Button)findViewById(R.id.btnBackRegistroProductoHorario);
 
         spObjetivoForm2=(Spinner)findViewById(R.id.spObjetivoForm2);
         spInteresForm2=(Spinner)findViewById(R.id.spInteresForm2);
@@ -68,6 +63,40 @@ public class Form2Activity extends AppCompatActivity {
 
         adaptadorIntereses=new AdapterIntereses(this,listaIntereses);
         lvInteresesForm2.setAdapter(adaptadorIntereses);
+
+
+
+
+        //Metodo llenar spinner
+        llenarSpinner();
+
+
+        //Validacion Editar
+        final Bundle bundle=getIntent().getExtras();
+
+        if(bundle != null){
+            Usuario usuario = (Usuario) bundle.getSerializable("usuarioEditar");
+            if(usuario !=null){
+
+
+
+                btnSiguenteForm2.setText("Guardar Cambios");
+
+                int posicionObtetivo= (int) adapterObjetivo.getItemId(usuario.getFkObjetivo());
+                spObjetivoForm2.setSelection(posicionObtetivo);
+
+                int posicionSomatipo=(int)adapterTipoPersona.getItemId(usuario.getFkSomatipo());
+                spTipoPersonaForm2.setSelection(posicionSomatipo);
+
+                int posicionRol=(int)adapterRol.getItemId(usuario.getFkRol());
+                spRolForm2.setSelection(posicionRol);
+
+                etPesoForm2.setText(String.valueOf(usuario.getPeso()));
+                etEstaturaForm2.setText(String.valueOf(usuario.getEstatura()));
+
+
+            }
+        }
 
 
 
@@ -110,13 +139,11 @@ public class Form2Activity extends AppCompatActivity {
         final Intent intent =new Intent(this,Fomr3Activity.class);
 
 
-        //Metodo llenar spinner
-        llenarSpinner();
 
 
 
 
-        final Bundle bundle=getIntent().getExtras();
+
 
 
         btnSiguenteForm2.setOnClickListener(new View.OnClickListener() {
@@ -129,33 +156,35 @@ public class Form2Activity extends AppCompatActivity {
                 }else{
                     if (bundle !=null) {
                         Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+                        if(usuario !=null){
+                            //obtener id objetivo
+                            MantenedorDosAtributos objetivo = (MantenedorDosAtributos) spObjetivoForm2.getSelectedItem();
+                            usuario.setFkObjetivo(objetivo.getIdMantenedorDosAtributos());
 
-                        //obtener id objetivo
-                        MantenedorDosAtributos objetivo = (MantenedorDosAtributos) spObjetivoForm2.getSelectedItem();
-                        usuario.setFkObjetivo(objetivo.getIdMantenedorDosAtributos());
+                            //Obtener id somatipo
+                            MantenedorDosAtributos somatipo = (MantenedorDosAtributos) spTipoPersonaForm2.getSelectedItem();
+                            usuario.setFkSomatipo(somatipo.getIdMantenedorDosAtributos());
 
-                        //Obtener id somatipo
-                        MantenedorDosAtributos somatipo = (MantenedorDosAtributos) spTipoPersonaForm2.getSelectedItem();
-                        usuario.setFkSomatipo(somatipo.getIdMantenedorDosAtributos());
+                            //Obtener Rol
+                            MantenedorDosAtributos rol = (MantenedorDosAtributos) spRolForm2.getSelectedItem();
+                            usuario.setFkRol(rol.getIdMantenedorDosAtributos());
 
-                        //Obtener Rol
-                        MantenedorDosAtributos rol = (MantenedorDosAtributos) spRolForm2.getSelectedItem();
-                        usuario.setFkRol(rol.getIdMantenedorDosAtributos());
+                            //Peso
+                            usuario.setPeso(Float.parseFloat(etPesoForm2.getText().toString()));
 
-                        //Peso
-                        usuario.setPeso(Float.parseFloat(etPesoForm2.getText().toString()));
+                            //Estatura
+                            usuario.setEstatura(Float.parseFloat(etEstaturaForm2.getText().toString()));
 
-                        //Estatura
-                        usuario.setEstatura(Float.parseFloat(etEstaturaForm2.getText().toString()));
-
-                        //Enviar listaInteres
-                        CargarBaseDeDatosUsuarioInteres.llenarListaUsuarioInteres(listaIntereses);
-
-
+                            //Enviar listaInteres
+                            CargarBaseDeDatosUsuarioInteres.llenarListaUsuarioInteres(listaIntereses);
 
 
-                        intent.putExtra("usuario",usuario);
-                        startActivity(intent);
+
+
+                            intent.putExtra("usuario",usuario);
+                            startActivity(intent);
+                        }
+
                     }
 
                 }

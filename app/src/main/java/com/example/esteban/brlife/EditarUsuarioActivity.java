@@ -47,6 +47,9 @@ public class EditarUsuarioActivity extends AppCompatActivity {
         //#region Referencia de widget
         btnBackEditar=(Button)findViewById(R.id.btnBackEditar);
         btnAceptarEditar=(Button)findViewById(R.id.btnAceptarEditar);
+        btnEditarUsuario=(Button)findViewById(R.id.btnEditarUsuario);
+        btnEditarInfoPersonal=(Button)findViewById(R.id.btnEditarInfoPersonal);
+        btnEditarInfoFisicaObjInter=(Button)findViewById(R.id.btnEditarInfoFisicaObjInter);
 
         tvNombreEditar=(TextView) findViewById(R.id.tvNombreEditar);
         tvNombreUsuarioEditar=(TextView)findViewById(R.id.tvNombreUsuarioEditar);
@@ -76,13 +79,14 @@ public class EditarUsuarioActivity extends AppCompatActivity {
 
         //Envio a siguente actividad
         final Intent intent =new Intent(this, SessionUserActivity.class);
+        final Intent intentEditInfoFisica =new Intent(this, Form2Activity.class);
 
          new SeleccionSexo();
 
         //Bundle que traera objeto usuario
         final Bundle bundle=getIntent().getExtras();
         if (bundle !=null) {
-            Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+            final Usuario usuario = (Usuario) bundle.getSerializable("usuario");
 
             if(usuario!=null){
 
@@ -124,6 +128,17 @@ public class EditarUsuarioActivity extends AppCompatActivity {
                 //Agregar Intereses
                 adapterUsuarioInteres=new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, CargarBaseDeDatosUsuarioInteres.getListaUsuarioInteres());
                 lvInteresesEditar.setAdapter(adapterUsuarioInteres);
+
+
+
+                btnEditarInfoFisicaObjInter.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        intentEditInfoFisica.putExtra("usuarioEditar",usuario);
+                        startActivity(intentEditInfoFisica);
+                    }
+                });
             }
 
 

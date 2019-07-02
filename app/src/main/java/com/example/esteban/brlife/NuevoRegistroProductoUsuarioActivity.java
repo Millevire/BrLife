@@ -33,7 +33,7 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
     private Spinner spHorarioComidaRegistro,spPorcionRegistro;
     private EditText etPorcionRegistro;
     private ListView lvNutrientesRegistro;
-    private Button btnAgregarRegistro;
+    private Button btnAgregarRegistro,btnBackRegistroProductoHorario;
     private SpinAdapter spinAdapter;
     public AdapterProductoNutriente adapterProductoNutriente;
     public ArrayList<ProductoNutriente> listaProductoNutrientes;
@@ -61,6 +61,7 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
         lvNutrientesRegistro=(ListView)findViewById(R.id.lvNutrientesRegistro);
 
         btnAgregarRegistro=(Button)findViewById(R.id.btnAgregarRegistro);
+        btnBackRegistroProductoHorario=(Button)findViewById(R.id.btnBackRegistroProductoHorario);
         //#endregion
 
         final Bundle bundle=getIntent().getExtras();
@@ -127,6 +128,13 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                finish();
+            }
+        });
+
+        btnBackRegistroProductoHorario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 finish();
             }
         });

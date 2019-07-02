@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.esteban.brlife.Adaptadores.AdapterRegistroProducto;
@@ -19,6 +20,7 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
     private android.support.v7.widget.SearchView svFiltroProductoHorario;
     private ListView lvProductoHorario;
     private AdapterRegistroProducto adapterRegistroProducto;
+    private Button btnBackRegistroProductoHorario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
 
         svFiltroProductoHorario =(android.support.v7.widget.SearchView) findViewById(R.id.svFiltroProductoHorario);
         lvProductoHorario=(ListView)findViewById(R.id.lvProductoHorario);
+        btnBackRegistroProductoHorario=(Button)findViewById(R.id.btnBackRegistroProductoHorario);
+
         CargarMantenedorDosAtributosHttpConecction.listaHorarioComida.clear();
 
         adapterRegistroProducto = new AdapterRegistroProducto(this, CargarRegistroUsuarioHttpConexion.getListaRegistro());
@@ -44,6 +48,13 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
         });
 
 
+        //Funcionalidad boton back
+        btnBackRegistroProductoHorario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
