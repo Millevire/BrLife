@@ -86,52 +86,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Agregar Comida:"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimaryDark" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:gravity="center">
-
-            <LinearLayout
-                android:layout_width="300dp"
-                android:layout_height="43dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/estilomainutton"
-                android:elevation="4dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnAgregarComidaManual"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="241dp"
-                    android:layout_height="wrap_content"
-                    android:text="MANUAL"
-                    android:textColor="@color/blanco" />
-
-                <View
-                    android:layout_width="1.5dp"
-                    android:layout_height="fill_parent"
-                    android:background="@color/blanco" />
-
-                <Button
-                    android:id="@+id/btnScannBar1"
-                    style="@style/Widget.AppCompat.Button.Borderless"
-                    android:layout_width="203dp"
-                    android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_action_mainicon"
-                    android:textColor="@color/blanco" />
-
-            </LinearLayout>
-        </LinearLayout>
-
 
 
         <ScrollView
@@ -141,6 +95,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Agregar Comida:"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="300dp"
+                        android:layout_height="43dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/estilomainutton"
+                        android:elevation="4dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btnAgregarComidaManual"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="241dp"
+                            android:layout_height="wrap_content"
+                            android:text="MANUAL"
+                            android:textColor="@color/blanco" />
+
+                        <View
+                            android:layout_width="1.5dp"
+                            android:layout_height="fill_parent"
+                            android:background="@color/blanco" />
+
+                        <Button
+                            android:id="@+id/btnScannBar1"
+                            style="@style/Widget.AppCompat.Button.Borderless"
+                            android:layout_width="203dp"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_action_mainicon"
+                            android:textColor="@color/blanco" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/ly"
                     android:layout_width="match_parent"

@@ -1,7 +1,9 @@
 package com.example.esteban.brlife;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -51,6 +53,7 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
     public LocalDate fechaNac;
     public LocalDate ahora;
     public float caloriasMaximas=0;
+    public ProgressDialog progressDialog;
 
 
 
@@ -59,6 +62,8 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_validacion_registro_usuario);
+
+        progressDialog=new ProgressDialog(this);
 
         //#region Referencia de widget
         btnBackValidacion=(Button)findViewById(R.id.btnBackValidacion);
@@ -153,41 +158,50 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                  iniProgres();
                 if (bundle !=null) {
-                    Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+                    final Usuario usuario = (Usuario) bundle.getSerializable("usuario");
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                //Agregar nuevo id usuario
+                                int idUsuario=CargarNuevoIdHttpConecction.buscarMantenedorNuevoId(ValidacionRegistroUsuarioActivity.this,SelccionMantenedor.Usuario.getSeleccion());
+
+                                Toast.makeText(ValidacionRegistroUsuarioActivity.this, ""+idUsuario, Toast.LENGTH_SHORT).show();
+
+                                usuario.setIdUsuario(idUsuario);
+
+                                //new CrudUsuario(ValidacionRegistroUsuarioActivity.this,usuario,ValidacionRegistroUsuarioActivity.this.getString(R.string.nuevo));
+
+                                CrudUsuarioHttpConecction.ActualizarUsuario(SelccionMantenedor.Usuario.getSeleccion(),usuario,caloriasMaximas);
+
+                                //Inserat interes
+                                for (UsuarioInteres usuarioInteres: CargarBaseDeDatosUsuarioInteres.getListaUsuarioInteres()){
+                                    CrudUsuarioHttpConecction.InsertarUsuarioInteres(SelccionMantenedor.InteresUsuario.getSeleccion(),usuario.getIdUsuario(),usuarioInteres.getIdInteres());
+                                }
 
 
-                    try {
-                       //Agregar nuevo id usuario
-                        int idUsuario=CargarNuevoIdHttpConecction.buscarMantenedorNuevoId(ValidacionRegistroUsuarioActivity.this,SelccionMantenedor.Usuario.getSeleccion());
+                                CrudUsuarioHttpConecction.usuario=usuario;
+                                CrudUsuarioHttpConecction.maximocalorias=caloriasMaximas;
+                                //Enviar a sessionActivity
+                                // intent.putExtra("nuevoUsuario",usuario);
 
-                        Toast.makeText(ValidacionRegistroUsuarioActivity.this, ""+idUsuario, Toast.LENGTH_SHORT).show();
+                                startActivity(intent);
+                                progressDialog.hide();
 
-                        usuario.setIdUsuario(idUsuario);
 
-                        //new CrudUsuario(ValidacionRegistroUsuarioActivity.this,usuario,ValidacionRegistroUsuarioActivity.this.getString(R.string.nuevo));
-
-                       CrudUsuarioHttpConecction.ActualizarUsuario(SelccionMantenedor.Usuario.getSeleccion(),usuario,caloriasMaximas);
-
-                        //Inserat interes
-                       for (UsuarioInteres usuarioInteres: CargarBaseDeDatosUsuarioInteres.getListaUsuarioInteres()){
-                           CrudUsuarioHttpConecction.InsertarUsuarioInteres(SelccionMantenedor.InteresUsuario.getSeleccion(),usuario.getIdUsuario(),usuarioInteres.getIdInteres());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                progressDialog.hide();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                progressDialog.hide();
+                            }
                         }
+                    },500);
 
-
-                       CrudUsuarioHttpConecction.usuario=usuario;
-                       CrudUsuarioHttpConecction.maximocalorias=caloriasMaximas;
-                          //Enviar a sessionActivity
-                       // intent.putExtra("nuevoUsuario",usuario);
-
-                        startActivity(intent);
-
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
 
 
 
@@ -207,5 +221,11 @@ public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void iniProgres(){
+        progressDialog.setTitle("Cargando");
+        progressDialog.setMessage("Por favor espere...");
+        progressDialog.show();
     }
 }

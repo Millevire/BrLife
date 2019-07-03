@@ -1,5 +1,6 @@
 package com.example.esteban.brlife;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -40,7 +41,11 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
         lvProductoHorario=(ListView)findViewById(R.id.lvProductoHorario);
         btnBackRegistroProductoHorario=(Button)findViewById(R.id.btnBackRegistroProductoHorario);
 
+        //Limpiar lista
         CargarMantenedorDosAtributosHttpConecction.listaHorarioComida.clear();
+
+        //Envio a otra actividad
+        final Intent in =new Intent(this,SeleccionarProductoActivity.class);
 
         adapterRegistroProducto = new AdapterRegistroProducto(this, CargarRegistroUsuarioHttpConexion.getListaRegistro());
         lvProductoHorario.setAdapter(adapterRegistroProducto);
@@ -51,6 +56,7 @@ public class RegistroProductoHorarioActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                startActivity(in);
             }
         });
 

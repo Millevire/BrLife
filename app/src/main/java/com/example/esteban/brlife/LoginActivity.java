@@ -3,6 +3,7 @@ package com.example.esteban.brlife;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -127,71 +128,80 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 showDialog();
 
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
 
-                   // btnIngresar.setEnabled(false);
-                    int count = 0;
-                    for(int i = 0; i < etContraseñaLogin.getText().length(); i++) {
-                        if(Character.isWhitespace(etContraseñaLogin.getText().charAt(i))) count++; }
-                    
-                    
-                    if (count==etContraseñaLogin.getText().length() || etContraseñaLogin.getText().toString().equals("")) {
-                        etContraseñaLogin.setError("Ingrese una contraseña"); etContraseñaLogin.setText("");
-                    }else if(!etUsuarioLogin.getText().toString().equals("") ||!etContraseñaLogin.getText().toString().equals("") ) {
 
-                        int validacion = 0;
-                        String correo = (etUsuarioLogin.getText().toString().contains("@")) ? etUsuarioLogin.getText().toString() : "";
-                        String alias = "";
-                        if (correo.isEmpty()){
-                            alias = etUsuarioLogin.getText().toString();
-                        }
+                        // btnIngresar.setEnabled(false);
+                        int count = 0;
+                        for(int i = 0; i < etContraseñaLogin.getText().length(); i++) {
+                            if(Character.isWhitespace(etContraseñaLogin.getText().charAt(i))) count++; }
 
 
-                        try {
+                        if (count==etContraseñaLogin.getText().length() || etContraseñaLogin.getText().toString().equals("")) {
+                            etContraseñaLogin.setError("Ingrese una contraseña"); etContraseñaLogin.setText("");
+                        }else if(!etUsuarioLogin.getText().toString().equals("") ||!etContraseñaLogin.getText().toString().equals("") ) {
 
-                            validacion =  CrudUsuarioHttpConecction.ValidarAccesoUsuario("Usuario",alias,correo,etContraseñaLogin.getText().toString());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        if (validacion > 0) {
-                            progressBar.setVisibility(View.GONE);
-                            Toast.makeText(LoginActivity.this, "id_usuario:" + validacion, Toast.LENGTH_SHORT).show();
-                            btnIngresar.setEnabled(false);
+                            int validacion = 0;
+                            String correo = (etUsuarioLogin.getText().toString().contains("@")) ? etUsuarioLogin.getText().toString() : "";
+                            String alias = "";
+                            if (correo.isEmpty()){
+                                alias = etUsuarioLogin.getText().toString();
+                            }
+
+
                             try {
-                                CrudUsuarioHttpConecction.TraerDatosUsuario("Usuario",validacion);
 
+                                validacion =  CrudUsuarioHttpConecction.ValidarAccesoUsuario("Usuario",alias,correo,etContraseñaLogin.getText().toString());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            SharedPreferences.Editor editor = getSharedPreferences(etUsuarioLogin.getText().toString(), MODE_PRIVATE).edit();
-                            if (swguardarcon.isChecked()){
-                                editor.putString("contrasena", etContraseñaLogin.getText().toString());
-                                editor.putBoolean("guardar", swguardarcon.isChecked());
-                                editor.apply();
-                            }else{
-                                editor.putString("contrasena", "");
-                                editor.putBoolean("guardar", swguardarcon.isChecked());
-                                editor.apply();
-                            }
-                            startActivity(in2);
-                        }else{
-                            progressBar.setVisibility(View.GONE);
+                            if (validacion > 0) {
 
-                            Toast.makeText(LoginActivity.this, "Usuario y/o Correo Electronico/Alias es incorrecto", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "id_usuario:" + validacion, Toast.LENGTH_SHORT).show();
+                                btnIngresar.setEnabled(false);
+                                progressBar.setVisibility(View.GONE);
+                                try {
+                                    CrudUsuarioHttpConecction.TraerDatosUsuario("Usuario",validacion);
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                SharedPreferences.Editor editor = getSharedPreferences(etUsuarioLogin.getText().toString(), MODE_PRIVATE).edit();
+                                if (swguardarcon.isChecked()){
+                                    editor.putString("contrasena", etContraseñaLogin.getText().toString());
+                                    editor.putBoolean("guardar", swguardarcon.isChecked());
+                                    editor.apply();
+                                }else{
+                                    editor.putString("contrasena", "");
+                                    editor.putBoolean("guardar", swguardarcon.isChecked());
+                                    editor.apply();
+                                }
+                                startActivity(in2);
+                            }else{
+
+                                   progressBar.setVisibility(View.GONE);
+                                Toast.makeText(LoginActivity.this, "Usuario y/o Correo Electronico/Alias es incorrecto", Toast.LENGTH_SHORT).show();
+                            }
+                        }else if(etContraseñaLogin.getText().toString().equals("") && etUsuarioLogin.getText().toString().equals("")){
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(LoginActivity.this, "Todos los campos son requeridos", Toast.LENGTH_SHORT).show();
+                            etUsuarioLogin.setError("Campo requerido");
+                            etContraseñaLogin.setError("Campo requediro");
                         }
-                    }else if(etContraseñaLogin.getText().toString().equals("") && etUsuarioLogin.getText().toString().equals("")){
-                        Toast.makeText(LoginActivity.this, "Todos los campos son requeridos", Toast.LENGTH_SHORT).show();
-                        etUsuarioLogin.setError("Campo requerido");
-                        etContraseñaLogin.setError("Campo requediro");
+                        btnIngresar.setEnabled(true);
+
                     }
-                btnIngresar.setEnabled(true);
+                },500);
+
 
 
             }
@@ -199,9 +209,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void iniProgres(){
-        this.progreso=new ProgressDialog(this);
-    }
+
    public void showDialog(){
        progressBar.setVisibility(View.VISIBLE);
     }
@@ -212,5 +220,9 @@ public class LoginActivity extends AppCompatActivity {
         btnIngresar.setEnabled(true);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
 
+    }
 }

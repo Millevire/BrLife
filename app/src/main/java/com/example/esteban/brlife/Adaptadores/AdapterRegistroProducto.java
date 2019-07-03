@@ -74,7 +74,7 @@ public AdapterRegistroProducto(Context context, ArrayList<RegistroUsuario>listaR
         TextView tvNombreProductoRegistrado=convertView.findViewById(R.id.tvNombreProductoRegistrado);
         TextView tvSaborProductoProductoRegistrado=convertView.findViewById(R.id.tvSaborProductoProductoRegistrado);
         TextView tvMarcaProductoRegistrado=convertView.findViewById(R.id.tvMarcaProductoRegistrado);
-        TextView tvCaloriasProductoRegistrado=convertView.findViewById(R.id.tvCaloriasProductoRegistrado);
+        //TextView tvCaloriasProductoRegistrado=convertView.findViewById(R.id.tvCaloriasProductoRegistrado);
         TextView tvHoraProductoRegistrado=convertView.findViewById(R.id.tvHoraProductoRegistrado);
         TextView tvProcionProductoRegistrado=convertView.findViewById(R.id.tvProcionProductoRegistrado);
 

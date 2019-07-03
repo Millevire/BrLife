@@ -71,6 +71,7 @@ public class SeleccionarProductoActivity extends AppCompatActivity {
                 intent.putExtra("accion","agregar");
                 intent.putExtra("Producto",producto);
                 startActivity(intent);
+                finish();
 
             }
         });
