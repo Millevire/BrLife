@@ -28,7 +28,13 @@ public class CargarVersionHttpConecction {
     public static ArrayList<Version> listaVersion;
     static ProgressDialog progreso;
 
-
+    /**
+     * Metodo carga las versiones de tablas en la base de datos para sqllite
+     * @param context
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     */
     public static ArrayList<Version> CargarVersiones(Context context) throws  IOException, JSONException {
         listaVersion = new ArrayList<>();
         progreso=new ProgressDialog(context);

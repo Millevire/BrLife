@@ -39,6 +39,12 @@ public class CargarMantenedorTresAtributosHttpConecction {
     public static ArrayList<MantenedorTresAtributos>listaFiltroMarca=new ArrayList<>();
     public static ArrayList<MantenedorTresAtributos>listaFiltrSabor=new ArrayList<>();
 
+    /**
+     * Buscar el nombre de la marca por medio del id y el id del tipo producto
+     * @param idMarca
+     * @param idtiṕo
+     * @return
+     */
     public static String buscarMarca(int idMarca, int idtiṕo){
         for (MantenedorTresAtributos mantenedorTresAtributos: listaMarca){
             if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMarca && mantenedorTresAtributos.getFkMantenedorTresAtributos() == idtiṕo){
@@ -50,7 +56,12 @@ public class CargarMantenedorTresAtributosHttpConecction {
 
     }
 
-
+    /**
+     * Buscar el nombre del sabor por medio del id y el id del tipo producto
+     * @param idMarca
+     * @param idtipo
+     * @return
+     */
     public static String buscaSabor(int idMarca, int idtipo){
         for (MantenedorTresAtributos mantenedorTresAtributos: listaSabor){
             if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMarca && mantenedorTresAtributos.getFkMantenedorTresAtributos() == idtipo){
@@ -62,16 +73,10 @@ public class CargarMantenedorTresAtributosHttpConecction {
 
     }
 
-    public static int buscarSabor(String sabor){
-        for (MantenedorTresAtributos mantenedorTresAtributos: listaSabor){
-            if (mantenedorTresAtributos.getNombreMantenedorTresAtributos().equals(sabor)){
-                return mantenedorTresAtributos.getIdMantenedorTresAtributos();
-            }
-
-        }
-        return -1;
-    }
-
+    /**
+     * Metodo para eliminar de la lista estatica sabor por medio del id
+     * @param id
+     */
     public static void eliminar(int id){
         for(int x = 0; x< listaMantenedorTresAtributos.size(); ++x){
             if (listaMantenedorTresAtributos.get(x).getIdMantenedorTresAtributos()==id){
@@ -83,6 +88,11 @@ public class CargarMantenedorTresAtributosHttpConecction {
         }
     }
 
+    /**
+     * Metodo para buscar de la lista estatica un objeto por medio de su id
+     * @param idMantenedor
+     * @return
+     */
     public static MantenedorTresAtributos buscar(int idMantenedor){
         for(MantenedorTresAtributos mantenedorTresAtributos: listaMantenedorTresAtributos){
             if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMantenedor){
@@ -92,12 +102,12 @@ public class CargarMantenedorTresAtributosHttpConecction {
         return null;
     }
 
-    public static int buscarIndice(MantenedorTresAtributos mantenedorTresAtributos){
-        int position;
-        position = listaMantenedorTresAtributos.indexOf(mantenedorTresAtributos);
-        return position;
-    }
-
+    /**
+     * Metodo para poder editar un objeto de tres atributos de la lista estatica
+     * @param id
+     * @param idTipoProducto
+     * @param nombre
+     */
     public static void editar(int id,int idTipoProducto,String nombre){
         for(int x = 0; x< listaMantenedorTresAtributos.size(); ++x){
             if (listaMantenedorTresAtributos.get(x).getIdMantenedorTresAtributos()==id){
@@ -111,6 +121,10 @@ public class CargarMantenedorTresAtributosHttpConecction {
 
     }
 
+    /**
+     * Metodo para poder agregar a lista estatica un objeto
+     * @param mantenedorTresAtributos
+     */
     public static void agregar(MantenedorTresAtributos mantenedorTresAtributos){
 
         listaMantenedorTresAtributos.add(mantenedorTresAtributos);
@@ -145,6 +159,11 @@ public class CargarMantenedorTresAtributosHttpConecction {
 
     }
 
+    /**
+     * Metodo para filtrar la lista estatica de sabor por medio de id tipoproducto
+     * @param idTipoProducto
+     * @return
+     */
     public static ArrayList<MantenedorTresAtributos>filtro(int idTipoProducto){
         listaFiltrSabor.clear();
         for (MantenedorTresAtributos mantenedorTresAtributos: listaMantenedorTresAtributos){
@@ -171,17 +190,28 @@ public class CargarMantenedorTresAtributosHttpConecction {
 
     }
 
+    /**
+     * Metodo para limpiar la lista estatica de sabor y marca
+     */
     public static void limpiarListaMarcaSabor(){
         listaSabor.clear();
         listaMarca.clear();
 
     }
 
+    /**
+     * Metodo para poder limpiar la limpiar la lista estatica de provincia
+     */
     public static void voidlimpiarListaProvincia(){
         listaProvincia.clear();
 
     }
 
+    /**
+     * Metodo para buscar el nombre de la provincia por medio del id
+     * @param idProvincia
+     * @return
+     */
     public static String buscarNombreProvincia(int idProvincia){
         for (MantenedorTresAtributos provincia: listaMantenedorTresAtributos){
             if (provincia.getIdMantenedorTresAtributos()==idProvincia){
@@ -191,6 +221,15 @@ public class CargarMantenedorTresAtributosHttpConecction {
         return "";
     }
 
+    /**
+     * Metodo para buscar a la base de datos todos los datos dependiendo el nombre del mantenedor
+     * a traves de webservice
+     * @param context
+     * @param mantenedo
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     */
     public static ArrayList<MantenedorTresAtributos> buscarMantenedorTresAtributos(Context context, String mantenedo) throws IOException, JSONException {
         MantenedorTresAtributos mantenedorTresAtributos = null;
 

@@ -40,6 +40,12 @@ public class CargarMantendorComunaHttpConecction {
         }
     }
 
+    /**
+     *
+     * @param idMantenedor
+     * @return Comuna
+     * Metodo busca por medio del id que se le entra el objeto que cohincida con esa id y retorna el objeto completo
+     */
     public static Comuna buscar(int idMantenedor){
         for(Comuna Comuna: listaComuna){
             if (Comuna.getIdComuna()==idMantenedor){
@@ -49,6 +55,16 @@ public class CargarMantendorComunaHttpConecction {
         return null;
     }
     //Se pasan todos los parametros para actualizarlo en la lista
+
+    /**
+     *
+     * @param idcomuna
+     * @param nombre
+     * @param idregion
+     * @param idprovincia
+     * Al momento de editar en la base de datos una se actualiza en esta lista los atributos en base al id
+     * de la comuna
+     */
     public static void editar(int idcomuna ,String nombre, int idregion, int idprovincia){
         for(int x = 0; x< listaComuna.size(); ++x){
             if (listaComuna.get(x).getIdComuna()==idcomuna){
@@ -61,6 +77,13 @@ public class CargarMantendorComunaHttpConecction {
         }
 
     }
+
+    /**
+     *
+     * @param idMantenedor
+     * @return
+     * Metodo retorna solo el nombre de la comuna en base a su id
+     */
     public static String buscarNombreComuna(int idMantenedor){
         for(Comuna comuna: listaComuna){
             if (comuna.getIdComuna()==idMantenedor){
@@ -70,11 +93,22 @@ public class CargarMantendorComunaHttpConecction {
         return null;
     }
 
+    /**
+     * @param Comuna
+     * Se agrega en la lista estatica la nueva comuna agregada
+     */
     public static void agregar(Comuna Comuna){
 
         listaComuna.add(Comuna);
     }
 
+    /**
+     *
+     * @param fkProvincia
+     * @param fkRegion
+     * Metodo retorna una nueva lista en base a la provincia y a la comuna
+     * @return
+     */
     public static ArrayList<Comuna>filtro(int fkProvincia,int fkRegion){
         listaFiltroComuna.clear();
         listaAuxComuna.clear();
@@ -95,7 +129,15 @@ public class CargarMantendorComunaHttpConecction {
         return listaFiltroComuna;
     }
 
-
+    /**
+     *
+     * @param context
+     * @param mantenedo
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     * Metodo retorna de la base de datos todas las comunas en la base de datos por medio de webservice
+     */
     public static ArrayList<Comuna> buscarMantenedorComuna(Context context, String mantenedo) throws IOException, JSONException {
         listaComuna = new ArrayList<>();
         URL url = new URL(context.getString(R.string.URLwebServicePart1)

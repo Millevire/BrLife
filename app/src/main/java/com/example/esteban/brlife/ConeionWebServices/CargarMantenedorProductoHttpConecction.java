@@ -26,6 +26,10 @@ import java.util.ArrayList;
 public class CargarMantenedorProductoHttpConecction {
     public static ArrayList<Producto> listaProducto =new ArrayList<>();
 
+    /**
+     * Metodo para eliminar de la lista estatica un producto por medio de su id
+     * @param id
+     */
     public static void eliminar(int id){
         for(int x = 0; x< listaProducto.size(); ++x){
             if (listaProducto.get(x).getIdProducto()==id){
@@ -37,6 +41,17 @@ public class CargarMantenedorProductoHttpConecction {
         }
     }
 
+    /**
+     * Metodo para editar un producto de la lista estatica
+     * @param id
+     * @param fkTipoProducto
+     * @param marca
+     * @param sabor
+     * @param nombre
+     * @param cantidadracion
+     * @param tipomedicion
+     * @param validacion
+     */
     public static void editar(int id, int fkTipoProducto, int marca, int sabor, String nombre, float cantidadracion, int tipomedicion, boolean validacion){
         for(int x = 0; x< listaProducto.size(); ++x){
             if (listaProducto.get(x).getIdProducto()==id){
@@ -55,6 +70,11 @@ public class CargarMantenedorProductoHttpConecction {
 
     }
 
+    /**
+     * Metodo para retornar un producto por medio de id
+     * @param idProducto
+     * @return
+     */
     public static Producto buscarProducto(int idProducto){
         for (Producto producto:listaProducto){
             if (producto.getIdProducto()==idProducto){
@@ -65,6 +85,11 @@ public class CargarMantenedorProductoHttpConecction {
         return null;
     }
 
+    /**
+     * Metodo para buscar un producto por medio de la lista estatica
+     * @param codigoBarra
+     * @return
+     */
     public static Producto buscarProductoCodigoBarra(String codigoBarra){
         for (Producto producto:listaProducto){
             if (producto.getCodigoBarra().equals(codigoBarra)){
@@ -76,6 +101,10 @@ public class CargarMantenedorProductoHttpConecction {
     }
 
 
+    /**
+     * Metodo para agregar un producto en la lista estatica
+     * @param producto
+     */
     public static void agregar(Producto producto){
 
         listaProducto.add(producto);
@@ -85,6 +114,15 @@ public class CargarMantenedorProductoHttpConecction {
         return listaProducto;
     }
 
+    /**
+     * Metodo para cargar todos los productos en la base de datos y guardarlos
+     * en la lista estatica
+     * @param context
+     * @param mantenedo
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     */
     public static ArrayList<Producto> buscarMantenedorProducto(Context context, String mantenedo) throws IOException, JSONException {
         listaProducto = new ArrayList<>();
         URL url = new URL(context.getString(R.string.URLwebServicePart1)

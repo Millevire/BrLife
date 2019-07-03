@@ -33,6 +33,17 @@ public class CargarRegistroUsuarioHttpConexion {
         return listaRegistro;
     }
 
+    /**
+     * Se trae el registro del usuario en la base de datos a travez de los siguientes parametros
+     * @param mantenedo
+     * @param idusuario
+     * @param dia
+     * @param mes
+     * @param ano
+     * @param horariocomida
+     * @throws IOException
+     * @throws JSONException
+     */
     public static void TraerDatosRegistroUsuario(String mantenedo, int idusuario, int dia, int mes, int ano, int horariocomida) throws IOException, JSONException {
 
         //listaRegistro = new ArrayList<>();
@@ -93,6 +104,16 @@ public class CargarRegistroUsuarioHttpConexion {
         }
     }
 
+    /**
+     * Se trae el total por cada horario de comida segun los parametros:
+     * @param mantenedo
+     * @param idusuario
+     * @param dia
+     * @param mes
+     * @param ano
+     * @throws IOException
+     * @throws JSONException
+     */
     public static void TraerDatosRegistroUsuarioTotales(String mantenedo, int idusuario, int dia, int mes, int ano) throws IOException, JSONException {
 
         //listatotales = new ArrayList<>();
@@ -144,6 +165,17 @@ public class CargarRegistroUsuarioHttpConexion {
         }
     }
 
+    /**
+     * Trae el total consumido diario de todos los nutrientes dependiendo del:
+     * @param mantenedo
+     * @param idusuario
+     * @param dia
+     * @param mes
+     * @param ano
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     */
     public static float TraerDatosRegistroUsuarioDiaria(String mantenedo, int idusuario, int dia, int mes, int ano) throws IOException, JSONException {
 
         listadiaria = new ArrayList<>();
@@ -207,6 +239,13 @@ public class CargarRegistroUsuarioHttpConexion {
         return  0;
     }
 
+    /**
+     * Guarda el producto consumido con los parametros:
+     * @param mantenedo
+     * @param registroUsuario
+     * @throws IOException
+     * @throws JSONException
+     */
     public static void GuardarRegistro(String mantenedo, RegistroUsuario registroUsuario) throws IOException, JSONException {
 
         //listadiaria = new ArrayList<>();
@@ -243,6 +282,13 @@ public class CargarRegistroUsuarioHttpConexion {
         listaRegistro.add(registroUsuario);
     }
 
+    /**
+     * Elimina el registro consumido con los parametros:
+     * @param mantenedo
+     * @param registroUsuario
+     * @throws IOException
+     * @throws JSONException
+     */
     public static void EliminarRegistro(String mantenedo, RegistroUsuario registroUsuario) throws IOException, JSONException {
 
         //listadiaria = new ArrayList<>();
@@ -277,6 +323,13 @@ public class CargarRegistroUsuarioHttpConexion {
         listaRegistro.remove(registroUsuario);
     }
 
+    /**
+     * Actualiza el registro en la base de datos con los parametros:
+     * @param mantenedo
+     * @param registroUsuario
+     * @throws IOException
+     * @throws JSONException
+     */
     public static void ActualizarRegistro(String mantenedo, RegistroUsuario registroUsuario) throws IOException, JSONException {
 
         //listadiaria = new ArrayList<>();

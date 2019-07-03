@@ -72,6 +72,15 @@ public class CargarMantenedorProductoNutrienteHttpConecction {
         listaProductoNutriente.remove(productoNutrientere);
     }
 
+    /**
+     * Metodo que trae todos los nutrientes y sus valores asociados al producto que se consulta
+     * @param context
+     * @param mantenedo
+     * @param idProducto
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     */
     public static ArrayList<ProductoNutriente> buscarMantenedorProductoNutriente(Context context, String mantenedo, int idProducto) throws IOException, JSONException {
         listaProductoNutriente = new ArrayList<>();
 

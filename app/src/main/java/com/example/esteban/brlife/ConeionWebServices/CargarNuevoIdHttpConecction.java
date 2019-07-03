@@ -27,6 +27,14 @@ public class CargarNuevoIdHttpConecction {
         return nuevaid;
     }
 
+    /**
+     * Trae el nuevo id para su uso posterior a traves del nombre del mantenedor que se necesita el id
+     * @param context
+     * @param mantenedo
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     */
     public static int buscarMantenedorNuevoId(Context context, String mantenedo) throws IOException, JSONException {
 
 

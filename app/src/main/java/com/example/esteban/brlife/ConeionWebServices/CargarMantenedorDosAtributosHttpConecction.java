@@ -34,6 +34,15 @@ public class CargarMantenedorDosAtributosHttpConecction {
     public static ArrayList<MantenedorDosAtributos> listaHorarioComida =new ArrayList<>();
     static ProgressDialog progreso;
 
+    /**
+     * Metodo retorna cualquier mantenedor de dos atrbitos pasando como parametro el context para
+     * el progress dialog y el nombre del mantenedor para cargar uno en especifico
+     * @param context
+     * @param mantenedo
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     */
     public static ArrayList<MantenedorDosAtributos> buscarMantenedorDosAtributos(Context context, String mantenedo) throws  IOException, JSONException {
 
 
@@ -151,6 +160,9 @@ public class CargarMantenedorDosAtributosHttpConecction {
         return listaHorarioComida;
     }
 
+    /**
+     * Metodo limpia todas las listas estaticas
+     */
     public static void limpiarListas(){
         listaInteres.clear();
         listaTipoPersona.clear();
@@ -160,7 +172,10 @@ public class CargarMantenedorDosAtributosHttpConecction {
         listaHorarioComida.clear();
     }
 
-
+    /**
+     * Metodo elimina por medio del id un objeto de la lista general estatica
+     * @param id
+     */
     public static void eliminar(int id){
         for(int x = 0; x< listaMantenedors.size(); ++x){
             if (listaMantenedors.get(x).getIdMantenedorDosAtributos()==id){
@@ -172,6 +187,13 @@ public class CargarMantenedorDosAtributosHttpConecction {
         }
     }
 
+    /**
+     * Metodo para buscar en la lista estatica general un objeto completo por medio del id
+     * @param idMantenedor
+     * @param context
+     * @param mantenedo
+     * @return
+     */
     public static MantenedorDosAtributos buscar(int idMantenedor, Context context, String mantenedo){
         for(MantenedorDosAtributos mantenedor: listaMantenedors){
             if (mantenedor.getIdMantenedorDosAtributos()==idMantenedor){
@@ -181,6 +203,11 @@ public class CargarMantenedorDosAtributosHttpConecction {
         return null;
     }
 
+    /**
+     * Metodo para buscar en la lista estatica general un objeto completo por medio del id
+     * @param idMantenedor
+     * @return
+     */
     public static MantenedorDosAtributos buscar(int idMantenedor){
         for(MantenedorDosAtributos mantenedor: listaMantenedors){
             if (mantenedor.getIdMantenedorDosAtributos()==idMantenedor){
@@ -190,16 +217,20 @@ public class CargarMantenedorDosAtributosHttpConecction {
         return null;
     }
 
+    /**
+     * Agrega a la lista estatica el objeto entero que se agrega en la base de datos
+     * @param mantenedor
+     */
     public static void agregar(MantenedorDosAtributos mantenedor){
         listaMantenedors.add(mantenedor);
     }
 
-    public static int buscarIndice(MantenedorDosAtributos mantenedorTresAtributos){
-        int position;
-        position = listaMantenedors.indexOf(mantenedorTresAtributos);
-        return position;
-    }
 
+    /**
+     * Metodo para editar de la lista estatica general un objeto por medio de su id
+     * @param id
+     * @param nombre
+     */
     public static void editar(int id,String nombre){
         for(int x = 0; x< listaMantenedors.size(); ++x){
             if (listaMantenedors.get(x).getIdMantenedorDosAtributos()==id){
@@ -213,7 +244,11 @@ public class CargarMantenedorDosAtributosHttpConecction {
     }
 
 
-
+    /**
+     * Metodo para buscar el nombre del mantenedor region por medio de su id
+     * @param idRegion
+     * @return
+     */
     public static String buscarNombreREgion(int idRegion){
         for (MantenedorDosAtributos region:listaRegion){
             if (region.getIdMantenedorDosAtributos()==idRegion){
@@ -223,6 +258,11 @@ public class CargarMantenedorDosAtributosHttpConecction {
         return "";
     }
 
+    /**
+     * Metodo para buscar el nombre del mantenedor tipo de persona por medio de su id
+     * @param idTipoPersona
+     * @return
+     */
     public static String buscarTipoPersona(int idTipoPersona){
         for (MantenedorDosAtributos tipoPersona:listaTipoPersona){
             if (tipoPersona.getIdMantenedorDosAtributos()==idTipoPersona){
@@ -232,6 +272,11 @@ public class CargarMantenedorDosAtributosHttpConecction {
         return "";
     }
 
+    /**
+     * Metodo para buscar el nombre del mantenedor rol por medio de su id
+     * @param idRol
+     * @return
+     */
     public static String buscarNombreRol(int idRol){
         for (MantenedorDosAtributos rol:listaRol){
             if (rol.getIdMantenedorDosAtributos()==idRol){
@@ -241,6 +286,11 @@ public class CargarMantenedorDosAtributosHttpConecction {
         return "";
     }
 
+    /**
+     * Metodo para buscar el nombre del mantenedor Objetivo por medio de su id
+     * @param idObjetivo
+     * @return
+     */
     public static String buscarNombreObjetivo(int idObjetivo){
         for (MantenedorDosAtributos objetivo:listaObjetivo){
             if (objetivo.getIdMantenedorDosAtributos()==idObjetivo){
@@ -250,6 +300,11 @@ public class CargarMantenedorDosAtributosHttpConecction {
         return "";
     }
 
+    /**
+     * Metodo para buscar el nombre del mantenedor region por medio de su id
+     * @param idInteres
+     * @return
+     */
     public static String buscarNombreInteres(int idInteres){
         for (MantenedorDosAtributos interes:listaInteres){
             if (interes.getIdMantenedorDosAtributos()==idInteres){

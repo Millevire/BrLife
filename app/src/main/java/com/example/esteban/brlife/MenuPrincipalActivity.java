@@ -34,6 +34,8 @@ import java.io.IOException;
  * Opcion de Login o ingreso a cuenta existente.
  * Opcion de registro para un nuevo usuario.
  */
+
+
 public class MenuPrincipalActivity extends AppCompatActivity {
   private Button btnProbarAplicacion,btnIniciarSession,btnRegistrarsePre;
     @Override
@@ -128,6 +130,7 @@ public class MenuPrincipalActivity extends AppCompatActivity {
                 if (producto !=null){
 
                     intentProducto.putExtra("Producto",producto);
+                    intentProducto.putExtra("accion","probar");
                     startActivity(intentProducto);
 
                 }

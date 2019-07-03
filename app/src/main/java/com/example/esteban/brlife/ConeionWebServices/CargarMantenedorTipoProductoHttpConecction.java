@@ -24,7 +24,13 @@ import java.util.ArrayList;
  *
  */
 public class CargarMantenedorTipoProductoHttpConecction {
+
     public static ArrayList<TipoProducto> listaTipoProducto =new ArrayList<>();
+
+    /**
+     * Metodo para eliminar de la lista estatica por medio del id
+     * @param id
+     */
     public static void eliminar(int id){
         for(int x = 0; x< listaTipoProducto.size(); ++x){
             if (listaTipoProducto.get(x).getIdTipoProducto()==id){
@@ -36,6 +42,11 @@ public class CargarMantenedorTipoProductoHttpConecction {
         }
     }
 
+    /**
+     * Metodo para buscar un TipoProducto por medio de su id
+     * @param idMantenedor
+     * @return
+     */
     public static TipoProducto buscar(int idMantenedor){
         for(TipoProducto tipoProducto: listaTipoProducto){
             if (tipoProducto.getIdTipoProducto()==idMantenedor){
@@ -45,6 +56,12 @@ public class CargarMantenedorTipoProductoHttpConecction {
         return null;
     }
 
+
+    /**
+     * Metodo para buscar el nombre de tipo de producto por medio del id
+     * @param idMantenedor
+     * @return
+     */
     public static String buscarNombre(int idMantenedor){
         for(TipoProducto tipoProducto: listaTipoProducto){
             if (tipoProducto.getIdTipoProducto()==idMantenedor){
@@ -54,6 +71,14 @@ public class CargarMantenedorTipoProductoHttpConecction {
         return null;
     }
     //Se pasan todos los parametros para actualizarlo en la lista
+
+    /**
+     * Metodo para editar un tipo de producto en la lista estatica
+     * @param id
+     * @param nombre
+     * @param sabor
+     * @param marca
+     */
     public static void editar(int id,String nombre, boolean sabor, boolean marca){
         for(int x = 0; x< listaTipoProducto.size(); ++x){
             if (listaTipoProducto.get(x).getIdTipoProducto()==id){
@@ -67,35 +92,23 @@ public class CargarMantenedorTipoProductoHttpConecction {
 
     }
 
+    /**
+     * Metodo para agregar un tipo de producto en la lista estatica
+     * @param tipoProducto
+     */
     public static void agregar(TipoProducto tipoProducto){
 
         listaTipoProducto.add(tipoProducto);
     }
 
-    public static ArrayList<TipoProducto> getListaTipoProducto() {
-
-        return listaTipoProducto;
-    }
-    public static ArrayList<TipoProducto> ListaTipoProductoMarca() {
-        ArrayList<TipoProducto> listamarca = new ArrayList<>();
-        for (TipoProducto e:listaTipoProducto) {
-            if (e.isVariedadMarca() == true){
-                listamarca.add(e);
-            }
-        }
-        return listamarca;
-    }
-    public static ArrayList<TipoProducto> ListaTipoProductoSabor() {
-        ArrayList<TipoProducto> listasabor = new ArrayList<>();
-        for (TipoProducto e:listaTipoProducto) {
-            if (e.isVaridadSabor()){
-                listasabor.add(e);
-            }
-        }
-
-        return listasabor;
-    }
-
+    /**
+     * Metodo para buscar en la base de datos todos los tipos de productos por medio de webservice
+     * @param context
+     * @param mantenedo
+     * @return
+     * @throws IOException
+     * @throws JSONException
+     */
     public static ArrayList<TipoProducto> buscarMantenedorTipoProducto(Context context, String mantenedo) throws IOException, JSONException {
         listaTipoProducto = new ArrayList<>();
         URL url = new URL(context.getString(R.string.URLwebServicePart1)

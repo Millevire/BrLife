@@ -28,6 +28,16 @@ public class CrudUsuarioHttpConecction {
     public static int nuevoidusuario;
     public static ArrayList<UsuarioInteres> listausuariointeres = new ArrayList<>();
 
+    /**
+     * Metodo valida acceso del usuario por medio de los parametros:
+     * @param mantenedo el nombre del mantenedor
+     * @param alias el alias que peude ingresar el usuario
+     * @param corrreoelectronico el correo que puede ingresar el usuario
+     * @param contrasena la contraseña del usuario para ingresar a la aplicacion
+     * @return retorna el id del usuario
+     * @throws IOException
+     * @throws JSONException
+     */
     public static int ValidarAccesoUsuario(String mantenedo, String alias, String corrreoelectronico, String contrasena) throws IOException, JSONException {
 
 
@@ -73,6 +83,13 @@ public class CrudUsuarioHttpConecction {
         return acceso;
     }
 
+    /**
+     * Metodo trae los datos del usuario por medio de los parametros:
+     * @param mantenedo nombre del mantenedor
+     * @param idusuario el id del usuario
+     * @throws IOException en caso de problemas con el IO
+     * @throws JSONException en caso de problemas con el JSON
+     */
     public static void TraerDatosUsuario(String mantenedo, int idusuario) throws IOException, JSONException {
 
 
@@ -135,6 +152,14 @@ public class CrudUsuarioHttpConecction {
         }
     }
 
+    /**
+     * Metodo actualiza los datos del usuario en la base de datos
+     * @param mantenedo nombre del mantenedor
+     * @param usuario objeto del usuario
+     * @param MaximoCalorias el maximo de calorias calculadas para el usuario
+     * @throws IOException en caso de problemas con IO
+     * @throws JSONException en caso de problemas con el JSON
+     */
     public static void ActualizarUsuario(String mantenedo, Usuario usuario, float MaximoCalorias) throws IOException, JSONException {
 
 
@@ -172,20 +197,6 @@ public class CrudUsuarioHttpConecction {
                 while ((linea = br.readLine()) != null)
                     responseSTR.append(linea);
 
-//                JSONObject response = new JSONObject(responseSTR.toString());
-//                JSONArray json=response.optJSONArray("Usuario");
-//
-//                try {
-//                    for (int i=0; i<json.length(); i++){
-//                        JSONObject jsonObject= null ;
-//                        jsonObject=json.getJSONObject(i);
-//                        usuario.setIdUsuario(jsonObject.getInt("Id_Usuario"));
-//                    }
-//
-//                }catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-
 
             }else
                 throw new RuntimeException("No se puede contectar al servidor");
@@ -194,6 +205,13 @@ public class CrudUsuarioHttpConecction {
         }
     }
 
+    /**
+     * Metodo para obtener un nuevo id al registrarse un usuario
+     * @param mantenedo el nombre del mantenedor
+     * @return retorna un nuevo id
+     * @throws IOException en caso de problemas con el IO
+     * @throws JSONException en caso de problemas con el JSON
+     */
     public static int ObtenerNuevoIdUsuario(String mantenedo) throws IOException, JSONException {
 
 
@@ -237,6 +255,13 @@ public class CrudUsuarioHttpConecction {
     }
 
 
+    /**
+     * Metodo para actualizar el correo del usuario en la base de datos
+     * @param mantenedo el nombre del mantendor
+     * @param usuario el objeto usuario
+     * @throws IOException en caso de problemas con el IO
+     * @throws JSONException en caso de problemas con JSON
+     */
     public static void ActualizarCorreoUsuario(String mantenedo, Usuario usuario) throws IOException, JSONException {
 
 
@@ -257,22 +282,6 @@ public class CrudUsuarioHttpConecction {
                 StringBuilder responseSTR = new StringBuilder();
                 while ((linea = br.readLine()) != null)
                     responseSTR.append(linea);
-
-//                JSONObject response = new JSONObject(responseSTR.toString());
-//                JSONArray json=response.optJSONArray("Usuario");
-//
-//                try {
-//                    for (int i=0; i<json.length(); i++){
-//                        JSONObject jsonObject= null ;
-//                        jsonObject=json.getJSONObject(i);
-//                        usuario.setIdUsuario(jsonObject.getInt("Id_Usuario"));
-//                    }
-//
-//                }catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-
-
             }else
                 throw new RuntimeException("No se puede contectar al servidor");
         }finally {
@@ -280,6 +289,14 @@ public class CrudUsuarioHttpConecction {
         }
     }
 
+    /**
+     * Metodo para actualizar los datos personales del usuario
+     * @param mantenedo el nombre del mantenedor
+     * @param usuario el objeto usuario
+     * @param MaximoCalorias en maximo de calorias
+     * @throws IOException en caso de problemas con IO
+     * @throws JSONException en caso de problemas con el JSON
+     */
     public static void ActualizarDatosPersonalesUsuario(String mantenedo, Usuario usuario, float MaximoCalorias) throws IOException, JSONException {
 
 
@@ -315,21 +332,6 @@ public class CrudUsuarioHttpConecction {
                 while ((linea = br.readLine()) != null)
                     responseSTR.append(linea);
 
-//                JSONObject response = new JSONObject(responseSTR.toString());
-//                JSONArray json=response.optJSONArray("Usuario");
-//
-//                try {
-//                    for (int i=0; i<json.length(); i++){
-//                        JSONObject jsonObject= null ;
-//                        jsonObject=json.getJSONObject(i);
-//                        usuario.setIdUsuario(jsonObject.getInt("Id_Usuario"));
-//                    }
-//
-//                }catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-
-
             }else
                 throw new RuntimeException("No se puede contectar al servidor");
         }finally {
@@ -337,6 +339,13 @@ public class CrudUsuarioHttpConecction {
         }
     }
 
+    /**
+     * Metodo para eliminar un usuario
+     * @param mantenedo el nombre del mantenedor
+     * @param idusuario el id del usuario
+     * @throws IOException en caso de problemas con el IO
+     * @throws JSONException el caso de problemas con el JSON
+     */
     public static void EliminarUsuario(String mantenedo, int idusuario) throws IOException, JSONException {
 
 
@@ -364,6 +373,14 @@ public class CrudUsuarioHttpConecction {
         }
     }
 
+    /**
+     * Metodo para insertar los interes del usuario
+     * @param mantenedo el nombre del mantenedor
+     * @param idusuario el id del usuario
+     * @param idinteres el id del interes del usuario
+     * @throws IOException en caso de problemas con el IO
+     * @throws JSONException en caso de problemas con el JSON
+     */
     public static void InsertarUsuarioInteres(String mantenedo, int idusuario, int idinteres) throws IOException, JSONException {
         int nuevoid = 0;
 
@@ -408,6 +425,15 @@ public class CrudUsuarioHttpConecction {
         listausuariointeres.add(new UsuarioInteres(nuevoid,idusuario,idinteres));
     }
 
+    /**
+     * Metodo para eliminar los intereses del usuario
+     * @param mantenedo el nombre de mantenedor
+     * @param idusuariointeres el id usuario interes a eliminar
+     * @param idusuario el id del usuario
+     * @param idinteres el id el interes
+     * @throws IOException en caso de problemas con el IO
+     * @throws JSONException en caso de problemas con el JSON
+     */
     public static void eliminarUsuarioInteres(String mantenedo, int idusuariointeres, int idusuario, int idinteres) throws IOException, JSONException {
 
         URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=e" +
@@ -437,6 +463,15 @@ public class CrudUsuarioHttpConecction {
         listausuariointeres.remove(new UsuarioInteres(idusuariointeres,idusuario,idinteres));
     }
 
+    /**
+     * Metodo para traer todos los intereses del usuario
+     * @param mantenedo el nombre del mantendor
+     * @param idusuariointeres el id usuario interes
+     * @param idusuario el id del usuario
+     * @param idinteres el id del interes
+     * @throws IOException
+     * @throws JSONException
+     */
     public static void traerUsuarioInteres(String mantenedo, int idusuariointeres, int idusuario, int idinteres) throws IOException, JSONException {
 
         URL url = new URL("http://www.brotherwareoficial.com/WebServices/Mantenedor"+mantenedo+".php?tipoconsulta=s" +

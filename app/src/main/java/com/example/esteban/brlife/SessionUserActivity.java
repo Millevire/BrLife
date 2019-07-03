@@ -281,6 +281,7 @@ public class SessionUserActivity extends AppCompatActivity
                 if (producto !=null){
 
                     intentProducto.putExtra("Producto",producto);
+                    intentProducto.putExtra("accion","agregar");
                     startActivity(intentProducto);
 
                 }

@@ -1,6 +1,7 @@
 package com.example.esteban.brlife.Adaptadores;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,15 @@ import com.example.esteban.brlife.Clases.RegistroUsuario;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTipoProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
+import com.example.esteban.brlife.ConeionWebServices.CargarRegistroUsuarioHttpConexion;
 import com.example.esteban.brlife.Enum.SeleccionTipoProducto;
+import com.example.esteban.brlife.NuevoRegistroProductoUsuarioActivity;
 import com.example.esteban.brlife.R;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -77,8 +84,13 @@ public AdapterRegistroProducto(Context context, ArrayList<RegistroUsuario>listaR
         ImageView ivImagenProductoRegistrado=convertView.findViewById(R.id.ivImagenProductoRegistrado);
 
 
+        //Para poder instanciar la actividad de agregar el producto al registro y usarla para poder modificar
+        final Intent intent =new Intent(context, NuevoRegistroProductoUsuarioActivity.class);
+
         //BuscarProducto
-        Producto producto=CargarMantenedorProductoHttpConecction.buscarProducto(listaRegistroUsuario.get(position).getIdproducto());
+        final Producto producto=CargarMantenedorProductoHttpConecction.buscarProducto(listaRegistroUsuario.get(position).getIdproducto());
+
+        final RegistroUsuario registroUsuario = listaRegistroUsuario.get(position);
 
         tvNombreProductoRegistrado.setText(producto.getNombreProducto());
         tvSaborProductoProductoRegistrado.setText(CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor(),producto.getFkTipoProducto()));
@@ -146,14 +158,24 @@ public AdapterRegistroProducto(Context context, ArrayList<RegistroUsuario>listaR
        btnEditarProductoRegistrado.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-
+               intent.putExtra("accion","editar");
+               intent.putExtra("Producto", (Serializable) producto);
+               intent.putExtra("Registro", (Serializable) registroUsuario);
+               context.startActivity(intent);
            }
        });
 
         btnEliminarProductoRegistrado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                try {
+                    CargarRegistroUsuarioHttpConexion.EliminarRegistro("RegistroUsuario",registroUsuario);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                notifyDataSetChanged();
             }
         });
         return convertView;

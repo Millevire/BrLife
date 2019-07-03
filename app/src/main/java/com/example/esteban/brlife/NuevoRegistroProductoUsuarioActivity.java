@@ -45,7 +45,8 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
     public ArrayList<ProductoNutriente> listaProductoNutrientes;
     public Producto producto;
     public int idhorario;
-
+    public String accion = "";
+    public RegistroUsuario registroUsuario = new RegistroUsuario();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +73,11 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
 
         final Bundle bundle=getIntent().getExtras();
 
+        try {
+            accion = getIntent().getExtras().getString("accion");
+        }catch (Exception e){
+            accion = "";
+        }
         if (bundle !=null){
             producto=(Producto) bundle.getSerializable("Producto");
 
@@ -87,7 +93,11 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-
+            if (accion.equals("editar")){
+                registroUsuario=(RegistroUsuario) bundle.getSerializable("Registro");
+                etPorcionRegistro.setText(registroUsuario.getValorporcion() + "");
+                btnAgregarRegistro.setText("Editar");
+            }
 
         }
 
@@ -95,6 +105,13 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
         lvNutrientesRegistro.setAdapter(adapterProductoNutriente);
         spinAdapter = new SpinAdapter(this,android.R.layout.simple_list_item_1, CargarMantenedorDosAtributosHttpConecction.getListaHorarioComida());
         spHorarioComidaRegistro.setAdapter(spinAdapter);
+
+        if (accion.equals("editar")){
+            etPorcionRegistro.setText(registroUsuario.getValorporcion() + "");
+            int id = (int) spinAdapter.getItemId(registroUsuario.getIdhorariocomida());
+            spHorarioComidaRegistro.setSelection(id);
+        }
+
 
         spHorarioComidaRegistro.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -121,19 +138,27 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
 
                 String hora = date.getHours() + ":"+  date.getMinutes();
 
-                RegistroUsuario registroUsuario = new RegistroUsuario(0, CrudUsuarioHttpConecction.usuario.getIdUsuario(),
+                RegistroUsuario registroUser = new RegistroUsuario(0, CrudUsuarioHttpConecction.usuario.getIdUsuario(),
                         CargarRegistroUsuarioHttpConexion.dia,
                         CargarRegistroUsuarioHttpConexion.mes,
                         CargarRegistroUsuarioHttpConexion.ano,hora,producto.getIdProducto(),
                         idhorario,
                         porcion);
                 try {
-                    CargarRegistroUsuarioHttpConexion.GuardarRegistro("RegistroUsuario",registroUsuario);
+                    if (accion.equals("editar")){
+                        registroUsuario.setIdhorariocomida(idhorario);
+                        registroUsuario.setValorporcion(porcion);
+
+                        CargarRegistroUsuarioHttpConexion.ActualizarRegistro("RegistroUsuario",registroUsuario);
+                    }else {
+                        CargarRegistroUsuarioHttpConexion.GuardarRegistro("RegistroUsuario", registroUser);
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                CargarMantenedorDosAtributosHttpConecction.listaHorarioComida.clear();
                 finish();
             }
         });
@@ -146,8 +171,9 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
         });
     }
 
-    public void llenarSpiner(){
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        CargarMantenedorDosAtributosHttpConecction.listaHorarioComida.clear();
     }
 }

@@ -68,7 +68,7 @@ public class SeleccionarProductoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final Intent intent =new Intent(SeleccionarProductoActivity.this,NuevoRegistroProductoUsuarioActivity.class);
                 Producto producto = CargarMantenedorProductoHttpConecction.listaProducto.get(position);
-
+                intent.putExtra("accion","agregar");
                 intent.putExtra("Producto",producto);
                 startActivity(intent);
 

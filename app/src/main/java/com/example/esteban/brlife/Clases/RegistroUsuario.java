@@ -1,6 +1,8 @@
 package com.example.esteban.brlife.Clases;
 
 
+import java.io.Serializable;
+
 /**
  * @author BrotherWare
  *
@@ -8,7 +10,9 @@ package com.example.esteban.brlife.Clases;
  *
  * registro de un Producto consumido
  */
-public class RegistroUsuario {
+import java.io.Serializable;
+
+public class RegistroUsuario implements Serializable {
     public int idregistrousuario;
     public int idusuario;
     public int dia;
