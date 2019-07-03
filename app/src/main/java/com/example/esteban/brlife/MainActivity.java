@@ -7,19 +7,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
-import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
+import com.example.esteban.brlife.Clases.Negocio;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTipoProductoHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
-import com.example.esteban.brlife.ConeionWebServices.CargarRegistroUsuarioHttpConexion;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
-import com.example.esteban.brlife.Enum.SeleccionTipoProducto;
 
 import org.json.JSONException;
 
 import java.io.IOException;
 
+/**
+ * @author BrotherWare
+ *
+ * Actividad de carga de base de datos de web service a base de dato interna SQLite.
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //#region pruebaPersistenciaPendiente
                 //Validacion de versiones
-                int valVersion=Negocio.ValidarExistenciaTablaVtablas(MainActivity.this);
+                int valVersion= Negocio.ValidarExistenciaTablaVtablas(MainActivity.this);
             if (valVersion>0){
                   Toast.makeText(MainActivity.this, "Tablas con "+valVersion+" Contenidos", Toast.LENGTH_SHORT).show();
                   

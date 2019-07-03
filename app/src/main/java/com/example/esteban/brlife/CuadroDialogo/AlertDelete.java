@@ -15,6 +15,10 @@ import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import com.example.esteban.brlife.R;
 
 
+/**
+ * @author BrotherWare
+ *
+ */
 public class AlertDelete {
 
     //metodo interfaz que comunicara Alert dialogo con actividad donde se implemente

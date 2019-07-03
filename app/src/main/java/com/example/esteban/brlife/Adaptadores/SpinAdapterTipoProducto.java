@@ -13,6 +13,11 @@ import com.example.esteban.brlife.Clases.TipoProducto;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class SpinAdapterTipoProducto extends ArrayAdapter<TipoProducto> {
     // Your sent context
     private Context context;

@@ -9,6 +9,12 @@ import android.widget.EditText;
 
 import com.example.esteban.brlife.Clases.Usuario;
 
+
+/**
+ * @author BrotherWare
+ *
+ * Actividad de registro cuenta usuario
+ */
 public class Fomr3Activity extends AppCompatActivity {
  private Button btnFinalizarRegistroForm3,btnBackForm3;
  private EditText etNombreUsuarioForm3,etContrasenaForm3,etRepitaContrasenaForm3;

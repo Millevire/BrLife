@@ -3,6 +3,11 @@ package com.example.esteban.brlife.Clases;
 import android.content.DialogInterface;
 import android.view.KeyEvent;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class DialogKeyListener implements DialogInterface.OnKeyListener {
 
 

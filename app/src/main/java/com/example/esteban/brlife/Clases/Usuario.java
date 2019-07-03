@@ -2,6 +2,11 @@ package com.example.esteban.brlife.Clases;
 
 import java.io.Serializable;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class Usuario implements Serializable{
     private int idUsuario;
     private String nombreUsuario;

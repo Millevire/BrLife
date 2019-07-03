@@ -21,6 +21,11 @@ import com.example.esteban.brlife.R;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class AdapterRegistroProducto extends BaseAdapter {
     private Context context;
     private ArrayList<RegistroUsuario> listaRegistroUsuario =new ArrayList<>();

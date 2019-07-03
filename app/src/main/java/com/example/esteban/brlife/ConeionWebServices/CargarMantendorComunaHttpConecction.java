@@ -17,6 +17,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarMantendorComunaHttpConecction {
     public static ArrayList<Comuna> listaComuna =new ArrayList<>();
     public static ArrayList<Comuna> listaAuxComuna =new ArrayList<>();

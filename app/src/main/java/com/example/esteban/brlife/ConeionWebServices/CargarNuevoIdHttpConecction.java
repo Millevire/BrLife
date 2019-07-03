@@ -13,6 +13,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarNuevoIdHttpConecction {
     public static int nuevaid;
     public Context contexto;

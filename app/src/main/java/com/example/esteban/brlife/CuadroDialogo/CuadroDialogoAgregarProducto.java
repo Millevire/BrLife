@@ -10,6 +10,11 @@ import android.widget.Button;
 
 import com.example.esteban.brlife.R;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CuadroDialogoAgregarProducto {
 
 public CuadroDialogoAgregarProducto(final Context context){

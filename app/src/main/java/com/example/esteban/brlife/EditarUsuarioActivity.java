@@ -26,6 +26,12 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
+
+/**
+ * @author BrotherWare
+ *
+ * Actividad encargada de negocio para edicion de datos de un usuario
+ */
 public class EditarUsuarioActivity extends AppCompatActivity {
     private Button btnBackEditar,btnAceptarEditar,btnEditarUsuario,btnEditarInfoPersonal,btnEditarInfoFisicaObjInter;
     private TextView tvNombreEditar,tvNombreUsuarioEditar,tvApellidosEditar,tvSexoEditar,tvFehcaNacimientoEditar,

@@ -15,6 +15,11 @@ import com.example.esteban.brlife.R;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class AdapterProductoNutriente extends BaseAdapter {
     private Context context;
     private ArrayList<ProductoNutriente> listaProductoNutriente=new ArrayList<>();

@@ -1,5 +1,10 @@
 package com.example.esteban.brlife.Clases;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class ProductoNutriente {
     private int idProductoNutriente;
     private int idProducto;

@@ -16,6 +16,11 @@ import com.example.esteban.brlife.R;
 import java.util.ArrayList;
 import java.util.Locale;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class AdapterProducto extends BaseAdapter {
     private Context context;
     private ArrayList<Producto> listaProducto =new ArrayList<>();

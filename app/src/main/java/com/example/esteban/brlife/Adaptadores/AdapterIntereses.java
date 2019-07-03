@@ -14,6 +14,12 @@ import com.example.esteban.brlife.R;
 
 import java.util.ArrayList;
 
+/**
+ * @author BrotherWare
+ *
+ *
+ *
+ */
 public class AdapterIntereses extends BaseAdapter {
     private Context context;
     private ArrayList<MantenedorDosAtributos>listaMantenedorDoosAtributos;

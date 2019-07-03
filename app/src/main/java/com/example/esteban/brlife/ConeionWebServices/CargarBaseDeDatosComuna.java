@@ -20,6 +20,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarBaseDeDatosComuna implements Response.Listener<JSONObject>,Response.ErrorListener{
     public static ArrayList<Comuna> listaComuna =new ArrayList<>();
 

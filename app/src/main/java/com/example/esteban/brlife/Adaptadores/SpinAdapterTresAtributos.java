@@ -13,6 +13,11 @@ import com.example.esteban.brlife.Clases.MantenedorTresAtributos;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class SpinAdapterTresAtributos extends ArrayAdapter<MantenedorTresAtributos> {
     // Your sent context
     private Context context;

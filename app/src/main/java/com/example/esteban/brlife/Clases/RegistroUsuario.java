@@ -1,5 +1,10 @@
 package com.example.esteban.brlife.Clases;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class RegistroUsuario {
     public int idregistrousuario;
     public int idusuario;

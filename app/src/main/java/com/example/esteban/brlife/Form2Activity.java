@@ -19,10 +19,16 @@ import com.example.esteban.brlife.Clases.Usuario;
 import com.example.esteban.brlife.Clases.ValorRol;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
+import com.example.esteban.brlife.CuadroDialogo.CuadroDialogoInformacionTipoPersona;
 import com.example.esteban.brlife.Enum.SeleccionValorRol;
 
 import java.util.ArrayList;
 
+/**
+ * @author BrotherWare
+ *
+ * Actividad de registro informacion fisica de un usuario
+ */
 public class Form2Activity extends AppCompatActivity {
   private Button btnSiguenteForm2,btnSomatipoForm2,btnBackForm2;
 

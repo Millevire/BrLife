@@ -1,5 +1,10 @@
 package com.example.esteban.brlife.Clases;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class ValorRol {
     private String nombreRol;
     private float valorRol;

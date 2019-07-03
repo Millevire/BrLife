@@ -17,6 +17,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarMantenedorProductoNutrienteHttpConecction {
     public static ArrayList<ProductoNutriente> listaProductoNutriente=new ArrayList<>();
     public static ArrayList<ProductoNutriente>listaProductoNutrienteacion = new ArrayList<>();

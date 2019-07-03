@@ -18,6 +18,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarMantenedorTipoProductoHttpConecction {
     public static ArrayList<TipoProducto> listaTipoProducto =new ArrayList<>();
     public static void eliminar(int id){

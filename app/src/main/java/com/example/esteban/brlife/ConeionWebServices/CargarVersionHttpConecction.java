@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.example.esteban.brlife.Version;
+import com.example.esteban.brlife.Clases.Version;
 import com.example.esteban.brlife.R;
 
 import org.json.JSONArray;
@@ -19,6 +19,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarVersionHttpConecction {
     public static ArrayList<Version> listaVersion;
     static ProgressDialog progreso;

@@ -16,6 +16,13 @@ import com.example.esteban.brlife.ConeionWebServices.CargarRegistroUsuarioHttpCo
 
 import java.util.List;
 
+/**
+ * @author BrotherWare
+ *
+ * Actividad de Historial de productos consumidos y registrados por horarios.
+ * Busqueda de alimentos.
+ *
+ */
 public class RegistroProductoHorarioActivity extends AppCompatActivity {
     private android.support.v7.widget.SearchView svFiltroProductoHorario;
     private ListView lvProductoHorario;

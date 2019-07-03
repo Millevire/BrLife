@@ -12,6 +12,11 @@ import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class SpinAdapter extends ArrayAdapter<MantenedorDosAtributos> {
     // Your sent context
     private Context context;

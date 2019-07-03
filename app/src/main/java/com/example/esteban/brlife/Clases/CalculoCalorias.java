@@ -7,6 +7,7 @@ import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributo
 import com.example.esteban.brlife.Enum.SeleccionValorRol;
 
 /**
+ * @author BrotherWare
  * Calculo de calorias por tipo de usuario para consumo diario
  * Ecuaciones de Mifflin-St Jeor
  */

@@ -5,6 +5,11 @@ import com.example.esteban.brlife.Clases.UsuarioInteres;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarBaseDeDatosUsuarioInteres {
 
     public static ArrayList<UsuarioInteres> listaUsuarioInteres=new ArrayList<>();

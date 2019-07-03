@@ -16,6 +16,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarRegistroUsuarioHttpConexion {
     public static int dia;
     public static int mes;

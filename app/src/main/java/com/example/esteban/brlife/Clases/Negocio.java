@@ -1,17 +1,13 @@
-package com.example.esteban.brlife;
+package com.example.esteban.brlife.Clases;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Region;
 import android.os.StrictMode;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
-import com.example.esteban.brlife.Clases.MantenedorTresAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtributos;
-import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosMantenedorTresAtributos;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtributosHttpConecction;
 import com.example.esteban.brlife.ConeionWebServices.CargarVersionHttpConecction;
@@ -20,9 +16,13 @@ import com.example.esteban.brlife.Enum.SelccionMantenedor;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class Negocio {
 public static ArrayList<Version>listaprueba=new ArrayList<>();
 

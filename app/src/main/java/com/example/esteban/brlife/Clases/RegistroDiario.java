@@ -1,5 +1,10 @@
 package com.example.esteban.brlife.Clases;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class RegistroDiario {
     public int idusuario;
     public int dia;

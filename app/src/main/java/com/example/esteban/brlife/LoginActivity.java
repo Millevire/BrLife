@@ -20,6 +20,12 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
+
+/**
+ * @author BrotherWare
+ *
+ * Actividad de Login o ingreso a cuenta creada.
+ */
 public class LoginActivity extends AppCompatActivity {
     private Button btnRegistar,btnIngresar, btnbacklogin;
     private EditText etUsuarioLogin,etContraseñaLogin;

@@ -1,5 +1,10 @@
 package com.example.esteban.brlife.Clases;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class MantenedorDosAtributos {
     private int idMantenedorDosAtributos;
     private String nombreMantenedorDosAtributos;

@@ -28,6 +28,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * @author BrotherWare
+ *
+ * Actividad de registro de un producto consumido a un horario determinado.
+ * Calculo de calorias por porcion consumida de producto.
+ */
 public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
     private TextView tvNombreProductoRegistro,tvSaborRegistro,tvMarcaRegistro;
     private Spinner spHorarioComidaRegistro,spPorcionRegistro;

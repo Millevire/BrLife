@@ -32,6 +32,17 @@ import java.util.Date;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
+/**
+ * @author BrotherWare
+ *
+ * Actividad de sesion.
+ * Muestra de Pefil de usuario.
+ * Informacion de maximo de calorias y calorias consumidas hasta el momento.
+ * Menus de muestra de calorias consumidas divididas en Horario.
+ * Menu lateral con configuracion de cuenta de usuario.
+ * Botones de busqueda de productos manualmente.
+ * Boton de busqueda por codigo de barra.
+ */
 public class SessionUserActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  {
       private Button btnScannBar1,btnAgregarComidaManual, btnHorarioComidaDesayuno, btnHorarioComidaAlmuerzo, btnHorarioComidaOnce, btnHorarioComidaCena;

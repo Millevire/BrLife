@@ -5,6 +5,11 @@ import com.example.esteban.brlife.Clases.ValorRol;
 import java.util.ArrayList;
 import java.util.Collection;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class SeleccionValorRol {
     public  static ArrayList<ValorRol> listaValorRol=new ArrayList<>();
 

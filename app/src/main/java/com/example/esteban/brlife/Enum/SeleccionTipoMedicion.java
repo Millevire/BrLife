@@ -5,6 +5,11 @@ import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class   SeleccionTipoMedicion {
         public  static ArrayList<MantenedorDosAtributos> TipoMedicion;
 

@@ -13,6 +13,11 @@ import com.example.esteban.brlife.Clases.Comuna;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class SpinAdapterComuna extends ArrayAdapter<Comuna> {
     // Your sent context
     private Context context;

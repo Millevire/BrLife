@@ -19,6 +19,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarBaseDeDatosProducto implements Response.Listener<JSONObject>,Response.ErrorListener {
     public static ArrayList<Producto> listaProducto =new ArrayList<>();
 

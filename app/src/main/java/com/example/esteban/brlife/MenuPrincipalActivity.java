@@ -24,6 +24,16 @@ import org.json.JSONException;
 
 import java.io.IOException;
 
+
+/**
+ * @author BrotherWare
+ *
+ * Actividad de Seleccion de accion para un usuario.
+ *
+ * Opcion de Probar aplicacion con verificacion de informacion de un producto mediante codigo de barra.
+ * Opcion de Login o ingreso a cuenta existente.
+ * Opcion de registro para un nuevo usuario.
+ */
 public class MenuPrincipalActivity extends AppCompatActivity {
   private Button btnProbarAplicacion,btnIniciarSession,btnRegistrarsePre;
     @Override

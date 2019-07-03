@@ -1,5 +1,10 @@
 package com.example.esteban.brlife.Enum;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
      public enum  SelccionMantenedor {
         TipoProducto("TipoProducto"),
         Region("Region"),

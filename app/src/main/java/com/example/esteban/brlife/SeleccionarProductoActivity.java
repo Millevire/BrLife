@@ -19,6 +19,11 @@ import org.json.JSONException;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @author BrotherWare
+ *
+ * Actividad de Busqueda de productos manualmente existentes en base de datos.
+ */
 public class SeleccionarProductoActivity extends AppCompatActivity {
    private Button btnBackSeleccionarProducto;
    private android.support.v7.widget.SearchView svFiltroProducto;

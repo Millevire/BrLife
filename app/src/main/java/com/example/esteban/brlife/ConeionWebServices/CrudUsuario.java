@@ -15,6 +15,11 @@ import com.example.esteban.brlife.Clases.Usuario;
 
 import org.json.JSONObject;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CrudUsuario implements Response.Listener<JSONObject>,Response.ErrorListener{
     static RequestQueue request;
     static JsonObjectRequest jsonObjectRequest;

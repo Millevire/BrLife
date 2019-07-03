@@ -1,10 +1,15 @@
-package com.example.esteban.brlife;
+package com.example.esteban.brlife.Clases;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class BaseDeDatosInterna extends SQLiteOpenHelper {
 
 

@@ -44,6 +44,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ * Actividad de registro informacion personal de un usuario
+ */
 public class Form1Activity extends AppCompatActivity {
   private Button btnSifuenteForm1,btnBackForm1;
   private Spinner spSexoFomr1,spRegionForm1,spProvinciaForm1,spComunaForm1;
@@ -224,6 +230,17 @@ public class Form1Activity extends AppCompatActivity {
 
         //Llenar Spinners
         llenarSpinner();
+
+
+        //Verificar funcionaliodad EDITAR
+
+
+        //iNFORMACION
+        final Bundle bundle=getIntent().getExtras();
+
+
+
+
 
 
         //#region Boton siguente. Se encarga de llenar parte de objeto usuario y enviarlo a siguente actividad para continuear llenado.

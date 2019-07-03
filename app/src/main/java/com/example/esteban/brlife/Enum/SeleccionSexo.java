@@ -4,6 +4,11 @@ import com.example.esteban.brlife.Clases.MantenedorDosAtributos;
 
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class SeleccionSexo {
     public  static ArrayList<MantenedorDosAtributos> listaSexo;
 

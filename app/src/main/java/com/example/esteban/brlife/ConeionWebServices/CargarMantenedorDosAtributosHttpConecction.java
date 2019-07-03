@@ -19,6 +19,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CargarMantenedorDosAtributosHttpConecction {
     public static ArrayList<MantenedorDosAtributos> listaMantenedors;
     public static ArrayList<MantenedorDosAtributos> listaObjetivo =new ArrayList<>();

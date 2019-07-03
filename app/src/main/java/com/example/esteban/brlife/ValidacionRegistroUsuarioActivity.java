@@ -33,7 +33,13 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-
+/**
+ * @author BrotherWare
+ *
+ * Actividad de previsualizacion de informacion de un nuevo registro usuario.
+ * Visualizacion de calculo de calorias maximas a consumir diariamente.
+ *
+ */
 public class ValidacionRegistroUsuarioActivity extends AppCompatActivity {
     private Button btnBackValidacion,btnAceptarValidacion;
     private TextView tvNombreValidacion,tvNombreUsuarioValidacion,tvApellidosValidacion,tvSexoValidacion,tvFehcaNacimientoValidacion,

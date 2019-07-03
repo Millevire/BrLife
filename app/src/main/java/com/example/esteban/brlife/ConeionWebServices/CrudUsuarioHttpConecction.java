@@ -15,6 +15,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class CrudUsuarioHttpConecction {
     public static int acceso;
     public static Usuario usuario;

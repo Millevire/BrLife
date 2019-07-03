@@ -4,6 +4,11 @@ import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosDosAtribut
 import com.example.esteban.brlife.ConeionWebServices.CargarBaseDeDatosUsuarioInteres;
 import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributosHttpConecction;
 
+
+/**
+ * @author BrotherWare
+ *
+ */
 public class UsuarioInteres {
     private int idUsuarioInteres;
     private int idUsuario;

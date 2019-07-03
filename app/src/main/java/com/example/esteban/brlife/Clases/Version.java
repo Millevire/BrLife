@@ -1,5 +1,12 @@
-package com.example.esteban.brlife;
+package com.example.esteban.brlife.Clases;
 
+/**
+ * @author BrotherWare
+ *
+ * Clase de control de versiones de tablas de base de datos.
+ * Compara tablas internas con base de datos de webService.
+ * Al encontrar diferencias de versiones, esta actualiza datos internos.
+ */
 public class Version {
     public  int Id_Tabla;
     public float Valor;
