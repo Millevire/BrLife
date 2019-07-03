@@ -4,6 +4,8 @@ package com.example.esteban.brlife.Clases;
 /**
  * @author BrotherWare
  *
+ * Clase ProductoNutriente.
+ * Tabla de relacion mucho a muchos para almacenar nutrientes relacionas a productos.
  */
 public class ProductoNutriente {
     private int idProductoNutriente;

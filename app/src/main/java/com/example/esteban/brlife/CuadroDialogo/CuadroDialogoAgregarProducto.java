@@ -13,7 +13,7 @@ import com.example.esteban.brlife.R;
 
 /**
  * @author BrotherWare
- *
+ *Cuadro de dialogo para agregar un nuevo producto inexistente en base de datos.
  */
 public class CuadroDialogoAgregarProducto {
 

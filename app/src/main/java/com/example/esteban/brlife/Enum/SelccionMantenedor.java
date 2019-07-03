@@ -4,6 +4,7 @@ package com.example.esteban.brlife.Enum;
 /**
  * @author BrotherWare
  *
+ * Enum de nombre de mantenedores
  */
      public enum  SelccionMantenedor {
         TipoProducto("TipoProducto"),

@@ -8,6 +8,9 @@ import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorDosAtributo
 /**
  * @author BrotherWare
  *
+ * Clase UsuarioInteres.
+ *
+ * Relacion de interes a usuario.
  */
 public class UsuarioInteres {
     private int idUsuarioInteres;

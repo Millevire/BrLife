@@ -20,6 +20,9 @@ import java.util.Locale;
 /**
  * @author BrotherWare
  *
+ *Clase adaptador
+ *Encargado de cargar vistas personalizadas a una lista de objetos Productos.
+ * Entrega de posicion de objetos en un ArrayList.
  */
 public class AdapterProducto extends BaseAdapter {
     private Context context;

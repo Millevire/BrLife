@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 /**
  * @author BrotherWare
  *
+ * Clase Contenedor de base de datos interna SQLite.
  */
 public class BaseDeDatosInterna extends SQLiteOpenHelper {
 

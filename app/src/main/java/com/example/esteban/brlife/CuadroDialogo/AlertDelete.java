@@ -18,6 +18,7 @@ import com.example.esteban.brlife.R;
 /**
  * @author BrotherWare
  *
+ * Cuadro de dialogo encargado de eliminar un registro cualquiera.
  */
 public class AlertDelete {
 

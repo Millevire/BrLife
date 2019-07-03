@@ -8,8 +8,8 @@ import com.example.esteban.brlife.Enum.SeleccionValorRol;
 
 /**
  * @author BrotherWare
- * Calculo de calorias por tipo de usuario para consumo diario
- * Ecuaciones de Mifflin-St Jeor
+ * Calculo de calorias por tipo de usuario para consumo diario.
+ * Ecuaciones de Mifflin-St Jeor.
  */
 public class CalculoCalorias {
 

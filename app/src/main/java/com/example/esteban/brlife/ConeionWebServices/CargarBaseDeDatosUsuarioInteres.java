@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 /**
  * @author BrotherWare
+ *Lista estatica UsuarioInteres
  *
  */
 public class CargarBaseDeDatosUsuarioInteres {

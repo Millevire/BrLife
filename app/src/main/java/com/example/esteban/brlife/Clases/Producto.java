@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * @author BrotherWare
- *
+ *Clase Producto.
  */
 public class Producto implements Serializable {
     private int idProducto;

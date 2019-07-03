@@ -9,6 +9,8 @@ import java.util.Collection;
 /**
  * @author BrotherWare
  *
+ * enum de valor rol.
+ * valor utilizado oara calculo de calorias maximas.
  */
 public class SeleccionValorRol {
     public  static ArrayList<ValorRol> listaValorRol=new ArrayList<>();

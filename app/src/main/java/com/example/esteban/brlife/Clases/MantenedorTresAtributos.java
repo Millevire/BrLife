@@ -3,7 +3,8 @@ package com.example.esteban.brlife.Clases;
 
 /**
  * @author BrotherWare
- *
+ *Clase MantenedorDosaAtributos.
+ * Clase generica utilizada para crear objetos con solo tres atributos.
  */
 public class MantenedorTresAtributos {
     private int idMantenedorTresAtributos;

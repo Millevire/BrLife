@@ -9,6 +9,7 @@ import java.util.ArrayList;
 /**
  * @author BrotherWare
  *
+ * enum de tipo de medicion de un producto(mg o ml).
  */
 public class   SeleccionTipoMedicion {
         public  static ArrayList<MantenedorDosAtributos> TipoMedicion;

@@ -4,6 +4,8 @@ package com.example.esteban.brlife.Enum;
 /**
  * @author BrotherWare
  *
+ * enum de tipo de producto.
+ * utilizada para definir tipos de productos y definir una imagen icono asociada a el.
  */
      public enum SeleccionTipoProducto {
          Crustaceo("Crustaceo"),

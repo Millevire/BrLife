@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 /**
  * @author BrotherWare
+ *Clase de conexion a webService mediante libreria Volley
  *
  */
 public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObject>,Response.ErrorListener{
@@ -63,7 +64,10 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
 
 
 
-
+    /**
+     * lista de Objeto MantenedorDosAtributos
+     * @return lista estatica de mantenedor
+     */
     public static void eliminar(int id){
         for(int x = 0; x< listaMantenedorDosAtributos.size(); ++x){
             if (listaMantenedorDosAtributos.get(x).getIdMantenedorDosAtributos()==id){
@@ -77,7 +81,11 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
 
 
 
-
+    /**
+     * Buscar un objeto MantenedorDosAtributos en lista estatica.
+     * @param idMantenedor id de objeto.
+     * @return objeto encontrado.
+     */
     public static MantenedorDosAtributos buscar(int idMantenedor, Context context, String mantenedo){
         for(MantenedorDosAtributos mantenedor: listaMantenedorDosAtributos){
             if (mantenedor.getIdMantenedorDosAtributos()==idMantenedor){
@@ -97,56 +105,11 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
     }
 
 
-    public static int buscarIndice(MantenedorDosAtributos mantenedorTresAtributos){
-        int position;
-        position = listaMantenedorDosAtributos.indexOf(mantenedorTresAtributos);
-        return position;
-    }
-
-    public static String buscarNombreREgion(int idRegion){
-        for (MantenedorDosAtributos region:listaRegion){
-            if (region.getIdMantenedorDosAtributos()==idRegion){
-                return region.getNombreMantenedorDosAtributos();
-            }
-        }
-        return "";
-    }
-
-    public static String buscarTipoPersona(int idTipoPersona){
-        for (MantenedorDosAtributos tipoPersona:listaTipoPersona){
-            if (tipoPersona.getIdMantenedorDosAtributos()==idTipoPersona){
-                return tipoPersona.getNombreMantenedorDosAtributos();
-            }
-        }
-        return "";
-    }
-
-    public static String buscarNombreRol(int idRol){
-        for (MantenedorDosAtributos rol:listaRol){
-            if (rol.getIdMantenedorDosAtributos()==idRol){
-                return rol.getNombreMantenedorDosAtributos();
-            }
-        }
-        return "";
-    }
-
-    public static String buscarNombreObjetivo(int idObjetivo){
-        for (MantenedorDosAtributos objetivo:listaObjetivo){
-            if (objetivo.getIdMantenedorDosAtributos()==idObjetivo){
-                return objetivo.getNombreMantenedorDosAtributos();
-            }
-        }
-        return "";
-    }
-
-    public static String buscarNombreInteres(int idInteres){
-        for (MantenedorDosAtributos interes:listaInteres){
-            if (interes.getIdMantenedorDosAtributos()==idInteres){
-                return interes.getNombreMantenedorDosAtributos();
-            }
-        }
-        return "";
-    }
+    /**
+     * Editar objeto en lista estatica.
+     * @param id id de objeto.
+     * @param nombre nombre de objeto.
+     */
     public static void editar(int id,String nombre){
         for(int x = 0; x< listaMantenedorDosAtributos.size(); ++x){
             if (listaMantenedorDosAtributos.get(x).getIdMantenedorDosAtributos()==id){
@@ -158,43 +121,28 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
         }
 
     }
+
+    /**
+     * Registro de nuevo objeto en lista estacica MantenedorDosAtributos.
+     * @param mantenedor nuevo objeto.
+     */
     public static void agregar(MantenedorDosAtributos mantenedor){
        // ordenar();
         listaMantenedorDosAtributos.add(mantenedor);
     }
 
-    public static ArrayList<MantenedorDosAtributos> getListaMantenedorDosAtributos() {
-
-        return listaMantenedorDosAtributos;
-    }
-
-    public static ArrayList<MantenedorDosAtributos> getListaInteres() {
-        return listaInteres;
-    }
-
-    public static ArrayList<MantenedorDosAtributos> getListaObjetivo() {
-        return listaObjetivo;
-    }
-
-    public static ArrayList<MantenedorDosAtributos> getListaRol() {
-        return listaRol;
-    }
-
-    public static ArrayList<MantenedorDosAtributos> getListaTipoPersona() {
-        return listaTipoPersona;
-    }
 
     public static ArrayList<MantenedorDosAtributos> getListaRegion() {
         return listaRegion;
     }
 
-    public static void limpiarListas(){
-        listaInteres.clear();
-        listaTipoPersona.clear();
-        listaRol.clear();
-        listaObjetivo.clear();
-    }
 
+
+    /**
+     * Metodo de conexion con base de datos y webService
+     * @param context contexto de donde es invocado metodo.
+     * @param mantenedor nombre de mantenedor.
+     */
     private void llenarBaseDeDatosDosAtributos(Context context, String mantenedor) {
        // progreso=new ProgressDialog(context);
         //progreso.setMessage(context.getString(R.string.mensajeBarraProgresoCargando));
@@ -211,12 +159,20 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
     }
 
 
+    /**
+     * Respuesta de error de conexion
+     * @param error
+     */
     @Override
     public void onErrorResponse(VolleyError error) {
         Log.d(contexto.getString(R.string.ERROR),error.toString());
         //progreso.hide();
     }
 
+    /**
+     * respuesta de conexion con web service.
+     * @param response
+     */
     @Override
     public void onResponse(JSONObject response) {
         MantenedorDosAtributos mantenedorDosAtributos =null;

@@ -4,6 +4,9 @@ package com.example.esteban.brlife.Clases;
 /**
  * @author BrotherWare
  *
+ * Clase RegistroDiario.
+ *
+ * Registro de nutrientes relacionados a usuarios.
  */
 public class RegistroDiario {
     public int idusuario;

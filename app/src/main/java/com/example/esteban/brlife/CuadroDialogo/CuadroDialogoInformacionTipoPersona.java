@@ -14,6 +14,7 @@ import com.example.esteban.brlife.R;
 /**
  * @author BrotherWare
  *
+ * Cuadro de dialogo con informacion sobre tipos de Metabolismos en diferentes tipos de persona (Somatotipo).
  */
 public class CuadroDialogoInformacionTipoPersona {
 

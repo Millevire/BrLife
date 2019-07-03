@@ -17,6 +17,9 @@ import java.util.ArrayList;
 /**
  * @author BrotherWare
  *
+ *Clase adaptador
+ *Encargado de cargar vistas a Spinner (ComboBox) de objetos Comuna.
+ * Entrega de posicion de objetos en un ArrayList.
  */
 public class SpinAdapterComuna extends ArrayAdapter<Comuna> {
     // Your sent context

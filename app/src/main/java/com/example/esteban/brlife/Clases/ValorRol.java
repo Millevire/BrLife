@@ -4,6 +4,8 @@ package com.example.esteban.brlife.Clases;
 /**
  * @author BrotherWare
  *
+ * Clase Valor Rol
+ *
  */
 public class ValorRol {
     private String nombreRol;

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 /**
  * @author BrotherWare
  *
+ * enum de tipo de sexo.
  */
 public class SeleccionSexo {
     public  static ArrayList<MantenedorDosAtributos> listaSexo;

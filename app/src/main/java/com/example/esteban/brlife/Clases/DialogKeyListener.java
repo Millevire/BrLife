@@ -6,7 +6,7 @@ import android.view.KeyEvent;
 
 /**
  * @author BrotherWare
- *
+ *Clase de deteccion de accion "back" de hardware de celular.
  */
 public class DialogKeyListener implements DialogInterface.OnKeyListener {
 

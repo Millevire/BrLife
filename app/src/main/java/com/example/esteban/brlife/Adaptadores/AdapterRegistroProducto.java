@@ -25,6 +25,9 @@ import java.util.ArrayList;
 /**
  * @author BrotherWare
  *
+ *Clase adaptador
+ *Encargado de cargar vistas personalizadas a una lista de objetos RegistroUsuario.
+ * Entrega de posicion de objetos en un ArrayList.
  */
 public class AdapterRegistroProducto extends BaseAdapter {
     private Context context;

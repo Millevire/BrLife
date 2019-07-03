@@ -19,6 +19,9 @@ import java.util.ArrayList;
 /**
  * @author BrotherWare
  *
+ *Clase adaptador
+ *Encargado de cargar vistas personalizadas a una lista de objetos ProductoNutriente.
+ * Entrega de posicion de objetos en un ArrayList.
  */
 public class AdapterProductoNutriente extends BaseAdapter {
     private Context context;

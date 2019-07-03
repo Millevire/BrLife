@@ -21,7 +21,9 @@ import java.util.ArrayList;
 
 /**
  * @author BrotherWare
- *
+ *Clase Negocio.
+ * Obtiene base de datos de datbla Vtablas de web service y las ingresa a base de datos interna.
+ * Controla versiones de tablas.
  */
 public class Negocio {
 public static ArrayList<Version>listaprueba=new ArrayList<>();

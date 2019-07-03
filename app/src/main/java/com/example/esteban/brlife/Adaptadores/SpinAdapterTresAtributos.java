@@ -17,6 +17,9 @@ import java.util.ArrayList;
 /**
  * @author BrotherWare
  *
+ *Clase adaptador
+ *Encargado de cargar vistas a Spinner (ComboBox) de objetos MantenedorTresAtributos.
+ * Entrega de posicion de objetos en un ArrayList.
  */
 public class SpinAdapterTresAtributos extends ArrayAdapter<MantenedorTresAtributos> {
     // Your sent context

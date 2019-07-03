@@ -4,6 +4,8 @@ package com.example.esteban.brlife.Clases;
 /**
  * @author BrotherWare
  *
+ * Clase TipoProducto
+ *
  */
 public class TipoProducto {
     private int idTipoProducto;

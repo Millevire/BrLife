@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 /**
  * @author BrotherWare
+ *Clase de conexion a webService mediante libreria Volley
  *
  */
 public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listener<JSONObject>,Response.ErrorListener {
@@ -52,6 +53,12 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
     public String mantenedor;
 
 
+    /**
+     *
+     * @param context variable de contexto proveniente de donde se invoque metodo.
+     * @param tipoMantenedor variable que nos dara el nombre del mantenedor al que estemos llamando.
+     * Metodo contructor que llenara una lista
+     */
     public CargarBaseDeDatosMantenedorTresAtributos(Context context, String tipoMantenedor){
         mantenedor=tipoMantenedor;
         contexto=context;
@@ -61,37 +68,11 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
     }
 
 
-  public static String buscarMarca(int idMarca){
-        for (MantenedorTresAtributos mantenedorTresAtributos: listaMarca){
-            if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMarca){
-                return mantenedorTresAtributos.getNombreMantenedorTresAtributos();
-            }
 
-        }
-        return "";
-
-  }
-
-    public static String buscaSabor(int idMarca){
-        for (MantenedorTresAtributos mantenedorTresAtributos: listaSabor){
-            if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMarca){
-                return mantenedorTresAtributos.getNombreMantenedorTresAtributos();
-            }
-
-        }
-        return "";
-
-    }
-
-    public static String buscarNombreProvincia(int idProvincia){
-        for (MantenedorTresAtributos provincia: listaMantenedorTresAtributos){
-            if (provincia.getIdMantenedorTresAtributos()==idProvincia){
-                return provincia.getNombreMantenedorTresAtributos();
-            }
-        }
-        return "";
-    }
-
+    /**
+     * lista de Objeto MantenedorTresAtributos
+     * @return lista estatica de mantenedor
+     */
     public static void eliminar(int id){
         for(int x = 0; x< listaMantenedorTresAtributos.size(); ++x){
             if (listaMantenedorTresAtributos.get(x).getIdMantenedorTresAtributos()==id){
@@ -103,6 +84,11 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
         }
     }
 
+    /**
+     * Buscar un objeto MantenedorTresAtributos en lista estatica.
+     * @param idMantenedor id de objeto.
+     * @return objeto encontrado.
+     */
     public static MantenedorTresAtributos buscar(int idMantenedor){
         for(MantenedorTresAtributos mantenedorTresAtributos: listaMantenedorTresAtributos){
             if (mantenedorTresAtributos.getIdMantenedorTresAtributos()==idMantenedor){
@@ -112,12 +98,13 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
         return null;
     }
 
-    public static int buscarIndice(MantenedorTresAtributos mantenedorTresAtributos){
-        int position;
-        position = listaMantenedorTresAtributos.indexOf(mantenedorTresAtributos);
-        return position;
-    }
 
+    /**
+     * Editar objeto de lista estatica
+     * @param id id de objeto a editar.
+     * @param idTipoProducto id de tipoProducto
+     * @param nombre
+     */
     public static void editar(int id,int idTipoProducto,String nombre){
         for(int x = 0; x< listaMantenedorTresAtributos.size(); ++x){
             if (listaMantenedorTresAtributos.get(x).getIdMantenedorTresAtributos()==id){
@@ -131,60 +118,22 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
 
     }
 
+    /**
+     * nuevo registro de objeto en lista estatica
+     * @param mantenedorTresAtributos
+     */
     public static void agregar(MantenedorTresAtributos mantenedorTresAtributos){
 
        listaMantenedorTresAtributos.add(mantenedorTresAtributos);
     }
 
-    public static ArrayList<MantenedorTresAtributos> getListaMantenedorTresAtributos() {
-        return listaMantenedorTresAtributos;
-    }
-
-    public static ArrayList<MantenedorTresAtributos>filtroSabor(int idTipoProducto){
-        listaFiltrSabor.clear();
-        for (MantenedorTresAtributos mantenedorTresAtributos: listaSabor){
-
-            if(mantenedorTresAtributos.getFkMantenedorTresAtributos()==idTipoProducto){
-                listaFiltrSabor.add(mantenedorTresAtributos);
-            }
-        }
-        return listaFiltrSabor;
-
-    }
-
-    public static ArrayList<MantenedorTresAtributos>filtro(int fkMantenedor){
-        listaFiltrSabor.clear();
-        for (MantenedorTresAtributos mantenedorTresAtributos: listaMantenedorTresAtributos){
-
-            if(mantenedorTresAtributos.getFkMantenedorTresAtributos()==fkMantenedor){
-                listaFiltrSabor.add(mantenedorTresAtributos);
-            }
-        }
-        return listaFiltrSabor;
-
-    }
 
 
-    public static ArrayList<MantenedorTresAtributos>filtroMarca(int idTipoProducto){
-        listaFiltroMarca.clear();
-        for (MantenedorTresAtributos mantenedorTresAtributos: listaMarca){
-
-            if(mantenedorTresAtributos.getFkMantenedorTresAtributos()==idTipoProducto){
-                listaFiltroMarca.add(mantenedorTresAtributos);
-            }
-        }
-
-        return listaFiltroMarca;
-
-    }
-
-    public static void limpiarListaMarcaSabor(){
-        listaSabor.clear();
-        listaMarca.clear();
-    }
-
-
-
+    /**
+     * Metodo de conexion con base de datos y webService
+     * @param context contexto de donde es invocado metodo.
+     * @param mantenedor nombre de mantenedor.
+     */
     private void llenarBaseDeDatosTipoProducto(Context context, String mantenedor) {
         //progreso=new ProgressDialog(context);
        // progreso.setMessage(context.getString(R.string.mensajeBarraProgresoCargando));
@@ -204,12 +153,20 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
 
 
 
+    /**
+     * Respuesta de error de conexion
+     * @param error
+     */
     @Override
     public void onErrorResponse(VolleyError error) {
         Log.d(contexto.getString(R.string.ERROR),error.toString());
        // progreso.hide();
     }
 
+    /**
+     * respuesta de conexion con web service.
+     * @param response
+     */
     @Override
     public void onResponse(JSONObject response) {
         MantenedorTresAtributos mantenedorTresAtributos =null;

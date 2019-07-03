@@ -4,6 +4,9 @@ package com.example.esteban.brlife.Clases;
 /**
  * @author BrotherWare
  *
+ * Clase RegistroHorarioTotales.
+ *
+ * Total de calorias por horario de comida
  */
 public class RegistroHorarioTotales {
     public int idhorariocomida;

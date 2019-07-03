@@ -3,7 +3,7 @@ package com.example.esteban.brlife.Clases;
 
 /**
  * @author BrotherWare
- *
+ *Clase Comuna.
  */
 public class Comuna {
     private int idComuna;

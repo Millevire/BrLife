@@ -17,8 +17,9 @@ import java.util.ArrayList;
 /**
  * @author BrotherWare
  *
- *
- *
+ *Clase adaptador
+ *Encargado de cargar vistas personalizadas a una lista de objetos MantenedorDosAtributos.
+ * Entrega de posicion de objetos en un ArrayList.
  */
 public class AdapterIntereses extends BaseAdapter {
     private Context context;
