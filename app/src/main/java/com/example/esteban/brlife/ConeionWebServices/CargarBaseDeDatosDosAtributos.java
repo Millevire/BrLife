@@ -161,7 +161,7 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
 
     /**
      * Respuesta de error de conexion
-     * @param error
+     * @param error error
      */
     @Override
     public void onErrorResponse(VolleyError error) {
@@ -171,7 +171,7 @@ public class CargarBaseDeDatosDosAtributos implements Response.Listener<JSONObje
 
     /**
      * respuesta de conexion con web service.
-     * @param response
+     * @param response respuesta
      */
     @Override
     public void onResponse(JSONObject response) {

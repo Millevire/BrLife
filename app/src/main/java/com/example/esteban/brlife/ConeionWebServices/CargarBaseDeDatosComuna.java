@@ -178,7 +178,7 @@ public class CargarBaseDeDatosComuna implements Response.Listener<JSONObject>,Re
 
     /**
      * Respuesta de error de conexion
-     * @param error
+     * @param error retorno de error
      */
     @Override
     public void onErrorResponse(VolleyError error) {
@@ -187,7 +187,7 @@ public class CargarBaseDeDatosComuna implements Response.Listener<JSONObject>,Re
 
     /**
      * respuesta de conexion con web service.
-     * @param response
+     * @param response respuesta
      */
     @Override
     public void onResponse(JSONObject response) {

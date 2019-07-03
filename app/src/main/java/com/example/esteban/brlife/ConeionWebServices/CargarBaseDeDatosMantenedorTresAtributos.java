@@ -155,7 +155,7 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
 
     /**
      * Respuesta de error de conexion
-     * @param error
+     * @param error error
      */
     @Override
     public void onErrorResponse(VolleyError error) {
@@ -165,7 +165,7 @@ public class CargarBaseDeDatosMantenedorTresAtributos implements Response.Listen
 
     /**
      * respuesta de conexion con web service.
-     * @param response
+     * @param response respuesta
      */
     @Override
     public void onResponse(JSONObject response) {
