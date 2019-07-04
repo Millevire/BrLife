@@ -30,20 +30,20 @@
             android:textColor="@color/blanco" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="right"
-        android:orientation="horizontal"/>
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/doscolores"
+    android:orientation="vertical">
     <TextView
         android:id="@+id/tvNombreProductoRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginTop="40dp"
         android:layout_marginLeft="20dp"
         android:text="NECTAR COLUN"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/blanco"
         android:textSize="24sp" />
 
     <TextView
@@ -51,19 +51,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:textColor="@color/blanco"
         android:text="Sabor durazno " />
 
     <TextView
         android:id="@+id/tvMarcaRegistro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/blanco"
+        android:layout_marginBottom="10dp"
         android:layout_marginLeft="20dp"
         android:text="Sabor durazno " />
+</LinearLayout>
+
     <View android:layout_width="wrap_content"
         android:layout_height="0.1dp"
         android:background="#000000"
-        android:layout_marginTop="10dp"/>
+        />
     <LinearLayout
+        android:id="@+id/llHorarioComida"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -74,7 +80,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Horario comida: " />
+            android:text="Horario comida: "
+            android:textColor="@color/colorPrimaryDark"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -104,6 +111,7 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/tvProcionNuevoRegistroProducto"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginRight="20dp"
@@ -123,6 +131,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llPorcionBoton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="20dp"
@@ -133,6 +142,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryDark"
             android:text="Porcion: " />
 
         <LinearLayout
@@ -164,5 +174,9 @@
             android:text="agregar"
             android:textColor="@color/blanco" />
     </LinearLayout>
+    <View android:layout_width="wrap_content"
+        android:layout_height="0.1dp"
+        android:background="#000000"
+        />
 
 </LinearLayout>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -35,7 +36,7 @@ import java.util.Date;
  * Calculo de calorias por porcion consumida de producto.
  */
 public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
-    private TextView tvNombreProductoRegistro,tvSaborRegistro,tvMarcaRegistro;
+    private TextView tvNombreProductoRegistro,tvSaborRegistro,tvMarcaRegistro,tvProcionNuevoRegistroProducto;
     private Spinner spHorarioComidaRegistro,spPorcionRegistro;
     private EditText etPorcionRegistro;
     private ListView lvNutrientesRegistro;
@@ -47,6 +48,7 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
     public int idhorario;
     public String accion = "";
     public RegistroUsuario registroUsuario = new RegistroUsuario();
+    public LinearLayout llHorarioComida;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,7 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
         tvNombreProductoRegistro=(TextView)findViewById(R.id.tvNombreProductoRegistro);
         tvMarcaRegistro=(TextView)findViewById(R.id.tvMarcaRegistro);
         tvSaborRegistro=(TextView)findViewById(R.id.tvSaborRegistro);
-
+        tvProcionNuevoRegistroProducto=(TextView)findViewById(R.id.tvProcionNuevoRegistroProducto);
         spHorarioComidaRegistro=(Spinner)findViewById(R.id.spHorarioComidaRegistro);
         spPorcionRegistro=(Spinner)findViewById(R.id.spPorcionRegistro);
 
@@ -69,6 +71,8 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
 
         btnAgregarRegistro=(Button)findViewById(R.id.btnAgregarRegistro);
         btnBackRegistroProductoHorario=(Button)findViewById(R.id.btnBackRegistroProductoHorario);
+
+        llHorarioComida=(LinearLayout)findViewById(R.id.llHorarioComida);
         //#endregion
 
         final Bundle bundle=getIntent().getExtras();
@@ -78,6 +82,14 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
         }catch (Exception e){
             accion = "";
         }
+
+
+
+        if (accion.equals("probar")){
+            btnAgregarRegistro.setVisibility(View.INVISIBLE);
+            etPorcionRegistro.setEnabled(false);
+            llHorarioComida.setVisibility(View.GONE);
+        }
         if (bundle !=null){
             producto=(Producto) bundle.getSerializable("Producto");
 
@@ -85,6 +97,9 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
             tvSaborRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor(),producto.getFkTipoProducto()));
             tvMarcaRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscarMarca(producto.getIdMarca(),producto.getFkTipoProducto()));
             etPorcionRegistro.setText(producto.getCantidadRacion()+"");
+           if (producto.getTipoMedicion()==1){
+               tvProcionNuevoRegistroProducto.setText("100 ml");
+           }else {tvProcionNuevoRegistroProducto.setText("100 gr");}
             try {
                 CargarMantenedorDosAtributosHttpConecction.buscarMantenedorDosAtributos(this, SelccionMantenedor.HorarioComida.getSeleccion());
                 CargarMantenedorProductoNutrienteHttpConecction.buscarMantenedorProductoNutriente(this,"ProductoNutriente",producto.getIdProducto());

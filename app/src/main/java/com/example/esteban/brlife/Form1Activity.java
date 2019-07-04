@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -43,6 +44,7 @@ import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 
 /**
@@ -218,7 +220,10 @@ public class Form1Activity extends AppCompatActivity {
                     if (count==etCorreoElectronicoForm1.getText().length() || etCorreoElectronicoForm1.getText().toString().equals("")) {
                         etCorreoElectronicoForm1.setError("Ingrese un correo electronico valido");
                         btnSifuenteForm1.setEnabled(false);
-                    }else btnSifuenteForm1.setEnabled(true);
+                    }else  if(!validarEmail(etCorreoElectronicoForm1.getText().toString())){
+
+                        etCorreoElectronicoForm1.setError("Formato email no valido");
+                    } else btnSifuenteForm1.setEnabled(true);
                 }
             }
         });
@@ -386,6 +391,11 @@ public class Form1Activity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 
 }

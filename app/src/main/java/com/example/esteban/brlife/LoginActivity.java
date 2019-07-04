@@ -164,7 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
                             if (validacion > 0) {
 
-                                Toast.makeText(LoginActivity.this, "id_usuario:" + validacion, Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(LoginActivity.this, "id_usuario:" + validacion, Toast.LENGTH_SHORT).show();
                                 btnIngresar.setEnabled(false);
                                 progressBar.setVisibility(View.GONE);
                                 try {

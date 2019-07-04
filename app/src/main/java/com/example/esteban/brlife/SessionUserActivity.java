@@ -284,8 +284,10 @@ public class SessionUserActivity extends AppCompatActivity
                     intentProducto.putExtra("accion","agregar");
                     startActivity(intentProducto);
 
+                }else {
+                    Toast.makeText(this, "Producto no encontrado", Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(this, " "+result.getContents().toString(), Toast.LENGTH_SHORT).show();
+
             }
 
         }else {

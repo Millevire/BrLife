@@ -71,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
                 //Validacion de versiones
                 int valVersion= Negocio.ValidarExistenciaTablaVtablas(MainActivity.this);
             if (valVersion>0){
-                  Toast.makeText(MainActivity.this, "Tablas con "+valVersion+" Contenidos", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(MainActivity.this, "Tablas con "+valVersion+" Contenidos", Toast.LENGTH_SHORT).show();
                   
               }else {
-                Toast.makeText(MainActivity.this, "Cargar tablas Version", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(MainActivity.this, "Cargar tablas Version", Toast.LENGTH_SHORT).show();
                 Negocio.CargarVtablas(MainActivity.this);
             }
 
@@ -82,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
             //Validacion de Region
                 int valRegion=Negocio.ValidarExistenciaTablaRegion(MainActivity.this);
                 if (valRegion>0){
-                    Toast.makeText(MainActivity.this, "Tablas con "+valRegion+" Registros", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(MainActivity.this, "Tablas con "+valRegion+" Registros", Toast.LENGTH_SHORT).show();
 
                 }else {
-                    Toast.makeText(MainActivity.this, "Cargar tablas Region", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(MainActivity.this, "Cargar tablas Region", Toast.LENGTH_SHORT).show();
                     Negocio.CargarRegion(MainActivity.this);
 
                 }
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }else {
 
-                    Toast.makeText(MainActivity.this, "Cargar tablas Provincia", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "Cargar tablas Provincia", Toast.LENGTH_SHORT).show();
                     Negocio.CargarProvincia(MainActivity.this);
 
                 }
