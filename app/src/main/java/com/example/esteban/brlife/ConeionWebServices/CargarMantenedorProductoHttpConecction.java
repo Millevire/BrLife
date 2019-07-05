@@ -17,6 +17,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 
 /**
@@ -25,6 +27,7 @@ import java.util.ArrayList;
  */
 public class CargarMantenedorProductoHttpConecction {
     public static ArrayList<Producto> listaProducto =new ArrayList<>();
+    public static Dictionary productos = new Hashtable();
 
     /**
      * Metodo para eliminar de la lista estatica un producto por medio de su id
@@ -91,13 +94,13 @@ public class CargarMantenedorProductoHttpConecction {
      * @return
      */
     public static Producto buscarProductoCodigoBarra(String codigoBarra){
-        for (Producto producto:listaProducto){
-            if (producto.getCodigoBarra().equals(codigoBarra)){
-                return producto;
-            }
-
-        }
-        return null;
+//        for (Producto producto:listaProducto){
+//            if (producto.getCodigoBarra().equals(codigoBarra)){
+//                return producto;
+//            }
+//
+//        }
+        return (Producto) productos.get(codigoBarra);
     }
 
 
@@ -125,6 +128,7 @@ public class CargarMantenedorProductoHttpConecction {
      */
     public static ArrayList<Producto> buscarMantenedorProducto(Context context, String mantenedo) throws IOException, JSONException {
         listaProducto = new ArrayList<>();
+        productos = new Hashtable();
         URL url = new URL(context.getString(R.string.URLwebServicePart1)
                 +mantenedo
                 +context.getString(R.string.URLwebServicePart2));
@@ -178,6 +182,7 @@ public class CargarMantenedorProductoHttpConecction {
                             producto.setValidacion(true);
                         }
 
+                        productos.put(producto.getCodigoBarra(),producto);
                         producto.setNombreTipoProducto(jsonObject.getString("Nombre_Tipo"+mantenedo));
                         listaProducto.add(producto);
 
