@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -22,6 +23,7 @@ import com.example.esteban.brlife.ConeionWebServices.CargarMantenedorTresAtribut
 import com.example.esteban.brlife.ConeionWebServices.CargarRegistroUsuarioHttpConexion;
 import com.example.esteban.brlife.ConeionWebServices.CrudUsuarioHttpConecction;
 import com.example.esteban.brlife.Enum.SelccionMantenedor;
+import com.example.esteban.brlife.Enum.SeleccionTipoProducto;
 
 import org.json.JSONException;
 
@@ -42,6 +44,7 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
     private ListView lvNutrientesRegistro;
     private Button btnAgregarRegistro,btnBackRegistroProductoHorario;
     private SpinAdapter spinAdapter;
+    private ImageView ivIconoNuevoRegistroProductoUsuario;
     public AdapterProductoNutriente adapterProductoNutriente;
     public ArrayList<ProductoNutriente> listaProductoNutrientes;
     public Producto producto;
@@ -66,6 +69,8 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
         spPorcionRegistro=(Spinner)findViewById(R.id.spPorcionRegistro);
 
         etPorcionRegistro=(EditText)findViewById(R.id.etPorcionRegistro);
+
+        ivIconoNuevoRegistroProductoUsuario=(ImageView)findViewById(R.id.ivIconoNuevoRegistroProductoUsuario);
 
         lvNutrientesRegistro=(ListView)findViewById(R.id.lvNutrientesRegistro);
 
@@ -92,6 +97,64 @@ public class NuevoRegistroProductoUsuarioActivity extends AppCompatActivity {
         }
         if (bundle !=null){
             producto=(Producto) bundle.getSerializable("Producto");
+
+            //Icono de produto
+            SeleccionTipoProducto nombreTipoProducto= SeleccionTipoProducto.valueOf(producto.getNombreTipoProducto());
+
+            switch (nombreTipoProducto){
+                case Crustaceo:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.crustaceo);
+                    break;
+                case Agua:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.agua);
+                    break;
+                case Huevo:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.huevos);
+                    break;
+                case Pescado:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.pescado);
+                    break;
+                case Carne:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.carne);
+                    break;
+                case Cereal:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.cereal);
+                    break;
+                case Legrumbre:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.legumbre);
+                    break;
+                case Lacteo:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.lacteo);
+                    break;
+                case Bebida:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.bebida);
+                    break;
+                case Fruta:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.fruta);
+                    break;
+                case Galleta:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.galleta);
+                    break;
+                case Fritura:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.frituras);
+                    break;
+                case Cafe:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.cafe);
+                    break;
+                case Caramelo:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.caramelo);
+                    break;
+                case Chocolate:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.chocolate);
+                    break;
+                case Te:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.te);
+                    break;
+                case Pan:
+                    ivIconoNuevoRegistroProductoUsuario.setImageResource(R.drawable.pan);
+                    break;
+            }
+
 
             tvNombreProductoRegistro.setText(producto.getNombreProducto());
             tvSaborRegistro.setText(CargarMantenedorTresAtributosHttpConecction.buscaSabor(producto.getIdSabor(),producto.getFkTipoProducto()));
